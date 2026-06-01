@@ -82,7 +82,7 @@
   <a href="#incontournables" class="nav-pill">À voir</a>
   
   <a href="#restaurants" class="nav-pill">Restaurants</a>
-  <a href="#pratique" class="nav-pill">Pratique</a>
+  <a href="#pratique" class="nav-pill">Pratique</a><a href="#carte" class="nav-pill">Carte</a>
 </div></nav>
 <div class="container">
 <section id="histoire">
@@ -91,7 +91,7 @@
   <div class="histoire-text"><p>Fondée en 1739 sur les berges du fleuve Cape Fear, Wilmington fut l'un des ports les plus importants de la Colombie britannique avant la Révolution américaine. Son rôle stratégique se confirma pendant la Guerre de Sécession — elle fut le dernier grand port confédéré à tomber, en janvier 1865.</p><p>La ville est aujourd'hui connue dans tout le pays sous le surnom de 'Hollywood East' : une fiscalité avantageuse et des décors variés ont attiré d'innombrables productions. Les studios EUE/Screen Gems y ont tourné des séries comme One Tree Hill et des films comme Iron Man 3. Tu croiseras peut-être des tournages dans le centre.</p><p>Son Historic Downtown, le long du fleuve Cape Fear, est l'un des mieux préservés du Sud — maisons antebellum, galeries d'art, restaurants branchés dans de vieux entrepôts. Et à 15 minutes, Wrightsville Beach est l'une des plages les plus propres et les plus agréables de Caroline du Nord.</p></div>
 </section>
 <section id="photos">
-  <div class="photo-grid"><img src="https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=1200&auto=format&fit=crop&q=80" alt="Cape Fear River" loading="lazy"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&q=80" alt="Battleship" loading="lazy"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80" alt="Wrightsville Beach" loading="lazy"></div>
+  <div class="photo-grid"><img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=600&auto=format&fit=crop&q=80" alt="Wrightsville Beach" loading="lazy"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&q=80" alt="Battleship" loading="lazy"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80" alt="Wrightsville Beach" loading="lazy"></div>
 </section>
 <section id="incontournables">
   <h2 class="section-title">Incontournables</h2>
@@ -106,6 +106,68 @@
   <h2 class="section-title">Pratique &amp; Conseils</h2>
   <div class="tip-box" style="margin-top:.6rem"><strong>🎬 Hollywood East :</strong> Si tu vois des caméras dans le centre, c'est normal — Wilmington est l'une des capitales mondiales de la production TV/cinéma. EUE/Screen Gems Studios est l'un des plus grands studios de la côte est.</div><div class="tip-box" style="margin-top:.6rem"><strong>🌊 Wrightsville Beach :</strong> À 15 min du centre. Mieux organisée et moins touristique que Myrtle Beach. Parking payant en juillet — arriver avant 10h ou après 16h.</div><div class="tip-box" style="margin-top:.6rem"><strong>🚗 Vers Charleston :</strong> Demain matin, tu as 2 options : route directe 4h30 via US-17, ou détour par l'option Clemson/Myrtle Beach selon l'itinéraire choisi.</div>
 </section>
+
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<section id="carte" style="padding:2.5rem 0 0">
+  <h2 class="section-title" style="max-width:860px;margin:0 auto;padding:0 1.5rem 1.2rem;border-bottom:1px solid var(--border);font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--ink)">Situation géographique</h2>
+  <div style="max-width:860px;margin:0 auto;padding:0 1.5rem">
+    <div id="wilmington_map" style="height:280px;border-radius:8px;overflow:hidden;border:1px solid var(--border);margin-top:1rem"></div>
+    <p style="font-size:0.75rem;color:var(--muted);margin-top:0.5rem">La route en orange · Étape actuelle en rouge · Autres étapes en gris</p>
+  </div>
+</section>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  var map = L.map('wilmington_map', {zoomControl:true, scrollWheelZoom:false});
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    attribution:'© OpenStreetMap © CARTO', subdomains:'abcd', maxZoom:19
+  }).addTo(map);
+
+  var stops = [
+    {name: "Cape May", lat: 38.935, lng: -74.906},
+    {name: "Virginia Beach", lat: 36.853, lng: -75.978},
+    {name: "Outer Banks", lat: 35.994, lng: -75.663},
+    {name: "Wilmington", lat: 34.226, lng: -77.945},
+    {name: "Charleston", lat: 32.776, lng: -79.931},
+    {name: "Savannah", lat: 32.083, lng: -81.1},
+    {name: "Saint Augustine", lat: 29.894, lng: -81.314},
+    {name: "Kennedy SC", lat: 28.524, lng: -80.681},
+    {name: "Orlando", lat: 28.538, lng: -81.379},
+    {name: "Palm Beach", lat: 26.705, lng: -80.064},
+    {name: "Miami", lat: 25.761, lng: -80.192}
+  ];
+  var currentLat = 34.226, currentLng = -77.945;
+
+  // Route line
+  L.polyline(stops.map(function(s){return [s.lat, s.lng]}), {
+    color:'#E8956A', weight:2.5, opacity:0.7, dashArray:'6 5'
+  }).addTo(map);
+
+  // Other stops (grey)
+  stops.forEach(function(s) {
+    var isCurrent = Math.abs(s.lat - currentLat) < 0.1 && Math.abs(s.lng - currentLng) < 0.1;
+    if (!isCurrent) {
+      L.circleMarker([s.lat, s.lng], {
+        radius:5, fillColor:'#9A8D80', fillOpacity:1,
+        color:'#FAF7F2', weight:1.5
+      }).addTo(map).bindPopup('<div style="font-family:DM Sans,sans-serif;font-size:13px;font-weight:500">'+s.name+'</div>');
+    }
+  });
+
+  // Current stop (accent)
+  var icon = L.divIcon({
+    className:'',
+    html:'<div style="background:#C4622D;color:#FAF7F2;font-family:DM Sans,sans-serif;font-size:11px;font-weight:600;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2.5px solid #FAF7F2;box-shadow:0 2px 8px rgba(0,0,0,.35)">📍</div>',
+    iconSize:[28,28], iconAnchor:[14,14]
+  });
+  L.marker([currentLat, currentLng], {icon:icon}).addTo(map)
+    .bindPopup('<div style="font-family:DM Sans,sans-serif;font-size:13px;font-weight:600;color:#C4622D">Wilmington, NC</div>')
+    .openPopup();
+
+  map.setView([currentLat, currentLng], 12);
+})();
+</script>
 
 <div class="page-nav">
   <a href="outer-banks.html"><span class="page-nav-label">← Étape précédente</span><span class="page-nav-title">Outer Banks</span></a>

@@ -68,7 +68,7 @@
 </head>
 <body>
 <div class="hero">
-  <div class="hero-img" style="background-image:url('https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=1400&auto=format&fit=crop&q=80')"></div>
+  <div class="hero-img" style="background-image:url('https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=1400&auto=format&fit=crop&q=80')"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <a href="index.html" class="back-link">← Retour à l'itinéraire</a>
@@ -82,7 +82,7 @@
   <a href="#incontournables" class="nav-pill">À voir</a>
   <a href='#running' class='nav-pill'>Running</a>
   <a href="#restaurants" class="nav-pill">Restaurants</a>
-  <a href="#pratique" class="nav-pill">Pratique</a>
+  <a href="#pratique" class="nav-pill">Pratique</a><a href="#carte" class="nav-pill">Carte</a>
 </div></nav>
 <div class="container">
 <section id="histoire">
@@ -91,7 +91,7 @@
   <div class="histoire-text"><p>Les Outer Banks sont un chapelet d'îles barrières de 300 km de long qui protègent la côte nord-carolinienne. Ces bandes de sable étroites, parfois larges de quelques centaines de mètres seulement, sont battues par l'Atlantique d'un côté et les eaux calmes du Sound de l'autre.</p><p>C'est ici qu'Orville et Wilbur Wright réalisèrent le premier vol motorisé de l'histoire le 17 décembre 1903, à Kill Devil Hills. Les conditions venteuses et les grandes dunes de sable offraient un terrain d'essai idéal. Le Musée des Frères Wright sur le site exact du vol reste l'un des lieux les plus émouvants des USA.</p><p>Les OBX, comme les locaux les appellent, sont aussi connues pour leurs dangereux hauts-fonds — le 'Cimetière de l'Atlantique' — où des centaines de navires ont sombré au fil des siècles. Le Cape Hatteras Lighthouse, le plus haut phare de brique des USA, fut construit précisément pour prévenir ces naufrages.</p></div>
 </section>
 <section id="photos">
-  <div class="photo-grid"><img src="https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=1200&auto=format&fit=crop&q=80" alt="Outer Banks beach" loading="lazy"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&q=80" alt="Lighthouse" loading="lazy"><img src="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?w=600&auto=format&fit=crop&q=80" alt="Ocean dunes" loading="lazy"></div>
+  <div class="photo-grid"><img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=600&auto=format&fit=crop&q=80" alt="Lighthouse coast" loading="lazy"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&q=80" alt="Lighthouse" loading="lazy"><img src="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?w=600&auto=format&fit=crop&q=80" alt="Ocean dunes" loading="lazy"></div>
 </section>
 <section id="incontournables">
   <h2 class="section-title">Incontournables</h2>
@@ -109,6 +109,68 @@
   <h2 class="section-title">Pratique &amp; Conseils</h2>
   <div class="tip-box" style="margin-top:.6rem"><strong>🏠 Logement :</strong> Reste côté Kill Devil Hills ou Manteo (Roanoke Island) — plus central et plus facile pour repartir le lendemain vers Wilmington sans faire demi-tour vers le sud de Hatteras.</div><div class="tip-box" style="margin-top:.6rem"><strong>🌬️ Vent :</strong> Les OBX sont très ventées — idéal pour le kite et le surf, moins pour les parasols. Prévoir une veste légère même en juillet le soir.</div><div class="tip-box" style="margin-top:.6rem"><strong>🦟 Moustiques :</strong> Abondants côté Sound au coucher du soleil. Spray indispensable si tu explores les zones humides.</div>
 </section>
+
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<section id="carte" style="padding:2.5rem 0 0">
+  <h2 class="section-title" style="max-width:860px;margin:0 auto;padding:0 1.5rem 1.2rem;border-bottom:1px solid var(--border);font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--ink)">Situation géographique</h2>
+  <div style="max-width:860px;margin:0 auto;padding:0 1.5rem">
+    <div id="outer_banks_map" style="height:280px;border-radius:8px;overflow:hidden;border:1px solid var(--border);margin-top:1rem"></div>
+    <p style="font-size:0.75rem;color:var(--muted);margin-top:0.5rem">La route en orange · Étape actuelle en rouge · Autres étapes en gris</p>
+  </div>
+</section>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  var map = L.map('outer_banks_map', {zoomControl:true, scrollWheelZoom:false});
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    attribution:'© OpenStreetMap © CARTO', subdomains:'abcd', maxZoom:19
+  }).addTo(map);
+
+  var stops = [
+    {name: "Cape May", lat: 38.935, lng: -74.906},
+    {name: "Virginia Beach", lat: 36.853, lng: -75.978},
+    {name: "Outer Banks", lat: 35.994, lng: -75.663},
+    {name: "Wilmington", lat: 34.226, lng: -77.945},
+    {name: "Charleston", lat: 32.776, lng: -79.931},
+    {name: "Savannah", lat: 32.083, lng: -81.1},
+    {name: "Saint Augustine", lat: 29.894, lng: -81.314},
+    {name: "Kennedy SC", lat: 28.524, lng: -80.681},
+    {name: "Orlando", lat: 28.538, lng: -81.379},
+    {name: "Palm Beach", lat: 26.705, lng: -80.064},
+    {name: "Miami", lat: 25.761, lng: -80.192}
+  ];
+  var currentLat = 35.994, currentLng = -75.663;
+
+  // Route line
+  L.polyline(stops.map(function(s){return [s.lat, s.lng]}), {
+    color:'#E8956A', weight:2.5, opacity:0.7, dashArray:'6 5'
+  }).addTo(map);
+
+  // Other stops (grey)
+  stops.forEach(function(s) {
+    var isCurrent = Math.abs(s.lat - currentLat) < 0.1 && Math.abs(s.lng - currentLng) < 0.1;
+    if (!isCurrent) {
+      L.circleMarker([s.lat, s.lng], {
+        radius:5, fillColor:'#9A8D80', fillOpacity:1,
+        color:'#FAF7F2', weight:1.5
+      }).addTo(map).bindPopup('<div style="font-family:DM Sans,sans-serif;font-size:13px;font-weight:500">'+s.name+'</div>');
+    }
+  });
+
+  // Current stop (accent)
+  var icon = L.divIcon({
+    className:'',
+    html:'<div style="background:#C4622D;color:#FAF7F2;font-family:DM Sans,sans-serif;font-size:11px;font-weight:600;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2.5px solid #FAF7F2;box-shadow:0 2px 8px rgba(0,0,0,.35)">📍</div>',
+    iconSize:[28,28], iconAnchor:[14,14]
+  });
+  L.marker([currentLat, currentLng], {icon:icon}).addTo(map)
+    .bindPopup('<div style="font-family:DM Sans,sans-serif;font-size:13px;font-weight:600;color:#C4622D">Outer Banks, NC</div>')
+    .openPopup();
+
+  map.setView([currentLat, currentLng], 10);
+})();
+</script>
 
 <div class="page-nav">
   <a href="virginia-beach.html"><span class="page-nav-label">← Étape précédente</span><span class="page-nav-title">Virginia Beach</span></a>

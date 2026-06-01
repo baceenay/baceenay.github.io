@@ -82,7 +82,7 @@
   <a href="#incontournables" class="nav-pill">À voir</a>
   <a href='#running' class='nav-pill'>Running</a>
   <a href="#restaurants" class="nav-pill">Restaurants</a>
-  <a href="#pratique" class="nav-pill">Pratique</a>
+  <a href="#pratique" class="nav-pill">Pratique</a><a href="#carte" class="nav-pill">Carte</a>
 </div></nav>
 <div class="container">
 <section id="histoire">
@@ -91,7 +91,7 @@
   <div class="histoire-text"><p>Le Kennedy Space Center est le site de lancement spatial le plus mythique de l'histoire humaine. C'est d'ici que sont partis Neil Armstrong, Buzz Aldrin et Michael Collins le 16 juillet 1969 à bord d'Apollo 11 — destination la Lune. C'est aussi d'ici que la navette spatiale a décollé 135 fois entre 1981 et 2011.</p><p>Le site couvre 570 km² sur Merritt Island — une réserve naturelle où cohabitent les alligators, les lamantins et les fusées. Les Launch Complex 39A et 39B, construits pour Apollo et utilisés pour la navette, sont maintenant loués par SpaceX et Boeing pour leurs propres lanceurs.</p><p>Depuis 2010, SpaceX a fait de Cape Canaveral son site principal de lancement. Les Falcon 9, Falcon Heavy et désormais les Starship effectuent des dizaines de lancements par an — il y a de bonnes chances qu'un lancement soit programmé autour de ta visite.</p></div>
 </section>
 <section id="photos">
-  <div class="photo-grid"><img src="https://images.unsplash.com/photo-1541185933-ef5d1ce79a35?w=1200&auto=format&fit=crop&q=80" alt="Saturn V" loading="lazy"><img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=600&auto=format&fit=crop&q=80" alt="Space shuttle" loading="lazy"><img src="https://images.unsplash.com/photo-1517976487492-5750f3195933?w=600&auto=format&fit=crop&q=80" alt="Launch pad" loading="lazy"></div>
+  <div class="photo-grid"><img src="https://images.unsplash.com/photo-1517976487492-5750f3195933?w=600&auto=format&fit=crop&q=80" alt="Launch pad" loading="lazy"><img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=600&auto=format&fit=crop&q=80" alt="Space shuttle" loading="lazy"><img src="https://images.unsplash.com/photo-1517976487492-5750f3195933?w=600&auto=format&fit=crop&q=80" alt="Launch pad" loading="lazy"></div>
 </section>
 <section id="incontournables">
   <h2 class="section-title">Incontournables</h2>
@@ -109,6 +109,68 @@
   <h2 class="section-title">Pratique &amp; Conseils</h2>
   <div class="tip-box" style="margin-top:.6rem"><strong>🚀 Lancement SpaceX :</strong> Vérifier spacelaunchschedule.com et nextspaceflight.com avant de partir. Si un lancement est prévu le soir, installe-toi à Space View Park à Titusville (gratuit, ambiance unique).</div><div class="tip-box" style="margin-top:.6rem"><strong>⏰ Durée KSC :</strong> Prévoir 6 à 7h minimum pour tout voir confortablement. Arriver à l'ouverture (9h) pour éviter les files sur Atlantis.</div><div class="tip-box" style="margin-top:.6rem"><strong>🦟 Nature :</strong> Le site est entouré de marais — répulsif anti-moustiques indispensable pour le parking et les chemins extérieurs.</div>
 </section>
+
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<section id="carte" style="padding:2.5rem 0 0">
+  <h2 class="section-title" style="max-width:860px;margin:0 auto;padding:0 1.5rem 1.2rem;border-bottom:1px solid var(--border);font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--ink)">Situation géographique</h2>
+  <div style="max-width:860px;margin:0 auto;padding:0 1.5rem">
+    <div id="kennedy_map" style="height:280px;border-radius:8px;overflow:hidden;border:1px solid var(--border);margin-top:1rem"></div>
+    <p style="font-size:0.75rem;color:var(--muted);margin-top:0.5rem">La route en orange · Étape actuelle en rouge · Autres étapes en gris</p>
+  </div>
+</section>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  var map = L.map('kennedy_map', {zoomControl:true, scrollWheelZoom:false});
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    attribution:'© OpenStreetMap © CARTO', subdomains:'abcd', maxZoom:19
+  }).addTo(map);
+
+  var stops = [
+    {name: "Cape May", lat: 38.935, lng: -74.906},
+    {name: "Virginia Beach", lat: 36.853, lng: -75.978},
+    {name: "Outer Banks", lat: 35.994, lng: -75.663},
+    {name: "Wilmington", lat: 34.226, lng: -77.945},
+    {name: "Charleston", lat: 32.776, lng: -79.931},
+    {name: "Savannah", lat: 32.083, lng: -81.1},
+    {name: "Saint Augustine", lat: 29.894, lng: -81.314},
+    {name: "Kennedy SC", lat: 28.524, lng: -80.681},
+    {name: "Orlando", lat: 28.538, lng: -81.379},
+    {name: "Palm Beach", lat: 26.705, lng: -80.064},
+    {name: "Miami", lat: 25.761, lng: -80.192}
+  ];
+  var currentLat = 28.524, currentLng = -80.681;
+
+  // Route line
+  L.polyline(stops.map(function(s){return [s.lat, s.lng]}), {
+    color:'#E8956A', weight:2.5, opacity:0.7, dashArray:'6 5'
+  }).addTo(map);
+
+  // Other stops (grey)
+  stops.forEach(function(s) {
+    var isCurrent = Math.abs(s.lat - currentLat) < 0.1 && Math.abs(s.lng - currentLng) < 0.1;
+    if (!isCurrent) {
+      L.circleMarker([s.lat, s.lng], {
+        radius:5, fillColor:'#9A8D80', fillOpacity:1,
+        color:'#FAF7F2', weight:1.5
+      }).addTo(map).bindPopup('<div style="font-family:DM Sans,sans-serif;font-size:13px;font-weight:500">'+s.name+'</div>');
+    }
+  });
+
+  // Current stop (accent)
+  var icon = L.divIcon({
+    className:'',
+    html:'<div style="background:#C4622D;color:#FAF7F2;font-family:DM Sans,sans-serif;font-size:11px;font-weight:600;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2.5px solid #FAF7F2;box-shadow:0 2px 8px rgba(0,0,0,.35)">📍</div>',
+    iconSize:[28,28], iconAnchor:[14,14]
+  });
+  L.marker([currentLat, currentLng], {icon:icon}).addTo(map)
+    .bindPopup('<div style="font-family:DM Sans,sans-serif;font-size:13px;font-weight:600;color:#C4622D">Kennedy Space Center</div>')
+    .openPopup();
+
+  map.setView([currentLat, currentLng], 11);
+})();
+</script>
 
 <div class="page-nav">
   <a href="saint-augustine.html"><span class="page-nav-label">← Étape précédente</span><span class="page-nav-title">Saint Augustine</span></a>

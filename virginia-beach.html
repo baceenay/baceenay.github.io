@@ -10,7 +10,7 @@
   *{margin:0;padding:0;box-sizing:border-box}
   body{background:var(--cream);color:var(--ink);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7}
   .hero{position:relative;height:70vh;min-height:420px;overflow:hidden;display:flex;align-items:flex-end}
-  .hero-img{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform 8s ease;background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1400&auto=format&fit=crop&q=80')}
+  .hero-img{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform 8s ease;background-image:url('https://images.unsplash.com/photo-1573510460136-8a26ce45ed2c?w=1400&auto=format&fit=crop&q=80')}
   .hero:hover .hero-img{transform:scale(1.03)}
   .hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(28,18,12,.85) 0%,rgba(28,18,12,.2) 60%,transparent 100%)}
   .hero-content{position:relative;padding:2.5rem 2rem;width:100%;max-width:860px;margin:0 auto}
@@ -108,7 +108,7 @@
 
   <section id="photos">
     <div class="photo-grid">
-      <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=1200&auto=format&fit=crop&q=80" alt="Virginia Beach boardwalk" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?w=600&auto=format&fit=crop&q=80" alt="Beach sunset" loading="lazy">
       <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80" alt="Atlantic ocean" loading="lazy">
       <img src="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?w=600&auto=format&fit=crop&q=80" alt="Beach sunset" loading="lazy">
     </div>
@@ -204,7 +204,69 @@
     </div>
   </section>
 
-  <div class="page-nav">
+  
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<section id="carte" style="padding:2.5rem 0 0">
+  <h2 class="section-title" style="max-width:860px;margin:0 auto;padding:0 1.5rem 1.2rem;border-bottom:1px solid var(--border);font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--ink)">Situation géographique</h2>
+  <div style="max-width:860px;margin:0 auto;padding:0 1.5rem">
+    <div id="virginia_beach_map" style="height:280px;border-radius:8px;overflow:hidden;border:1px solid var(--border);margin-top:1rem"></div>
+    <p style="font-size:0.75rem;color:var(--muted);margin-top:0.5rem">La route en orange · Étape actuelle en rouge · Autres étapes en gris</p>
+  </div>
+</section>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  var map = L.map('virginia_beach_map', {zoomControl:true, scrollWheelZoom:false});
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    attribution:'© OpenStreetMap © CARTO', subdomains:'abcd', maxZoom:19
+  }).addTo(map);
+
+  var stops = [
+    {name: "Cape May", lat: 38.935, lng: -74.906},
+    {name: "Virginia Beach", lat: 36.853, lng: -75.978},
+    {name: "Outer Banks", lat: 35.994, lng: -75.663},
+    {name: "Wilmington", lat: 34.226, lng: -77.945},
+    {name: "Charleston", lat: 32.776, lng: -79.931},
+    {name: "Savannah", lat: 32.083, lng: -81.1},
+    {name: "Saint Augustine", lat: 29.894, lng: -81.314},
+    {name: "Kennedy SC", lat: 28.524, lng: -80.681},
+    {name: "Orlando", lat: 28.538, lng: -81.379},
+    {name: "Palm Beach", lat: 26.705, lng: -80.064},
+    {name: "Miami", lat: 25.761, lng: -80.192}
+  ];
+  var currentLat = 36.853, currentLng = -75.978;
+
+  // Route line
+  L.polyline(stops.map(function(s){return [s.lat, s.lng]}), {
+    color:'#E8956A', weight:2.5, opacity:0.7, dashArray:'6 5'
+  }).addTo(map);
+
+  // Other stops (grey)
+  stops.forEach(function(s) {
+    var isCurrent = Math.abs(s.lat - currentLat) < 0.1 && Math.abs(s.lng - currentLng) < 0.1;
+    if (!isCurrent) {
+      L.circleMarker([s.lat, s.lng], {
+        radius:5, fillColor:'#9A8D80', fillOpacity:1,
+        color:'#FAF7F2', weight:1.5
+      }).addTo(map).bindPopup('<div style="font-family:DM Sans,sans-serif;font-size:13px;font-weight:500">'+s.name+'</div>');
+    }
+  });
+
+  // Current stop (accent)
+  var icon = L.divIcon({
+    className:'',
+    html:'<div style="background:#C4622D;color:#FAF7F2;font-family:DM Sans,sans-serif;font-size:11px;font-weight:600;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2.5px solid #FAF7F2;box-shadow:0 2px 8px rgba(0,0,0,.35)">📍</div>',
+    iconSize:[28,28], iconAnchor:[14,14]
+  });
+  L.marker([currentLat, currentLng], {icon:icon}).addTo(map)
+    .bindPopup('<div style="font-family:DM Sans,sans-serif;font-size:13px;font-weight:600;color:#C4622D">Virginia Beach, VA</div>')
+    .openPopup();
+
+  map.setView([currentLat, currentLng], 11);
+})();
+</script>
+
+<div class="page-nav">
     <a href="cape-may.html">
       <span class="page-nav-label">← Étape précédente</span>
       <span class="page-nav-title">Cape May</span>

@@ -68,7 +68,7 @@
 </head>
 <body>
 <div class="hero">
-  <div class="hero-img" style="background-image:url('https://images.unsplash.com/photo-1568430462989-44163eb1752f?w=1400&auto=format&fit=crop&q=80')"></div>
+  <div class="hero-img" style="background-image:url('https://images.unsplash.com/photo-1619892127776-08a763bfe34c?w=1400&auto=format&fit=crop&q=80')"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <a href="index.html" class="back-link">← Retour à l'itinéraire</a>
@@ -82,7 +82,7 @@
   <a href="#incontournables" class="nav-pill">À voir</a>
   <a href='#running' class='nav-pill'>Running</a>
   <a href="#restaurants" class="nav-pill">Restaurants</a>
-  <a href="#pratique" class="nav-pill">Pratique</a>
+  <a href="#pratique" class="nav-pill">Pratique</a><a href="#carte" class="nav-pill">Carte</a>
 </div></nav>
 <div class="container">
 <section id="histoire">
@@ -91,7 +91,7 @@
   <div class="histoire-text"><p>Charleston est souvent désignée comme la plus belle ville des États-Unis, et il est difficile de contester ce titre. Fondée en 1670 par des colons anglais venus de la Barbade, elle fut pendant un siècle le centre économique de l'Amérique coloniale — sa richesse construite sur le coton, le riz indigo et, plus sombrement, sur le commerce d'esclaves transatlantique.</p><p>L'architecture de Charleston est un livre d'histoire ouvert : les 'single houses' colorées de Rainbow Row (construites perpendiculaires à la rue pour capter la brise marine), les plantations palladiennes, les églises du XVIIIe siècle. La ville a miraculeusement survécu à la Guerre de Sécession, aux ouragans et aux tremblements de terre — son centre historique est intact depuis 350 ans.</p><p>La cuisine Lowcountry est l'une des plus distinctives des USA : shrimp & grits, she-crab soup, Hoppin' John (riz et pois), biscuits au babeurre. Cette cuisine mêle influences africaines, caribéennes et britanniques — portée aujourd'hui par une nouvelle génération de chefs qui en font l'une des scènes gastronomiques les plus excitantes du pays.</p></div>
 </section>
 <section id="photos">
-  <div class="photo-grid"><img src="https://images.unsplash.com/photo-1568430462989-44163eb1752f?w=1200&auto=format&fit=crop&q=80" alt="Rainbow Row Charleston" loading="lazy"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&auto=format&fit=crop&q=80" alt="Charleston harbor" loading="lazy"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&auto=format&fit=crop&q=80" alt="Charleston streets" loading="lazy"></div>
+  <div class="photo-grid"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&auto=format&fit=crop&q=80" alt="Charleston harbor" loading="lazy"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&auto=format&fit=crop&q=80" alt="Charleston harbor" loading="lazy"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&auto=format&fit=crop&q=80" alt="Charleston streets" loading="lazy"></div>
 </section>
 <section id="incontournables">
   <h2 class="section-title">Incontournables</h2>
@@ -109,6 +109,68 @@
   <h2 class="section-title">Pratique &amp; Conseils</h2>
   <div class="tip-box" style="margin-top:.6rem"><strong>🌴 Hébergement :</strong> Loger dans le French Quarter ou South of Broad pour être à pied de tout. King Street pour les boutiques et la nightlife.</div><div class="tip-box" style="margin-top:.6rem"><strong>🌡️ Chaleur :</strong> Charleston en juillet est très humide (80%+ d'humidité). Robe/t-shirt pour le soir, les restos sont souvent climatisés à fond. Prévoir un pull léger.</div><div class="tip-box" style="margin-top:.6rem"><strong>📅 Réservations :</strong> Husk et Magnolias se réservent plusieurs semaines à l'avance en été. Faire ça avant de partir.</div>
 </section>
+
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<section id="carte" style="padding:2.5rem 0 0">
+  <h2 class="section-title" style="max-width:860px;margin:0 auto;padding:0 1.5rem 1.2rem;border-bottom:1px solid var(--border);font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--ink)">Situation géographique</h2>
+  <div style="max-width:860px;margin:0 auto;padding:0 1.5rem">
+    <div id="charleston_map" style="height:280px;border-radius:8px;overflow:hidden;border:1px solid var(--border);margin-top:1rem"></div>
+    <p style="font-size:0.75rem;color:var(--muted);margin-top:0.5rem">La route en orange · Étape actuelle en rouge · Autres étapes en gris</p>
+  </div>
+</section>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  var map = L.map('charleston_map', {zoomControl:true, scrollWheelZoom:false});
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    attribution:'© OpenStreetMap © CARTO', subdomains:'abcd', maxZoom:19
+  }).addTo(map);
+
+  var stops = [
+    {name: "Cape May", lat: 38.935, lng: -74.906},
+    {name: "Virginia Beach", lat: 36.853, lng: -75.978},
+    {name: "Outer Banks", lat: 35.994, lng: -75.663},
+    {name: "Wilmington", lat: 34.226, lng: -77.945},
+    {name: "Charleston", lat: 32.776, lng: -79.931},
+    {name: "Savannah", lat: 32.083, lng: -81.1},
+    {name: "Saint Augustine", lat: 29.894, lng: -81.314},
+    {name: "Kennedy SC", lat: 28.524, lng: -80.681},
+    {name: "Orlando", lat: 28.538, lng: -81.379},
+    {name: "Palm Beach", lat: 26.705, lng: -80.064},
+    {name: "Miami", lat: 25.761, lng: -80.192}
+  ];
+  var currentLat = 32.776, currentLng = -79.931;
+
+  // Route line
+  L.polyline(stops.map(function(s){return [s.lat, s.lng]}), {
+    color:'#E8956A', weight:2.5, opacity:0.7, dashArray:'6 5'
+  }).addTo(map);
+
+  // Other stops (grey)
+  stops.forEach(function(s) {
+    var isCurrent = Math.abs(s.lat - currentLat) < 0.1 && Math.abs(s.lng - currentLng) < 0.1;
+    if (!isCurrent) {
+      L.circleMarker([s.lat, s.lng], {
+        radius:5, fillColor:'#9A8D80', fillOpacity:1,
+        color:'#FAF7F2', weight:1.5
+      }).addTo(map).bindPopup('<div style="font-family:DM Sans,sans-serif;font-size:13px;font-weight:500">'+s.name+'</div>');
+    }
+  });
+
+  // Current stop (accent)
+  var icon = L.divIcon({
+    className:'',
+    html:'<div style="background:#C4622D;color:#FAF7F2;font-family:DM Sans,sans-serif;font-size:11px;font-weight:600;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2.5px solid #FAF7F2;box-shadow:0 2px 8px rgba(0,0,0,.35)">📍</div>',
+    iconSize:[28,28], iconAnchor:[14,14]
+  });
+  L.marker([currentLat, currentLng], {icon:icon}).addTo(map)
+    .bindPopup('<div style="font-family:DM Sans,sans-serif;font-size:13px;font-weight:600;color:#C4622D">Charleston, SC</div>')
+    .openPopup();
+
+  map.setView([currentLat, currentLng], 13);
+})();
+</script>
 
 <div class="page-nav">
   <a href="wilmington.html"><span class="page-nav-label">← Étape précédente</span><span class="page-nav-title">Wilmington</span></a>

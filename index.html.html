@@ -1,0 +1,1560 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Road Trip · East Coast · Juillet 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF7F2;
+    --sand: #EFE8D5;
+    --ink: #2C2420;
+    --ink-light: #5C4F45;
+    --accent: #C4622D;
+    --accent-light: #E8956A;
+    --teal: #2A7A6F;
+    --teal-light: #4DA89A;
+    --gold: #B8860B;
+    --muted: #9A8D80;
+    --border: #DDD3BF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* HEADER */
+  .hero {
+    background: #3D2E28;
+    color: var(--cream);
+    padding: 5rem 2rem 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 40px,
+      rgba(255,255,255,0.015) 40px,
+      rgba(255,255,255,0.015) 41px
+    );
+  }
+  .hero-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent-light);
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent-light);
+  }
+  .hero-sub {
+    font-size: 1rem;
+    color: rgba(245,240,232,0.6);
+    margin-top: 0.5rem;
+  }
+  .hero-meta {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    margin-top: 2.5rem;
+    flex-wrap: wrap;
+  }
+  .meta-item {
+    text-align: center;
+  }
+  .meta-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+  .meta-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--cream);
+  }
+
+  /* LAYOUT */
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* SECTION DIVIDERS */
+  .region-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 3rem 0 1.5rem;
+  }
+  .region-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--border);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .region-info h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .region-info p {
+    font-size: 0.8rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* DAY CARD */
+  .day-card {
+    border-top: 1px solid var(--border);
+    padding: 2rem 0;
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 2rem;
+  }
+  .day-card:last-child {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .day-left {
+    padding-top: 0.2rem;
+  }
+  .day-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: block;
+  }
+  .day-date {
+    font-size: 0.8rem;
+    color: var(--muted);
+    display: block;
+    margin-top: 0.2rem;
+    line-height: 1.4;
+  }
+  .day-badge {
+    display: inline-block;
+    margin-top: 0.6rem;
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.5rem;
+    border-radius: 2px;
+  }
+  .badge-new { background: #E8F5F0; color: #2A7A6F; }
+  .badge-mod { background: #FEF3E8; color: #C4622D; }
+  .badge-ok  { background: #F0EEE8; color: #4A3F35; }
+
+  .day-right h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.2rem;
+  }
+  .drive-info {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-bottom: 0.8rem;
+    background: var(--sand);
+    padding: 0.2rem 0.6rem;
+    border-radius: 2px;
+  }
+  .drive-info svg { flex-shrink: 0; }
+
+  /* SECTIONS WITHIN DAY */
+  .section-block {
+    margin-top: 1rem;
+  }
+  .section-label {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .items-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  .items-list li {
+    font-size: 0.9rem;
+    color: var(--ink-light);
+    padding-left: 1rem;
+    position: relative;
+  }
+  .items-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--border);
+  }
+
+  /* RESTAURANT CARDS */
+  .resto-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.2rem;
+  }
+  .resto-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    padding: 0.6rem 0.8rem;
+    border-radius: 0 4px 4px 0;
+  }
+  .resto-name {
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--ink);
+  }
+  .resto-desc {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 0.1rem;
+  }
+  .resto-type {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    background: #FEF0E8;
+    padding: 0.1rem 0.4rem;
+    border-radius: 2px;
+    margin-bottom: 0.3rem;
+  }
+
+  /* TIP BOX */
+  .tip-box {
+    background: var(--sand);
+    border-left: 3px solid var(--teal);
+    padding: 0.7rem 1rem;
+    margin-top: 0.8rem;
+    border-radius: 0 4px 4px 0;
+    font-size: 0.82rem;
+    color: var(--ink-light);
+  }
+  .tip-box strong {
+    color: var(--teal);
+    font-weight: 500;
+  }
+
+  /* STOP TAG */
+  .road-stop {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    margin-top: 0.3rem;
+  }
+  .stop-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-light);
+    margin-top: 0.45rem;
+    flex-shrink: 0;
+  }
+  .stop-text {
+    font-size: 0.85rem;
+    color: var(--ink-light);
+  }
+  .stop-text strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #3D2E28;
+    color: rgba(245,240,232,0.4);
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.8rem;
+    margin-top: 4rem;
+  }
+
+  /* RUNNING SPOTS */
+  .run-block {
+    margin-top: 1rem;
+  }
+  .run-card {
+    background: #F0F7F5;
+    border: 1px solid #C2DDD8;
+    border-left: 3px solid var(--teal);
+    padding: 0.65rem 0.9rem;
+    border-radius: 0 4px 4px 0;
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+  .run-icon {
+    font-size: 1rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+  .run-content {}
+  .run-name {
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--teal);
+  }
+  .run-desc {
+    font-size: 0.8rem;
+    color: var(--ink-light);
+    margin-top: 0.1rem;
+  }
+  .run-meta {
+    display: flex;
+    gap: 0.6rem;
+    margin-top: 0.35rem;
+    flex-wrap: wrap;
+  }
+  .run-tag {
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.45rem;
+    border-radius: 2px;
+    background: #D4EDE9;
+    color: #2A7A6F;
+  }
+
+  @media (max-width: 600px) {
+    .day-card {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+    .day-left { display: flex; align-items: center; gap: 1rem; }
+    .hero-meta { gap: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-eyebrow">Road Trip · East Coast USA</div>
+  <h1>17 juillet — 1<sup>er</sup> août<br><em>2025</em></h1>
+  <div class="hero-sub">New York → Miami · 16 jours · ~2 000 miles</div>
+  <div class="hero-meta">
+    <div class="meta-item">
+      <span class="meta-label">Départ</span>
+      <span class="meta-value">Cape May, NJ</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Arrivée</span>
+      <span class="meta-value">Miami, FL</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Voiture</span>
+      <span class="meta-value">Hertz ~700$</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Vol retour</span>
+      <span class="meta-value">MIA → JFK</span>
+    </div>
+  </div>
+</div>
+
+<!-- MAP SECTION -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+<div style="background: var(--sand); padding: 0 0 2.5rem;">
+  <div style="max-width:860px;margin:0 auto;padding:0 1.5rem;">
+    <div style="font-family:'DM Sans',sans-serif;font-size:0.65rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:#8A7D70;padding:2rem 0 0.8rem;">L'itinéraire complet</div>
+    <div id="map" style="height:420px;border-radius:8px;overflow:hidden;"></div>
+  </div>
+</div>
+
+<script>
+function initMap() {
+  const stops = [
+    { day: "J1",     date: "17 juil.",      name: "Cape May, NJ",                        lat: 38.935, lng: -74.906 },
+    { day: "J2",     date: "18 juil.",      name: "Virginia Beach, VA",                  lat: 36.853, lng: -75.978 },
+    { day: "J3",     date: "19 juil.",      name: "Outer Banks, NC",                     lat: 35.994, lng: -75.663 },
+    { day: "J4",     date: "20 juil.",      name: "Wilmington, NC",                      lat: 34.226, lng: -77.945 },
+    { day: "J5",     date: "21 juil.",      name: "Columbia / Greenville / Clemson, SC", lat: 34.683, lng: -82.837 },
+    { day: "J6",     date: "22 juil.",      name: "Clemson, SC",                         lat: 34.683, lng: -82.837 },
+    { day: "J7",     date: "22-23 juil.",   name: "Charleston, SC",                      lat: 32.776, lng: -79.931 },
+    { day: "J8",     date: "24 juil.",      name: "Savannah, GA",                        lat: 32.083, lng: -81.100 },
+    { day: "J9",     date: "25 juil.",      name: "Saint Augustine, FL",                 lat: 29.894, lng: -81.314 },
+    { day: "J10",    date: "26 juil.",      name: "Kennedy Space Center",                lat: 28.524, lng: -80.681 },
+    { day: "J11-12", date: "27-28 juil.",   name: "Orlando, FL",                         lat: 28.538, lng: -81.379 },
+    { day: "J13",    date: "29 juil.",      name: "Palm Beach, FL",                      lat: 26.705, lng: -80.064 },
+    { day: "J14-15", date: "30-31 juil.",   name: "Miami, FL",                           lat: 25.761, lng: -80.192 },
+  ];
+
+  const map = L.map('map', { zoomControl: true, scrollWheelZoom: false });
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    attribution: '© OpenStreetMap © CARTO',
+    subdomains: 'abcd',
+    maxZoom: 19
+  }).addTo(map);
+
+  const latlngs = stops.map(s => [s.lat, s.lng]);
+
+  // Route line
+  L.polyline(latlngs, {
+    color: '#E8956A',
+    weight: 2,
+    opacity: 0.7,
+    dashArray: '6 6'
+  }).addTo(map);
+
+  // Markers
+  stops.forEach((s, i) => {
+    const icon = L.divIcon({
+      className: '',
+      html: `<div style="
+        background:#C4622D;
+        color:#F5F0E8;
+        font-family:'DM Sans',sans-serif;
+        font-size:10px;
+        font-weight:500;
+        width:24px;height:24px;
+        border-radius:50%;
+        display:flex;align-items:center;justify-content:center;
+        border:2px solid #E8956A;
+        box-shadow:0 2px 6px rgba(0,0,0,0.5);
+        cursor:pointer;
+      ">${i+1}</div>`,
+      iconSize: [24, 24],
+      iconAnchor: [12, 12],
+      popupAnchor: [0, -14]
+    });
+
+    L.marker([s.lat, s.lng], { icon })
+      .addTo(map)
+      .bindPopup(`
+        <div style="font-family:'DM Sans',sans-serif;min-width:140px;">
+          <div style="font-size:10px;color:#C4622D;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:2px;">${s.day} · ${s.date}</div>
+          <div style="font-size:13px;font-weight:500;color:#1A1612;">${s.name}</div>
+        </div>
+      `, { maxWidth: 220 });
+  });
+
+  map.fitBounds(L.latLngBounds(latlngs), { padding: [30, 30] });
+}
+</script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" onload="initMap()"></script>
+
+<div class="container">
+
+  <!-- REGION 1 -->
+  <div class="region-header">
+    <div class="region-number">01</div>
+    <div class="region-info">
+      <p>Mid-Atlantic Coast</p>
+      <h2>Cape May → Outer Banks</h2>
+    </div>
+  </div>
+
+  <!-- J1 -->
+  <div class="day-card">
+    <div class="day-left">
+      <span class="day-number">J1</span>
+      <span class="day-date">Vendredi<br>17 juillet</span>
+      <span class="day-badge badge-ok">Inchangé</span>
+    </div>
+    <div class="day-right">
+      <h3>Cape May, NJ</h3>
+      <span class="drive-info">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
+        Départ ~14h · arrivée 17–19h (2h30)
+      </span>
+
+      <div class="section-block">
+        <div class="section-label">À voir</div>
+        <ul class="items-list">
+          <li>Washington Street Mall — rue piétonne Victorian, idéale pour flâner à l'arrivée</li>
+          <li>Cape May Point Lighthouse & State Park — phare et sentiers côtiers</li>
+          <li>Beach Avenue Promenade — coucher de soleil sur l'Atlantique</li>
+          <li>Emlen Physick Estate — manoir victorien du XIXe siècle (visite guidée si tu restes)</li>
+        </ul>
+      </div>
+
+      <div class="section-block">
+        <div class="section-label">Dîner</div>
+        <div class="resto-grid">
+          <div class="resto-card">
+            <span class="resto-type">Fruits de mer · Classique</span>
+            <div class="resto-name">410 Bank Street</div>
+            <div class="resto-desc">Institution locale depuis 1840 — fruits de mer grillés au mesquite, ambiance carriage house tropicale. Résa indispensable.</div>
+          </div>
+          <div class="resto-card">
+            <span class="resto-type">Gastronomique · BYOB</span>
+            <div class="resto-name">Maison Bleue Bistro</div>
+            <div class="resto-desc">Cuisine française dans un cadre raffiné — scallops, crab bisque, crème brûlée. BYOB, ambiance parfaite pour une première soirée.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- J2 -->
+  <div class="day-card">
+    <div class="day-left">
+      <span class="day-number">J2</span>
+      <span class="day-date">Samedi<br>18 juillet</span>
+      <span class="day-badge badge-ok">Inchangé</span>
+    </div>
+    <div class="day-right">
+      <h3>Virginia Beach, VA</h3>
+      <span class="drive-info">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
+        Ferry Cape May–Lewes 7h ou 8h30 (61$, avec voiture) · puis 3h route
+      </span>
+
+      <div class="section-block">
+        <div class="section-label">Sur la route — Delaware</div>
+        <div class="road-stop">
+          <div class="stop-dot"></div>
+          <div class="stop-text"><strong>Rehoboth Beach</strong> — petit arrêt plage & déjeuner. Boardwalk animé, beaucoup de charme. Dogfish Head Brewpub si tu aimes la craft beer.</div>
+        </div>
+        <div class="road-stop">
+          <div class="stop-dot"></div>
+          <div class="stop-text"><strong>Assateague Island</strong> (légèrement à l'est) — île sauvage avec des poneys en liberté sur la plage. Rare et magique.</div>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-label">À Virginia Beach</div>
+        <ul class="items-list">
+          <li>The Boardwalk (5km) — balade en fin d'après-midi</li>
+          <li>First Landing State Park — forêt maritime juste au nord, coucher de soleil</li>
+          <li>Virginia Aquarium (si tu as le temps)</li>
+        </ul>
+      </div>
+
+      <div class="section-block">
+        <div class="section-label">Dîner</div>
+        <div class="resto-grid">
+          <div class="resto-card">
+            <span class="resto-type">Fruits de mer · Décontracté</span>
+            <div class="resto-name">Waterman's Surfside Grille</div>
+            <div class="resto-desc">Le classique de Virginia Beach — vue sur l'eau, Blue Crabs de Chesapeake, poisson du jour. Ambiance typique côte est.</div>
+          </div>
+          <div class="resto-card">
+            <span class="resto-type">Gastronomique · Oceanfront</span>
+            <div class="resto-name">Terrapin Restaurant</div>
+            <div class="resto-desc">Cuisine américaine contemporaine, ingrédients locaux. Le meilleur resto de VB si tu veux une belle table.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- J3 -->
+  <div class="day-card">
+    <div class="day-left">
+      <span class="day-number">J3</span>
+      <span class="day-date">Dimanche<br>19 juillet</span>
+      <span class="day-badge badge-ok">Inchangé</span>
+    </div>
+    <div class="day-right">
+      <h3>Outer Banks, NC</h3>
+      <span class="drive-info">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
+        3h max · Logement près de Manteo / Roanoke Island
+      </span>
+
+      <div class="run-block">
+        <div class="section-label">🏃 Running du matin</div>
+        <div class="run-card">
+          <div class="run-icon">🌊</div>
+          <div class="run-content">
+            <div class="run-name">The Boardwalk · Virginia Beach</div>
+            <div class="run-desc">5 km de promenade face à l'Atlantique, entièrement plat, large et peu fréquenté le matin. L'une des plus belles pistes de running de la côte est. Courir vers Neptune Park et retour pour un 8–10 km sans effort.</div>
+            <div class="run-meta">
+              <span class="run-tag">🟢 Débutant</span>
+              <span class="run-tag">5–10 km</span>
+              <span class="run-tag">Plat · Asphalte</span>
+              <span class="run-tag">Vue océan</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-label">À voir</div>
+        <ul class="items-list">
+          <li><strong>Cape Hatteras Lighthouse</strong> — le plus haut phare de brique des USA (198 escaliers, vue spectaculaire)</li>
+          <li><strong>Wright Brothers National Memorial</strong> à Kill Devil Hills — là où a eu lieu le premier vol motorisé</li>
+          <li><strong>Jockey's Ridge State Park</strong> — les plus grandes dunes de sable de l'est des USA, coucher de soleil magique</li>
+          <li><strong>Bodie Island Lighthouse</strong> — plus accessible que Hatteras, dans un parc naturel</li>
+          <li>Plages de Corolla ou Duck — sauvages et peu fréquentées</li>
+        </ul>
+      </div>
+
+      <div class="section-block">
+        <div class="section-label">À manger</div>
+        <div class="resto-grid">
+          <div class="resto-card">
+            <span class="resto-type">Seafood · Décontracté</span>
+            <div class="resto-name">Sam & Omie's (Nags Head)</div>
+            <div class="resto-desc">Institution depuis 1937, ouvert dès 7h. Fish tacos, crab cakes, ambiance pêcheurs locaux — exactement ce qu'on veut dans les OBX.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        <strong>💡 Conseil logement :</strong> Reste côté Roanoke Island (Manteo) ou Kill Devil Hills plutôt que Hatteras — accès plus facile pour repartir le lendemain matin sans faire demi-tour.
+      </div>
+    </div>
+  </div>
+
+  <!-- J4 -->
+  <div class="day-card">
+    <div class="day-left">
+      <span class="day-number">J4</span>
+      <span class="day-date">Lundi<br>20 juillet</span>
+      <span class="day-badge badge-new">Nouveau</span>
+    </div>
+    <div class="day-right">
+      <h3>Wilmington, NC</h3>
+      <span class="drive-info">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
+        ~3h depuis Outer Banks
+      </span>
+
+      <div class="run-block">
+        <div class="section-label">🏃 Running du matin</div>
+        <div class="run-card">
+          <div class="run-icon">🏜️</div>
+          <div class="run-content">
+            <div class="run-name">Route NC-12 & plage de Kill Devil Hills</div>
+            <div class="run-desc">La NC-12 longe l'Atlantique sur des kilomètres — courir tôt le matin avant la chaleur avec l'océan d'un côté et les dunes de l'autre. Ou descends directement sur la plage depuis ton hébergement : le sable est ferme à marée basse. Finir par Jockey's Ridge pour les plus motivés.</div>
+            <div class="run-meta">
+              <span class="run-tag">🟡 Modéré</span>
+              <span class="run-tag">5–12 km</span>
+              <span class="run-tag">Plage · Route côtière</span>
+              <span class="run-tag">Lever de soleil</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-label">À voir</div> — cuirassé WWII amarré en face du downtown, très impressionnant</li>
+          <li><strong>Historic Downtown Riverwalk</strong> — bord du fleuve Cape Fear, galeries et cafés</li>
+          <li><strong>Wrightsville Beach</strong> — 15 min du centre, plage calme et propre, idéale pour l'après-midi</li>
+          <li>Castle Street Arts District — quartier art & galeries</li>
+        </ul>
+      </div>
+
+      <div class="section-block">
+        <div class="section-label">À manger</div>
+        <div class="resto-grid">
+          <div class="resto-card">
+            <span class="resto-type">Southern · Populaire</span>
+            <div class="resto-name">Rx Restaurant & Bar</div>
+            <div class="resto-desc">Cuisine du Sud revisitée, ingrédients locaux, atmosphère branchée dans le quartier historique. Shrimp & grits au top.</div>
+          </div>
+          <div class="resto-card">
+            <span class="resto-type">Seafood · Casual</span>
+            <div class="resto-name">Dockside Restaurant (Wrightsville)</div>
+            <div class="resto-desc">Sur l'eau, vue sur les bateaux, fruits de mer frais. Parfait si tu passes l'après-midi à Wrightsville Beach.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SWITCHER J5-J6 -->
+  <style>
+    .switcher-bar {
+      display: flex;
+      gap: 0.5rem;
+      margin: 1.5rem 0 0.5rem;
+      flex-wrap: wrap;
+    }
+    .switcher-btn {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      padding: 0.45rem 1rem;
+      border-radius: 3px;
+      border: 1.5px solid var(--border);
+      background: white;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .switcher-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+    .route-panel { display: none; }
+    .route-panel.active { display: block; }
+  </style>
+
+  <div style="border-top: 2px solid var(--accent); margin-top: 2rem; padding-top: 1.5rem;">
+    <div style="font-size:0.65rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.4rem;">J5–J6 · Choisir un itinéraire</div>
+    <div style="font-size:0.85rem;color:var(--muted);margin-bottom:1rem;">Trois options pour les jours 5 et 6 selon ta préférence.</div>
+    <div class="switcher-bar">
+      <button class="switcher-btn active" onclick="switchRoute('clemson', this)">🎓 Option A — Clemson</button>
+      <button class="switcher-btn" onclick="switchRoute('myrtlebeach', this)">🏖️ Option B — Myrtle Beach</button>
+      <button class="switcher-btn" onclick="switchRoute('savannah2', this)">🌿 Option C — Savannah +1 nuit</button>
+    </div>
+  </div>
+
+  <!-- OPTION A : CLEMSON -->
+  <div id="panel-clemson" class="route-panel active">
+    <div class="day-card">
+      <div class="day-left">
+        <span class="day-number">J5</span>
+        <span class="day-date">Mardi<br>21 juillet</span>
+        <span class="day-badge badge-mod">Option A</span>
+      </div>
+      <div class="day-right">
+        <h3>Columbia → Greenville → Clemson, SC</h3>
+        <span class="drive-info">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
+          ~5h avec arrêts · Wilmington → Columbia 2h30 · Columbia → Greenville 1h30 · Greenville → Clemson 45min
+        </span>
+        <div class="section-block">
+          <div class="section-label">Arrêt Columbia — déjeuner</div>
+          <div class="road-stop"><div class="stop-dot"></div><div class="stop-text"><strong>SC State House</strong> — architecture Greek Revival, monument aux Africains-Américains. 30 min suffit.</div></div>
+          <div class="road-stop"><div class="stop-dot"></div><div class="stop-text"><strong>Vista District</strong> — déjeuner chez <strong>Motor Supply Co.</strong> (farm-to-table) ou <strong>Publico Kitchen & Bar</strong> (cuisine latine).</div></div>
+          <div class="road-stop"><div class="stop-dot"></div><div class="stop-text"><strong>Congaree National Park</strong> (optionnel, 30 min au sud) — boardwalk dans les cyprès géants, forêt primaire.</div></div>
+        </div>
+        <div class="section-block">
+          <div class="section-label">Arrêt Greenville — dîner</div>
+          <div class="road-stop"><div class="stop-dot"></div><div class="stop-text"><strong>Falls Park on the Reedy</strong> — cascades, Liberty Bridge suspendu, très photogénique à l'heure dorée.</div></div>
+          <div class="resto-grid" style="margin-top:0.6rem;">
+            <div class="resto-card"><span class="resto-type">Français · Vue Falls Park</span><div class="resto-name">Passerelle Bistro</div><div class="resto-desc">Terrasse en bord de rivière. Moules au safran, bouillabaisse. Vue magnifique.</div></div>
+            <div class="resto-card"><span class="resto-type">Méditerranéen · Partage</span><div class="resto-name">The Lazy Goat</div><div class="resto-desc">Tapas d'inspiration méditerranéenne au bord de la rivière Reedy.</div></div>
+          </div>
+        </div>
+        <div class="tip-box"><strong>🎓 Clemson :</strong> Visite du campus le soir — Death Valley stadium, Tillman Hall, lac Hartwell. La ville est petite mais le campus a beaucoup de caractère.</div>
+      </div>
+    </div>
+    <div class="day-card">
+      <div class="day-left">
+        <span class="day-number">J6</span>
+        <span class="day-date">Mercredi<br>22 juillet</span>
+        <span class="day-badge badge-mod">Option A</span>
+      </div>
+      <div class="day-right">
+        <h3>Clemson → Charleston, SC</h3>
+        <span class="drive-info">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
+          Matinée campus · départ après-midi · 3h30 jusqu'à Charleston
+        </span>
+        <div class="section-block">
+          <div class="section-label">Matinée à Clemson</div>
+          <ul class="items-list">
+            <li><strong>Campus Clemson University</strong> — Tillman Hall, Death Valley (stade 80 000 places), jardins botaniques</li>
+            <li><strong>Lake Hartwell</strong> — lac à 5 min du campus, balade au bord de l'eau</li>
+          </ul>
+        </div>
+        <div class="section-block">
+          <div class="section-label">Arrivée Charleston — soirée</div>
+          <ul class="items-list">
+            <li><strong>Rainbow Row</strong> — les maisons géorgiennes colorées</li>
+            <li><strong>King Street</strong> — bars et restaurants le soir</li>
+          </ul>
+        </div>
+        <div class="section-block">
+          <div class="section-label">Dîner</div>
+          <div class="resto-grid">
+            <div class="resto-card"><span class="resto-type">Southern · Institution</span><div class="resto-name">Husk</div><div class="resto-desc">Référence absolue de la cuisine du Sud, menu quotidien. Résa obligatoire.</div></div>
+            <div class="resto-card"><span class="resto-type">Lowcountry · Classique</span><div class="resto-name">Magnolias</div><div class="resto-desc">30 ans d'excellence à Charleston — scallops, shrimp & sausage.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION B : MYRTLE BEACH -->
+  <div id="panel-myrtlebeach" class="route-panel">
+    <div class="day-card">
+      <div class="day-left">
+        <span class="day-number">J5</span>
+        <span class="day-date">Mardi<br>21 juillet</span>
+        <span class="day-badge badge-new">Option B</span>
+      </div>
+      <div class="day-right">
+        <h3>Wilmington → Myrtle Beach, SC</h3>
+        <span class="drive-info">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
+          1h30 depuis Wilmington · journée complète sur place
+        </span>
+        <div class="section-block">
+          <div class="section-label">Sur la route</div>
+          <div class="road-stop"><div class="stop-dot"></div><div class="stop-text"><strong>Murrells Inlet</strong> — petit village de pêcheurs à 20 min au sud de Myrtle Beach, bien plus charmant. "Seafood Capital of SC" — arrêt déjeuner idéal.</div></div>
+        </div>
+        <div class="section-block">
+          <div class="section-label">À Myrtle Beach</div>
+          <ul class="items-list">
+            <li><strong>The Boardwalk & Promenade</strong> — 1,8 km le long de la plage, ambiance animée</li>
+            <li><strong>Myrtle Beach State Park</strong> (au sud) — plage préservée loin des touristes, forêt maritime</li>
+            <li><strong>Broadway at the Beach</strong> — si tu veux l'aspect entertainment kitsch assumé</li>
+          </ul>
+        </div>
+        <div class="section-block">
+          <div class="section-label">Dîner</div>
+          <div class="resto-grid">
+            <div class="resto-card"><span class="resto-type">Seafood · Murrells Inlet</span><div class="resto-name">Dead Dog Saloon</div><div class="resto-desc">Vue sur le marsh, ambiance décontractée, fish tacos, steamer pots de fruits de mer. Classique de Murrells Inlet.</div></div>
+            <div class="resto-card"><span class="resto-type">BBQ · Local</span><div class="resto-name">Croissants Bistro & Bakery</div><div class="resto-desc">Dans le Market Common, cuisine du marché, Southern comfort food, bonne adresse du soir.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="day-card">
+      <div class="day-left">
+        <span class="day-number">J6</span>
+        <span class="day-date">Mercredi<br>22 juillet</span>
+        <span class="day-badge badge-new">Option B</span>
+      </div>
+      <div class="day-right">
+        <h3>Myrtle Beach → Charleston, SC</h3>
+        <span class="drive-info">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
+          2h depuis Myrtle Beach · arrivée en début d'après-midi
+        </span>
+        <div class="section-block">
+          <div class="section-label">Sur la route — Pawleys Island</div>
+          <div class="road-stop"><div class="stop-dot"></div><div class="stop-text"><strong>Pawleys Island</strong> — l'une des plus belles et plus anciennes stations balnéaires de la côte est, très préservée. Plage sauvage, maisons en bois sur pilotis. Arrêt de 1h idéal.</div></div>
+          <div class="road-stop"><div class="stop-dot"></div><div class="stop-text"><strong>Georgetown, SC</strong> — 2e plus ancienne ville de Caroline du Sud, front de mer historique, petite ville coloniale attachante.</div></div>
+        </div>
+        <div class="section-block">
+          <div class="section-label">Arrivée Charleston — après-midi</div>
+          <ul class="items-list">
+            <li><strong>Rainbow Row & French Quarter</strong> — découverte du centre historique</li>
+            <li><strong>The Battery</strong> — jardins et vue sur le port</li>
+            <li><strong>King Street</strong> — shopping et apéro en terrasse</li>
+          </ul>
+        </div>
+        <div class="section-block">
+          <div class="section-label">Dîner</div>
+          <div class="resto-grid">
+            <div class="resto-card"><span class="resto-type">Southern · Institution</span><div class="resto-name">Husk</div><div class="resto-desc">Référence absolue de la cuisine du Sud, menu quotidien. Résa obligatoire.</div></div>
+            <div class="resto-card"><span class="resto-type">Lowcountry · Classique</span><div class="resto-name">Magnolias</div><div class="resto-desc">30 ans d'excellence à Charleston — scallops, shrimp & sausage.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION C : SAVANNAH +1 NUIT -->
+  <div id="panel-savannah2" class="route-panel">
+    <div class="day-card">
+      <div class="day-left">
+        <span class="day-number">J5</span>
+        <span class="day-date">Mardi<br>21 juillet</span>
+        <span class="day-badge badge-new">Option C</span>
+      </div>
+      <div class="day-right">
+        <h3>Wilmington → Charleston, SC</h3>
+        <span class="drive-info">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
+          4h30 avec arrêts · route directe vers le sud
+        </span>
+        <div class="section-block">
+          <div class="section-label">Sur la route</div>
+          <div class="road-stop"><div class="stop-dot"></div><div class="stop-text"><strong>Pawleys Island</strong> — plage sauvage préservée, arrêt d'1h pour une pause mer.</div></div>
+          <div class="road-stop"><div class="stop-dot"></div><div class="stop-text"><strong>Georgetown, SC</strong> — déjeuner dans la 2e plus ancienne ville de Caroline du Sud, front de mer colonial charmant.</div></div>
+        </div>
+        <div class="section-block">
+          <div class="section-label">Arrivée Charleston — après-midi</div>
+          <ul class="items-list">
+            <li><strong>Rainbow Row & French Quarter</strong> — première découverte du centre</li>
+            <li><strong>The Battery & White Point Garden</strong> — jardins et vue sur le port</li>
+            <li><strong>King Street</strong> — bars et vie nocturne</li>
+          </ul>
+        </div>
+        <div class="section-block">
+          <div class="section-label">Dîner</div>
+          <div class="resto-grid">
+            <div class="resto-card"><span class="resto-type">Southern · Institution</span><div class="resto-name">Husk</div><div class="resto-desc">Référence absolue de la cuisine du Sud, menu quotidien. Résa obligatoire.</div></div>
+            <div class="resto-card"><span class="resto-type">Nouveau · Parisian vibe</span><div class="resto-name">Merci (28 Pitt St)</div><div class="resto-desc">26 couverts, bâtisse de 1820, ambiance bistro parisien avec touche Southern.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="day-card">
+      <div class="day-left">
+        <span class="day-number">J6</span>
+        <span class="day-date">Mercredi<br>22 juillet</span>
+        <span class="day-badge badge-new">Option C</span>
+      </div>
+      <div class="day-right">
+        <h3>Charleston — journée complète</h3>
+        <div class="tip-box" style="margin-bottom:0.8rem;"><strong>✨ Bonus :</strong> En choisissant cette option, tu as une journée complète à Charleston dès J6, et tu ajouteras une 2e nuit à Savannah (J9) pour explorer les Golden Isles plus tranquillement.</div>
+        <div class="section-block">
+          <div class="section-label">Matin</div>
+          <ul class="items-list">
+            <li><strong>Charleston City Market</strong> — ouvert tôt, artisanat local, sweetgrass baskets</li>
+            <li><strong>Magnolia Plantation & Gardens</strong> (20 min) — jardins extraordinaires, histoire de l'esclavage</li>
+          </ul>
+        </div>
+        <div class="section-block">
+          <div class="section-label">Après-midi</div>
+          <ul class="items-list">
+            <li><strong>Sullivan's Island Beach</strong> (20 min) — plage locale et calme, fort historique</li>
+            <li><strong>Fort Sumter</strong> (ferry) — là où a commencé la guerre de Sécession</li>
+          </ul>
+        </div>
+        <div class="section-block">
+          <div class="section-label">Dîner</div>
+          <div class="resto-grid">
+            <div class="resto-card"><span class="resto-type">Italian · Family-style</span><div class="resto-name">Volpe</div><div class="resto-desc">4 plats en partage ~60$/pers. Tuna crudo, pasta au canard, flounder pané.</div></div>
+            <div class="resto-card"><span class="resto-type">Lowcountry · Classique</span><div class="resto-name">Magnolias</div><div class="resto-desc">30 ans d'excellence à Charleston — scallops, shrimp & sausage.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function switchRoute(id, btn) {
+      // Panels J5-J6
+      document.querySelectorAll('.route-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.switcher-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('panel-' + id).classList.add('active');
+      if (btn) btn.classList.add('active');
+      // J7 conditionnel
+      var isSav = id === 'savannah2';
+      document.getElementById('j7-ab').style.display = isSav ? 'none' : '';
+      document.getElementById('j7-c').style.display  = isSav ? ''     : 'none';
+      // J8 conditionnel
+      document.getElementById('j8-ab').style.display = isSav ? 'none' : '';
+      document.getElementById('j8-c').style.display  = isSav ? ''     : 'none';
+    }
+  </script>
+
+  <!-- REGION 2 -->
+  <div class="region-header">
+    <div class="region-number">02</div>
+    <div class="region-info">
+      <p>The Deep South</p>
+      <h2>Charleston → Savannah</h2>
+    </div>
+  </div>
+
+  <!-- J7 — adapté selon l'option choisie -->
+
+  <!-- J7 options A & B : journée complète Charleston -->
+  <div id="j7-ab" class="day-card">
+    <div class="day-left">
+      <span class="day-number">J7</span>
+      <span class="day-date">Jeudi<br>23 juillet</span>
+      <span class="day-badge badge-new">Nuit supp.</span>
+    </div>
+    <div class="day-right">
+      <h3>Charleston, SC — journée complète</h3>
+      <div class="run-block">
+        <div class="section-label">🏃 Running du matin</div>
+        <div class="run-card">
+          <div class="run-icon">⚓</div>
+          <div class="run-content">
+            <div class="run-name">The Battery & White Point Garden · Charleston</div>
+            <div class="run-desc">Partir tôt depuis le centre historique, longer East Bay Street jusqu'à The Battery, longer le bord de mer face au port. Remonter par Rainbow Row et le French Quarter. L'un des plus beaux runs historiques des USA — maisons antebellum, palmiers, odeur d'océan.</div>
+            <div class="run-meta">
+              <span class="run-tag">🟢 Débutant</span>
+              <span class="run-tag">5–8 km</span>
+              <span class="run-tag">Plat · Pavés</span>
+              <span class="run-tag">Vue port</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="section-block">
+        <div class="section-label">Matin</div>
+        <ul class="items-list">
+          <li><strong>Charleston City Market</strong> — ouvert tôt, artisanat local, sweetgrass baskets</li>
+          <li><strong>Magnolia Plantation & Gardens</strong> (20 min) — jardins extraordinaires et histoire profonde sur l'esclavage</li>
+          <li>Alternative : <strong>Middleton Place</strong> — les jardins paysagers les plus anciens des USA</li>
+        </ul>
+      </div>
+      <div class="section-block">
+        <div class="section-label">Après-midi</div>
+        <ul class="items-list">
+          <li><strong>Sullivan's Island Beach</strong> (20 min) — plage locale et calme, fort historique</li>
+          <li><strong>Fort Sumter</strong> (ferry) ou <strong>South Carolina Aquarium</strong> si temps restant</li>
+        </ul>
+      </div>
+      <div class="section-block">
+        <div class="section-label">Dîner</div>
+        <div class="resto-grid">
+          <div class="resto-card">
+            <span class="resto-type">Nouveau · Parisian vibe</span>
+            <div class="resto-name">Merci (28 Pitt St)</div>
+            <div class="resto-desc">Ouvert en mars 2025 — 26 couverts, bâtisse de 1820, ambiance bistro parisien avec touche Southern. Le spot du moment à Charleston.</div>
+          </div>
+          <div class="resto-card">
+            <span class="resto-type">Italian · Family-style</span>
+            <div class="resto-name">Volpe</div>
+            <div class="resto-desc">4 plats en partage ~60$/pers. Tuna crudo, pasta au canard, flounder pané. Très couru en ce moment.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- J7 option C : Charleston → Savannah 1ère nuit -->
+  <div id="j7-c" class="day-card" style="display:none;">
+    <div class="day-left">
+      <span class="day-number">J7</span>
+      <span class="day-date">Jeudi<br>23 juillet</span>
+      <span class="day-badge badge-new">Option C</span>
+    </div>
+    <div class="day-right">
+      <h3>Charleston → Savannah, GA — 1ère nuit</h3>
+      <span class="drive-info">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
+        2h depuis Charleston · arrêt Beaufort en route
+      </span>
+      <div class="section-block">
+        <div class="section-label">Sur la route</div>
+        <div class="road-stop"><div class="stop-dot"></div><div class="stop-text"><strong>Beaufort, SC</strong> — petite ville coloniale magnifique entre Charleston et Savannah. Waterfront Park, maisons antebellum, déjeuner tranquille.</div></div>
+      </div>
+      <div class="section-block">
+        <div class="section-label">Arrivée Savannah — après-midi</div>
+        <ul class="items-list">
+          <li><strong>Forsyth Park</strong> — la fontaine iconique, les chênes couverts de mousse espagnole</li>
+          <li><strong>Les Squares</strong> — balade à pied dans les squares historiques au coucher du soleil</li>
+          <li><strong>River Street</strong> — premier apéro face aux cargos géants sur la Savannah River</li>
+        </ul>
+      </div>
+      <div class="section-block">
+        <div class="section-label">Dîner</div>
+        <div class="resto-grid">
+          <div class="resto-card">
+            <span class="resto-type">Southern · Comfort food</span>
+            <div class="resto-name">Cotton & Rye</div>
+            <div class="resto-desc">Meilleur restaurant de l'année USA Today 2024 — shrimp & grits, chicken wings primés, cocktails maison.</div>
+          </div>
+          <div class="resto-card">
+            <span class="resto-type">Waterfront · Casual</span>
+            <div class="resto-name">Coastal 15 (Bohemian Hotel)</div>
+            <div class="resto-desc">Portes ouvertes sur la Savannah River, huîtres de Virginie, gumbo georgien. Vue sur les bateaux.</div>
+          </div>
+        </div>
+      </div>
+      <div class="tip-box"><strong>✨ Bonus option C :</strong> Le J8 sera une 2e journée à Savannah — tu pourras explorer Bonaventure Cemetery, les Golden Isles (Jekyll Island) et prendre le temps de vraiment t'imprégner de la ville.</div>
+    </div>
+  </div>
+
+
+
+  <!-- J8 — adapté selon l'option -->
+
+  <!-- J8 options A & B : arrivée Savannah -->
+  <div id="j8-ab" class="day-card">
+    <div class="day-left">
+      <span class="day-number">J8</span>
+      <span class="day-date">Vendredi<br>24 juillet</span>
+      <span class="day-badge badge-ok">Inchangé</span>
+    </div>
+    <div class="day-right">
+      <h3>Savannah, GA</h3>
+      <span class="drive-info">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
+        2h depuis Charleston
+      </span>
+      <div class="section-block">
+        <div class="section-label">Sur la route</div>
+        <div class="road-stop"><div class="stop-dot"></div><div class="stop-text"><strong>Beaufort, SC</strong> (30 min de détour) — petite ville coloniale magnifique. Waterfront Park, maisons antebellum. Vaut le coup si tu pars tôt.</div></div>
+      </div>
+      <div class="section-block">
+        <div class="section-label">À voir à Savannah</div>
+        <ul class="items-list">
+          <li><strong>Forsyth Park</strong> — la fontaine iconique, les chênes espagnols</li>
+          <li><strong>Les Squares</strong> — 22 squares historiques à traverser à pied</li>
+          <li><strong>Bonaventure Cemetery</strong> — l'un des plus beaux cimetières d'Amérique</li>
+          <li><strong>River Street</strong> — bars, restaurants, vue sur les cargos géants</li>
+          <li><strong>Broughton Street</strong> — shopping et cafés locaux</li>
+        </ul>
+      </div>
+      <div class="section-block">
+        <div class="section-label">À manger</div>
+        <div class="resto-grid">
+          <div class="resto-card"><span class="resto-type">James Beard · Institution</span><div class="resto-name">The Grey</div><div class="resto-desc">Dans l'ancienne gare routière Greyhound de 1938 — cuisine Southern avec influences africaines. Résa loin à l'avance.</div></div>
+          <div class="resto-card"><span class="resto-type">Southern · Comfort food</span><div class="resto-name">Cotton & Rye</div><div class="resto-desc">Meilleur restaurant de l'année USA Today 2024 — shrimp & grits, chicken wings primés.</div></div>
+          <div class="resto-card"><span class="resto-type">Waterfront · Casual</span><div class="resto-name">Coastal 15 (Bohemian Hotel)</div><div class="resto-desc">Portes ouvertes sur la Savannah River, huîtres de Virginie, gumbo georgien.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- J8 option C : 2e journée Savannah + Golden Isles -->
+  <div id="j8-c" class="day-card" style="display:none;">
+    <div class="day-left">
+      <span class="day-number">J8</span>
+      <span class="day-date">Vendredi<br>24 juillet</span>
+      <span class="day-badge badge-new">Option C</span>
+    </div>
+    <div class="day-right">
+      <h3>Savannah — 2e journée & Golden Isles</h3>
+      <div class="section-block">
+        <div class="section-label">Matin à Savannah</div>
+        <ul class="items-list">
+          <li><strong>Bonaventure Cemetery</strong> — l'un des plus beaux cimetières d'Amérique, mousse espagnole et sculptures victoriennes</li>
+          <li><strong>Broughton Street</strong> — shopping, cafés, librairies locales</li>
+          <li><strong>The Grey Market</strong> — le café du matin de The Grey, plus accessible et tout aussi bon</li>
+        </ul>
+      </div>
+      <div class="section-block">
+        <div class="section-label">Après-midi — Golden Isles (1h depuis Savannah)</div>
+        <div class="road-stop"><div class="stop-dot"></div><div class="stop-text"><strong>Jekyll Island</strong> — île protégée, plages désertes, ruines du club des Rockefeller & Carnegie. L'une des plus belles îles de la côte est.</div></div>
+        <div class="road-stop"><div class="stop-dot"></div><div class="stop-text"><strong>St. Simons Island</strong> — phare, village charmant, plage plus animée. Alternative si Jekyll trop loin.</div></div>
+      </div>
+      <div class="section-block">
+        <div class="section-label">Dîner — retour Savannah</div>
+        <div class="resto-grid">
+          <div class="resto-card"><span class="resto-type">James Beard · Institution</span><div class="resto-name">The Grey</div><div class="resto-desc">L'occasion de réserver pour ce 2e soir — cuisine Southern avec influences africaines, le meilleur de Savannah.</div></div>
+          <div class="resto-card"><span class="resto-type">Southern · Comfort food</span><div class="resto-name">Cotton & Rye</div><div class="resto-desc">Si The Grey complet — shrimp & grits, chicken wings primés, meilleur resto 2024 USA Today.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- J9 -->
+  <div class="day-card">
+    <div class="day-left">
+      <span class="day-number">J9</span>
+      <span class="day-date">Samedi<br>25 juillet</span>
+      <span class="day-badge badge-ok">Inchangé</span>
+    </div>
+    <div class="day-right">
+      <h3>Saint Augustine, FL</h3>
+      <span class="drive-info">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
+        3h depuis Savannah
+      </span>
+
+      <div class="run-block">
+        <div class="section-label">🏃 Running du matin</div>
+        <div class="run-card">
+          <div class="run-icon">🌳</div>
+          <div class="run-content">
+            <div class="run-name">Forsyth Park → les Squares · Savannah</div>
+            <div class="run-desc">Le run le plus pittoresque du Deep South. Départ Forsyth Park (périmètre du parc = 1,6 km), puis enchaîne les squares historiques en zigzag — Monterey Square, Madison Square, Chippewa Square — sous les live oaks couverts de mousse espagnole. Ombragé même en juillet, absolument unique.</div>
+            <div class="run-meta">
+              <span class="run-tag">🟢 Débutant</span>
+              <span class="run-tag">5–10 km</span>
+              <span class="run-tag">Plat · Chemins</span>
+              <span class="run-tag">Ombragé</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-label">Sur la route — Golden Isles</div>
+        <div class="road-stop">
+          <div class="stop-dot"></div>
+          <div class="stop-text"><strong>Jekyll Island</strong> (légèrement à l'est) — île protégée avec des plages désertes et les ruines du club des Rockefeller. 45 min de détour mais exceptionnel.</div>
+        </div>
+        <div class="road-stop">
+          <div class="stop-dot"></div>
+          <div class="stop-text"><strong>St. Simons Island</strong> — phare, plages, petite ville charmante. Plus accessible que Jekyll.</div>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-label">À voir à Saint Augustine</div>
+        <ul class="items-list">
+          <li><strong>Castillo de San Marcos</strong> — forteresse espagnole du XVIIe siècle, la mieux conservée de Floride</li>
+          <li><strong>St. George Street</strong> — rue coloniale piétonne, plus ancienne ville des USA (fondée en 1565)</li>
+          <li><strong>Lightner Museum</strong> — dans l'ancien hôtel Alcazar, café dans l'ancienne piscine (unique)</li>
+          <li><strong>Bridge of Lions & Bayfront</strong> — coucher de soleil sur la Matanzas River</li>
+          <li><strong>Anastasia Island Beach</strong> — plage à 10 min, très belle</li>
+        </ul>
+      </div>
+
+      <div class="section-block">
+        <div class="section-label">À manger</div>
+        <div class="resto-grid">
+          <div class="resto-card">
+            <span class="resto-type">Craft cocktails · Ambiance</span>
+            <div class="resto-name">Ice Plant Bar</div>
+            <div class="resto-desc">Dans une ancienne usine de glace, cocktails maison avec bloc de glace taillé main. Pasta aux clams, local flounder. L'adresse la plus originale de la ville.</div>
+          </div>
+          <div class="resto-card">
+            <span class="resto-type">Seafood · Sur l'eau</span>
+            <div class="resto-name">Aunt Kate's (Vilano Beach)</div>
+            <div class="resto-desc">Vieux fish camp au bord de l'Intracoastal, fruits de mer ultra-frais, ambiance Florida old school. Sunset magnifique depuis la terrasse.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REGION 3 -->
+  <div class="region-header">
+    <div class="region-number">03</div>
+    <div class="region-info">
+      <p>Space Coast & Theme Parks</p>
+      <h2>Cape Canaveral → Orlando</h2>
+    </div>
+  </div>
+
+  <!-- J10 -->
+  <div class="day-card">
+    <div class="day-left">
+      <span class="day-number">J10</span>
+      <span class="day-date">Dimanche<br>26 juillet</span>
+      <span class="day-badge badge-mod">Réorganisé</span>
+    </div>
+    <div class="day-right">
+      <h3>Kennedy Space Center</h3>
+      <span class="drive-info">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
+        2h depuis Saint Augustine · Nuit à Titusville ou Cocoa Beach
+      </span>
+
+      <div class="run-block">
+        <div class="section-label">🏃 Running du matin</div>
+        <div class="run-card">
+          <div class="run-icon">🏰</div>
+          <div class="run-content">
+            <div class="run-name">Anastasia State Park & plage · Saint Augustine</div>
+            <div class="run-desc">Traverser le Bridge of Lions tôt le matin, longer la Matanzas River face à la ville coloniale, puis courir sur la plage d'Anastasia Island. Le sable est ferme et la mer est souvent calme. Revenir par le parc naturel pour les amateurs de sentiers — le contraste jungle-plage est exceptionnel.</div>
+            <div class="run-meta">
+              <span class="run-tag">🟢 Débutant</span>
+              <span class="run-tag">6–10 km</span>
+              <span class="run-tag">Plage · Pont</span>
+              <span class="run-tag">Vue coloniale</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-label">Au KSC (prévoir 6–7h)</div>
+        <ul class="items-list">
+          <li><strong>Apollo/Saturn V Center</strong> — la fusée Saturn V à l'horizontale, frissons garantis</li>
+          <li><strong>Space Shuttle Atlantis</strong> — exposé à 43° comme au décollage, spectaculaire</li>
+          <li><strong>Astronaut Hall of Fame</strong> — simulateurs, suits originales</li>
+          <li><strong>LC-39 Observation Gantry</strong> — vue sur les pads de lancement (ticket optionnel ~75$ en plus)</li>
+        </ul>
+      </div>
+
+      <div class="tip-box">
+        <strong>🚀 Lancement :</strong> Si un lancement SpaceX est prévu ce soir-là, installe-toi à <strong>Space View Park ou Rotary Riverfront Park à Titusville</strong> — gratuit, ambiance incroyable, vue directe sur les pads. Vérifie sur spacelaunchschedule.com avant de partir. Un report est toujours possible.
+      </div>
+
+      <div class="section-block">
+        <div class="section-label">Dîner à Cocoa Beach</div>
+        <div class="resto-grid">
+          <div class="resto-card">
+            <span class="resto-type">Seafood · Surf culture</span>
+            <div class="resto-name">Coconuts on the Beach</div>
+            <div class="resto-desc">Sur l'Atlantique, fish & chips, crab cakes, frozen drinks. Ambiance space coast décontractée.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- J11 -->
+  <div class="day-card">
+    <div class="day-left">
+      <span class="day-number">J11</span>
+      <span class="day-date">Lundi<br>27 juillet</span>
+      <span class="day-badge badge-ok">Inchangé</span>
+    </div>
+    <div class="day-right">
+      <h3>Universal Studios, Orlando</h3>
+      <span class="drive-info">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
+        45 min depuis Cocoa Beach
+      </span>
+
+      <div class="section-block">
+        <div class="section-label">À ne pas manquer</div>
+        <ul class="items-list">
+          <li><strong>The Wizarding World of Harry Potter</strong> — Hogsmeade et Diagon Alley (Epic Universe en 2025, vérifier si ouvert)</li>
+          <li><strong>Jurassic World</strong> — VelociCoaster, attraction phare du parc</li>
+          <li><strong>The Mummy Returns</strong> — roller dans le noir, classique</li>
+        </ul>
+      </div>
+
+      <div class="tip-box">
+        <strong>💡 Conseil :</strong> Achète le pass Express ou arrive à l'ouverture (9h). En juillet la chaleur est intense — prévois chapeau, crème et hydratation. Les attractions aquatiques sont un must.
+      </div>
+    </div>
+  </div>
+
+  <!-- J12 -->
+  <div class="day-card">
+    <div class="day-left">
+      <span class="day-number">J12</span>
+      <span class="day-date">Mardi<br>28 juillet</span>
+      <span class="day-badge badge-ok">Inchangé</span>
+    </div>
+    <div class="day-right">
+      <h3>Universal J2 ou route vers le sud</h3>
+
+      <div class="section-block">
+        <div class="section-label">Deux options</div>
+        <div class="road-stop">
+          <div class="stop-dot"></div>
+          <div class="stop-text"><strong>Option A :</strong> 2e journée Universal (Epic Universe, Islands of Adventure). Idéal si tu veux tout voir sans courir.</div>
+        </div>
+        <div class="road-stop">
+          <div class="stop-dot"></div>
+          <div class="stop-text"><strong>Option B :</strong> Départ en fin de matinée vers Palm Beach (2h30). Arrêt déjeuner à <strong>Lake Worth Beach</strong> — petite ville bohème, galeries, cafés.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REGION 4 -->
+  <div class="region-header">
+    <div class="region-number">04</div>
+    <div class="region-info">
+      <p>Gold Coast & Magic City</p>
+      <h2>Palm Beach → Miami</h2>
+    </div>
+  </div>
+
+  <!-- J13 -->
+  <div class="day-card">
+    <div class="day-left">
+      <span class="day-number">J13</span>
+      <span class="day-date">Mercredi<br>29 juillet</span>
+      <span class="day-badge badge-mod">Nuit ajoutée</span>
+    </div>
+    <div class="day-right">
+      <h3>Palm Beach, FL</h3>
+      <span class="drive-info">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
+        2h30 depuis Orlando
+      </span>
+
+      <div class="section-block">
+        <div class="section-label">À voir</div>
+        <ul class="items-list">
+          <li><strong>Worth Avenue</strong> — la 5th Avenue de Floride, boutiques de luxe, galeries, ambiance glamour</li>
+          <li><strong>Flagler Museum (Whitehall)</strong> — villa Gilded Age d'Henry Flagler, musée de l'âge d'or de la Floride</li>
+          <li><strong>Palm Beach Town Beach</strong> — plage calme et chic</li>
+          <li><strong>Clematis Street (West Palm Beach)</strong> — bars et vie nocturne juste de l'autre côté du pont</li>
+        </ul>
+      </div>
+
+      <div class="section-block">
+        <div class="section-label">Dîner</div>
+        <div class="resto-grid">
+          <div class="resto-card">
+            <span class="resto-type">Mediterranean · Terrasse</span>
+            <div class="resto-name">Café Boulud Palm Beach</div>
+            <div class="resto-desc">Daniel Boulud dans le Brazil Hotel, palm trees et cuisine méditerranéenne raffinée. La belle table de Palm Beach.</div>
+          </div>
+          <div class="resto-card">
+            <span class="resto-type">Casual · Waterfront</span>
+            <div class="resto-name">Rhythm Café (West Palm Beach)</div>
+            <div class="resto-desc">Bistro excentrique, BYOB, menu qui change chaque soir selon le marché. Institution locale abordable.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- J14 -->
+  <div class="day-card">
+    <div class="day-left">
+      <span class="day-number">J14</span>
+      <span class="day-date">Jeudi<br>30 juillet</span>
+      <span class="day-badge badge-mod">Arrivée décalée</span>
+    </div>
+    <div class="day-right">
+      <h3>Miami — arrivée</h3>
+      <span class="drive-info">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
+        1h15 depuis Palm Beach
+      </span>
+
+      <div class="section-block">
+        <div class="section-label">Sur la route — Fort Lauderdale</div>
+        <div class="road-stop">
+          <div class="stop-dot"></div>
+          <div class="stop-text"><strong>Las Olas Boulevard</strong> — café, shopping, canaux pittoresques. Parfait pour un déjeuner à mi-chemin (30 min de Miami).</div>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-label">Afternoon à Miami</div>
+        <ul class="items-list">
+          <li><strong>Wynwood Walls</strong> — le musée à ciel ouvert de street art, incontournable</li>
+          <li><strong>Design District</strong> — galeries, architecture, cafés</li>
+          <li><strong>Brickell City Centre</strong> — promenade, rooftop bars le soir</li>
+        </ul>
+      </div>
+
+      <div class="section-block">
+        <div class="section-label">Dîner à Wynwood</div>
+        <div class="resto-grid">
+          <div class="resto-card">
+            <span class="resto-type">Parisian Bistro · Trendy</span>
+            <div class="resto-name">Pastis Miami</div>
+            <div class="resto-desc">L'import NYC qui a pris d'assaut Wynwood — steak frites, ambiance terrasse parisienne, foule fashion. Le spot du moment.</div>
+          </div>
+          <div class="resto-card">
+            <span class="resto-type">Mexicain · Mezcal</span>
+            <div class="resto-name">Bakan Wynwood</div>
+            <div class="resto-desc">500 variétés de mezcal, tortillas faites à la main, décor végétal spectaculaire. Incontournable à Wynwood.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- J15 -->
+  <div class="day-card">
+    <div class="day-left">
+      <span class="day-number">J15</span>
+      <span class="day-date">Vendredi<br>31 juillet</span>
+      <span class="day-badge badge-new">Everglades</span>
+    </div>
+    <div class="day-right">
+      <h3>Miami — Everglades + South Beach</h3>
+
+      <div class="run-block">
+        <div class="section-label">🏃 Running du matin</div>
+        <div class="run-card">
+          <div class="run-icon">🌴</div>
+          <div class="run-content">
+            <div class="run-name">Ocean Drive & Lummus Park · South Beach</div>
+            <div class="run-desc">Le run le plus iconique du voyage. Partir avant 7h — Ocean Drive est encore vide, les hôtels Art Déco sont roses et or dans la lumière du matin. Longer la plage par Lummus Park jusqu'à South Pointe Park, revenir par le bord de mer. La meilleure heure pour voir South Beach dans toute sa splendeur.</div>
+            <div class="run-meta">
+              <span class="run-tag">🟢 Débutant</span>
+              <span class="run-tag">6–10 km</span>
+              <span class="run-tag">Plage · Promenade</span>
+              <span class="run-tag">Art Déco · Lever de soleil</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-label">Matin — Everglades (départ 8h)</div>
+        <ul class="items-list">
+          <li><strong>Airboat tour</strong> (Shark Valley ou Everglades City) — 1h30–2h sur l'eau, alligators garantis. Prendre le plus tôt possible avant la chaleur</li>
+          <li><strong>Anhinga Trail</strong> (Royal Palm) — 30 min à pied, oiseaux et alligators à 2 mètres</li>
+          <li>Retour Miami vers 13h–14h</li>
+        </ul>
+      </div>
+
+      <div class="section-block">
+        <div class="section-label">Après-midi — South Beach</div>
+        <ul class="items-list">
+          <li><strong>Ocean Drive</strong> — Art Déco district, le plus concentré au monde</li>
+          <li><strong>Lummus Park Beach</strong> — la plage de South Beach, eau turquoise</li>
+          <li><strong>Little Havana · Calle Ocho</strong> — en soirée, musique en live, cafecito cubain, ropa vieja</li>
+        </ul>
+      </div>
+
+      <div class="section-block">
+        <div class="section-label">Dîner — Little Havana</div>
+        <div class="resto-grid">
+          <div class="resto-card">
+            <span class="resto-type">Cuban · Populaire</span>
+            <div class="resto-name">Versailles Restaurant</div>
+            <div class="resto-desc">L'institution cubaine de Miami depuis 1971 — ropa vieja, lechon asado, black beans et rice. Toujours bondé, toujours délicieux.</div>
+          </div>
+          <div class="resto-card">
+            <span class="resto-type">Tasting menu · Gastronomique</span>
+            <div class="resto-name">Palma (East Little Havana)</div>
+            <div class="resto-desc">9 courses, chef formé chez Momofuku Ko. Michelin Guide. Résa très loin à l'avance, mais l'expérience de Miami si tu veux quelque chose d'exceptionnel.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- J16 -->
+  <div class="day-card">
+    <div class="day-left">
+      <span class="day-number">J16</span>
+      <span class="day-date">Samedi<br>1er août</span>
+      <span class="day-badge badge-ok">Retour</span>
+    </div>
+    <div class="day-right">
+      <h3>Miami → JFK · Fin du trip</h3>
+
+      <div class="section-block">
+        <div class="section-label">Dernière matinée</div>
+        <ul class="items-list">
+          <li>Café cubain + tostada au comptoir d'un café local de Little Havana</li>
+          <li>Retour voiture Hertz aéroport MIA</li>
+          <li>Vol AA 17h30 → JFK ~21h, ou 20h30 → ~minuit</li>
+        </ul>
+      </div>
+
+      <div class="tip-box">
+        <strong>📋 Checklist départ :</strong> Restituer la voiture au moins 2h avant le vol · 50$ bagage en soute à ajouter au billet · Prévoir une dernière nuit à South Beach ou Brickell pour être proche de l'aéroport.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  Road Trip · East Coast · Juillet 2025 — 16 jours, ~2 000 miles, des souvenirs pour longtemps.
+</footer>
+
+</body>
+</html>

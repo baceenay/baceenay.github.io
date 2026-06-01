@@ -449,19 +449,18 @@
 <script>
 function initMap() {
   const stops = [
-    { day: "J1",     date: "17 juil.",      name: "Cape May, NJ",                        lat: 38.935, lng: -74.906 },
-    { day: "J2",     date: "18 juil.",      name: "Virginia Beach, VA",                  lat: 36.853, lng: -75.978 },
-    { day: "J3",     date: "19 juil.",      name: "Outer Banks, NC",                     lat: 35.994, lng: -75.663 },
-    { day: "J4",     date: "20 juil.",      name: "Wilmington, NC",                      lat: 34.226, lng: -77.945 },
-    { day: "J5",     date: "21 juil.",      name: "Columbia / Greenville / Clemson, SC", lat: 34.683, lng: -82.837 },
-    { day: "J6",     date: "22 juil.",      name: "Clemson, SC",                         lat: 34.683, lng: -82.837 },
-    { day: "J7",     date: "22-23 juil.",   name: "Charleston, SC",                      lat: 32.776, lng: -79.931 },
-    { day: "J8",     date: "24 juil.",      name: "Savannah, GA",                        lat: 32.083, lng: -81.100 },
-    { day: "J9",     date: "25 juil.",      name: "Saint Augustine, FL",                 lat: 29.894, lng: -81.314 },
-    { day: "J10",    date: "26 juil.",      name: "Kennedy Space Center",                lat: 28.524, lng: -80.681 },
-    { day: "J11-12", date: "27-28 juil.",   name: "Orlando, FL",                         lat: 28.538, lng: -81.379 },
-    { day: "J13",    date: "29 juil.",      name: "Palm Beach, FL",                      lat: 26.705, lng: -80.064 },
-    { day: "J14-15", date: "30-31 juil.",   name: "Miami, FL",                           lat: 25.761, lng: -80.192 },
+    { day: "J1",     date: "17 juil.",      name: "Cape May, NJ",           lat: 38.935, lng: -74.906 },
+    { day: "J2",     date: "18 juil.",      name: "Virginia Beach, VA",     lat: 36.853, lng: -75.978 },
+    { day: "J3",     date: "19 juil.",      name: "Outer Banks, NC",        lat: 35.994, lng: -75.663 },
+    { day: "J4",     date: "20 juil.",      name: "Wilmington, NC",         lat: 34.226, lng: -77.945 },
+    { day: "J5–6",   date: "21-22 juil.",   name: "Clemson / Charleston",   lat: 33.700, lng: -81.200 },
+    { day: "J7",     date: "23 juil.",      name: "Charleston, SC",         lat: 32.776, lng: -79.931 },
+    { day: "J8",     date: "24 juil.",      name: "Savannah, GA",           lat: 32.083, lng: -81.100 },
+    { day: "J9",     date: "25 juil.",      name: "Saint Augustine, FL",    lat: 29.894, lng: -81.314 },
+    { day: "J10",    date: "26 juil.",      name: "Kennedy Space Center",   lat: 28.524, lng: -80.681 },
+    { day: "J11–12", date: "27-28 juil.",   name: "Orlando, FL",            lat: 28.538, lng: -81.379 },
+    { day: "J13",    date: "29 juil.",      name: "Palm Beach, FL",         lat: 26.705, lng: -80.064 },
+    { day: "J14–15", date: "30-31 juil.",   name: "Miami, FL",              lat: 25.761, lng: -80.192 },
   ];
 
   const map = L.map('map', { zoomControl: true, scrollWheelZoom: false });

@@ -145,7 +145,7 @@
   L.polyline(stops.map(function(s){return [s.lat,s.lng]}),
     {color:'#E8956A',weight:2.5,opacity:0.7,dashArray:'6 5'}).addTo(map);
   stops.forEach(function(s) {
-    if (Math.abs(s.lat-28.538)<0.1 && Math.abs(s.lng--81.379)<0.1) return;
+    if (Math.abs(s.lat-28.538)<0.1 && Math.abs(s.lng+81.379)<0.1) return;
     L.circleMarker([s.lat,s.lng], {radius:5,fillColor:'#9A8D80',fillOpacity:1,color:'#FAF7F2',weight:1.5})
       .addTo(map).bindPopup('<b style="font-family:sans-serif">'+s.name+'</b>');
   });

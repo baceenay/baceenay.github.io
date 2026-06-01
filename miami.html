@@ -108,17 +108,57 @@
 </section>
 
 
+
+
+
+
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-<section id="carte" style="padding:2.5rem 0 0">
-  <h2 class="section-title" style="max-width:860px;margin:0 auto;padding:0 1.5rem 1.2rem;border-bottom:1px solid var(--border);font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--ink)">Situation géographique</h2>
+<section id="carte" style="padding:2.5rem 0 2rem">
+  <h2 style="max-width:860px;margin:0 auto;padding:0 1.5rem 1rem;border-bottom:1px solid #DDD3BF;font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:#2C2420">Situation géographique</h2>
   <div style="max-width:860px;margin:0 auto;padding:0 1.5rem">
-    <div id="miami_map" style="height:280px;border-radius:8px;overflow:hidden;border:1px solid var(--border);margin-top:1rem"></div>
-    <p style="font-size:0.75rem;color:var(--muted);margin-top:0.5rem">La route en orange · Étape actuelle en rouge · Autres étapes en gris</p>
+    <div id="miami_map" style="height:280px;border-radius:8px;overflow:hidden;border:1px solid #DDD3BF;margin-top:1rem"></div>
+    <p style="font-size:0.75rem;color:#9A8D80;margin-top:0.5rem">La route en orange · Étape actuelle en rouge · Autres étapes en gris</p>
   </div>
 </section>
+
+<div style="max-width:860px;margin:0 auto;padding:0 1.5rem">
+  <div class="page-nav">
+    <a href="palm-beach.html">
+      <span class="page-nav-label">← Étape précédente</span>
+      <span class="page-nav-title">Palm Beach</span>
+    </a>
+    <a href="index.html">
+      <span class="page-nav-label">Étape suivante →</span>
+      <span class="page-nav-title">Retour itinéraire</span>
+    </a>
+  </div>
+</div>
+
+<footer style="background:#3D2E28;color:rgba(245,240,232,.4);text-align:center;padding:1.5rem;font-size:.8rem;margin-top:0">
+  Road Trip · East Coast · Juillet 2025
+</footer>
+
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-
+<script>
+(function() {
+  var map = L.map('miami_map', {zoomControl:true, scrollWheelZoom:false});
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
+    {attribution:'© OpenStreetMap © CARTO', subdomains:'abcd', maxZoom:19}).addTo(map);
+  var stops = [{name:"Cape May",lat:38.935,lng:-74.906},{name:"Virginia Beach",lat:36.853,lng:-75.978},{name:"Outer Banks",lat:35.994,lng:-75.663},{name:"Wilmington",lat:34.226,lng:-77.945},{name:"Charleston",lat:32.776,lng:-79.931},{name:"Savannah",lat:32.083,lng:-81.1},{name:"Saint Augustine",lat:29.894,lng:-81.314},{name:"Kennedy SC",lat:28.524,lng:-80.681},{name:"Orlando",lat:28.538,lng:-81.379},{name:"Palm Beach",lat:26.705,lng:-80.064},{name:"Miami",lat:25.761,lng:-80.192}];
+  L.polyline(stops.map(function(s){return [s.lat,s.lng]}),
+    {color:'#E8956A',weight:2.5,opacity:0.7,dashArray:'6 5'}).addTo(map);
+  stops.forEach(function(s) {
+    if (Math.abs(s.lat-25.79)<0.1 && Math.abs(s.lng--80.13)<0.1) return;
+    L.circleMarker([s.lat,s.lng], {radius:5,fillColor:'#9A8D80',fillOpacity:1,color:'#FAF7F2',weight:1.5})
+      .addTo(map).bindPopup('<b style="font-family:sans-serif">'+s.name+'</b>');
+  });
+  var icon = L.divIcon({className:'', iconSize:[28,28], iconAnchor:[14,14],
+    html:'<div style="background:#C4622D;color:#fff;font-size:11px;font-weight:700;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.4)">📍</div>'});
+  L.marker([25.79,-80.13], {icon:icon}).addTo(map)
+    .bindPopup('<b style="color:#C4622D;font-family:sans-serif">Miami, FL</b>').openPopup();
+  map.setView([25.79,-80.13], 12);
+})();
+</script>
 <script>
 (function() {
   var el = document.querySelector('.hero-img');
@@ -128,8 +168,7 @@
     .then(function(d) {
       var src = d.originalimage ? d.originalimage.source : (d.thumbnail ? d.thumbnail.source : null);
       if (src) el.style.backgroundImage = "url('" + src + "')";
-    })
-    .catch(function(){});
+    }).catch(function() {});
 })();
 </script>
 </body>

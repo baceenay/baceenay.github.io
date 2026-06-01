@@ -327,6 +327,32 @@
     margin-top: 4rem;
   }
 
+  .day-right h3 a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1.5px solid var(--accent-light);
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .day-right h3 a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+  .dest-link-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--teal);
+    text-decoration: none;
+    margin-left: 0.6rem;
+    vertical-align: middle;
+    opacity: 0.8;
+  }
+  .dest-link-tag:hover { opacity: 1; }
+
   /* RUNNING SPOTS */
   .run-block {
     margin-top: 1rem;
@@ -512,7 +538,7 @@ function initMap() {
       <span class="day-badge badge-ok">Inchangé</span>
     </div>
     <div class="day-right">
-      <h3>Cape May, NJ</h3>
+      <h3><a href="cape-may.html">Cape May, NJ</a><a href="cape-may.html" class="dest-link-tag">→ Fiche détail</a></h3>
       <span class="drive-info">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
         Départ ~14h · arrivée 17–19h (2h30)
@@ -554,7 +580,7 @@ function initMap() {
       <span class="day-badge badge-ok">Inchangé</span>
     </div>
     <div class="day-right">
-      <h3>Virginia Beach, VA</h3>
+      <h3><a href="virginia-beach.html">Virginia Beach, VA</a><a href="virginia-beach.html" class="dest-link-tag">→ Fiche détail</a></h3>
       <span class="drive-info">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
         Ferry Cape May–Lewes 7h ou 8h30 (61$, avec voiture) · puis 3h route
@@ -607,7 +633,7 @@ function initMap() {
       <span class="day-badge badge-ok">Inchangé</span>
     </div>
     <div class="day-right">
-      <h3>Outer Banks, NC</h3>
+      <h3><a href="outer-banks.html">Outer Banks, NC</a><a href="outer-banks.html" class="dest-link-tag">→ Fiche détail</a></h3>
       <span class="drive-info">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
         3h max · Logement près de Manteo / Roanoke Island
@@ -666,7 +692,7 @@ function initMap() {
       <span class="day-badge badge-new">Nouveau</span>
     </div>
     <div class="day-right">
-      <h3>Wilmington, NC</h3>
+      <h3><a href="wilmington.html">Wilmington, NC</a><a href="wilmington.html" class="dest-link-tag">→ Fiche détail</a></h3>
       <span class="drive-info">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
         ~3h depuis Outer Banks
@@ -937,7 +963,7 @@ function initMap() {
         <span class="day-badge badge-new">Option C</span>
       </div>
       <div class="day-right">
-        <h3>Charleston — journée complète</h3>
+        <h3><a href="charleston.html">Charleston — journée complète</a><a href="charleston.html" class="dest-link-tag">→ Fiche détail</a></h3>
         <div class="tip-box" style="margin-bottom:0.8rem;"><strong>✨ Bonus :</strong> En choisissant cette option, tu as une journée complète à Charleston dès J6, et tu ajouteras une 2e nuit à Savannah (J9) pour explorer les Golden Isles plus tranquillement.</div>
         <div class="section-block">
           <div class="section-label">Matin</div>
@@ -1000,7 +1026,7 @@ function initMap() {
       <span class="day-badge badge-new">Nuit supp.</span>
     </div>
     <div class="day-right">
-      <h3>Charleston, SC — journée complète</h3>
+      <h3><a href="charleston.html">Charleston, SC — journée complète</a><a href="charleston.html" class="dest-link-tag">→ Fiche détail</a></h3>
       <div class="run-block">
         <div class="section-label">🏃 Running du matin</div>
         <div class="run-card">
@@ -1106,7 +1132,7 @@ function initMap() {
       <span class="day-badge badge-ok">Inchangé</span>
     </div>
     <div class="day-right">
-      <h3>Savannah, GA</h3>
+      <h3><a href="savannah.html">Savannah, GA</a><a href="savannah.html" class="dest-link-tag">→ Fiche détail</a></h3>
       <span class="drive-info">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
         2h depuis Charleston
@@ -1178,7 +1204,7 @@ function initMap() {
       <span class="day-badge badge-ok">Inchangé</span>
     </div>
     <div class="day-right">
-      <h3>Saint Augustine, FL</h3>
+      <h3><a href="saint-augustine.html">Saint Augustine, FL</a><a href="saint-augustine.html" class="dest-link-tag">→ Fiche détail</a></h3>
       <span class="drive-info">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
         3h depuis Savannah
@@ -1259,7 +1285,7 @@ function initMap() {
       <span class="day-badge badge-mod">Réorganisé</span>
     </div>
     <div class="day-right">
-      <h3>Kennedy Space Center</h3>
+      <h3><a href="kennedy.html">Kennedy Space Center</a><a href="kennedy.html" class="dest-link-tag">→ Fiche détail</a></h3>
       <span class="drive-info">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
         2h depuis Saint Augustine · Nuit à Titusville ou Cocoa Beach
@@ -1317,7 +1343,7 @@ function initMap() {
       <span class="day-badge badge-ok">Inchangé</span>
     </div>
     <div class="day-right">
-      <h3>Universal Studios, Orlando</h3>
+      <h3><a href="orlando.html">Universal Studios, Orlando</a><a href="orlando.html" class="dest-link-tag">→ Fiche détail</a></h3>
       <span class="drive-info">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
         45 min depuis Cocoa Beach
@@ -1379,7 +1405,7 @@ function initMap() {
       <span class="day-badge badge-mod">Nuit ajoutée</span>
     </div>
     <div class="day-right">
-      <h3>Palm Beach, FL</h3>
+      <h3><a href="palm-beach.html">Palm Beach, FL</a><a href="palm-beach.html" class="dest-link-tag">→ Fiche détail</a></h3>
       <span class="drive-info">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
         2h30 depuis Orlando
@@ -1421,7 +1447,7 @@ function initMap() {
       <span class="day-badge badge-mod">Arrivée décalée</span>
     </div>
     <div class="day-right">
-      <h3>Miami — arrivée</h3>
+      <h3><a href="miami.html">Miami — arrivée</a><a href="miami.html" class="dest-link-tag">→ Fiche détail</a></h3>
       <span class="drive-info">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
         1h15 depuis Palm Beach
@@ -1470,7 +1496,7 @@ function initMap() {
       <span class="day-badge badge-new">Everglades</span>
     </div>
     <div class="day-right">
-      <h3>Miami — Everglades + South Beach</h3>
+      <h3><a href="miami.html">Miami — Everglades + South Beach</a><a href="miami.html" class="dest-link-tag">→ Fiche détail</a></h3>
 
       <div class="run-block">
         <div class="section-label">🏃 Running du matin</div>

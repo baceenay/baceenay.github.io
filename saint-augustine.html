@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saint Augustine · Road Trip East Coast 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--cream:#FAF7F2;--sand:#EFE8D5;--ink:#2C2420;--ink-light:#5C4F45;--accent:#C4622D;--accent-light:#E8956A;--teal:#2A7A6F;--muted:#9A8D80;--border:#DDD3BF}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--cream);color:var(--ink);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7}
+  .hero{position:relative;height:70vh;min-height:420px;overflow:hidden;display:flex;align-items:flex-end}
+  .hero-img{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform 8s ease}
+  .hero:hover .hero-img{transform:scale(1.03)}
+  .hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(28,18,12,.85) 0%,rgba(28,18,12,.2) 60%,transparent 100%)}
+  .hero-content{position:relative;padding:2.5rem 2rem;width:100%;max-width:860px;margin:0 auto}
+  .back-link{display:inline-flex;align-items:center;gap:.4rem;font-size:.7rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:rgba(245,240,232,.6);text-decoration:none;margin-bottom:1rem;transition:color .2s}
+  .back-link:hover{color:var(--accent-light)}
+  .hero-eyebrow{font-size:.65rem;font-weight:500;letter-spacing:.25em;text-transform:uppercase;color:var(--accent-light);margin-bottom:.5rem}
+  .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,6vw,3.5rem);font-weight:700;color:#FAF7F2;line-height:1.1}
+  .hero-tagline{font-size:.95rem;color:rgba(245,240,232,.65);margin-top:.5rem}
+  .nav-pills{background:var(--sand);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10}
+  .nav-pills-inner{max-width:860px;margin:0 auto;padding:0 1.5rem;display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .nav-pills-inner::-webkit-scrollbar{display:none}
+  .nav-pill{font-size:.7rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:.85rem 1.1rem;border-bottom:2px solid transparent;white-space:nowrap;transition:all .15s;flex-shrink:0}
+  .nav-pill:hover,.nav-pill.active{color:var(--accent);border-bottom-color:var(--accent)}
+  .container{max-width:860px;margin:0 auto;padding:0 1.5rem}
+  section{padding:2.5rem 0 0}
+  .section-title{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--ink);margin-bottom:1.2rem;padding-bottom:.6rem;border-bottom:1px solid var(--border)}
+  .histoire-text{font-size:.95rem;color:var(--ink-light);line-height:1.8}
+  .histoire-text p{margin-bottom:1rem}
+  .stats-row{display:flex;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:2rem}
+  .stat{flex:1;background:white;padding:.9rem 1rem;text-align:center}
+  .stat-value{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--accent);display:block}
+  .stat-label{font-size:.6rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block;margin-top:.1rem}
+  .photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin:1rem 0 1.5rem}
+  .photo-grid img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:4px;display:block}
+  .photo-grid img:first-child{grid-column:1/-1;aspect-ratio:16/7}
+  .must-list{display:flex;flex-direction:column;gap:.8rem}
+  .must-item{display:flex;gap:1rem;background:white;border:1px solid var(--border);border-radius:6px;overflow:hidden}
+  .must-num{background:var(--accent);color:white;font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;width:48px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+  .must-body{padding:.8rem .8rem .8rem 0}
+  .must-name{font-weight:500;font-size:.95rem;color:var(--ink)}
+  .must-desc{font-size:.82rem;color:var(--muted);margin-top:.2rem;line-height:1.5}
+  .must-tag{display:inline-block;font-size:.6rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:.15rem .4rem;border-radius:2px;background:#FEF0E8;color:var(--accent);margin-bottom:.3rem}
+  .resto-grid{display:flex;flex-direction:column;gap:.6rem}
+  .resto-card{background:white;border:1px solid var(--border);border-left:3px solid var(--accent);padding:.8rem 1rem;border-radius:0 6px 6px 0}
+  .resto-type{font-size:.6rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);background:#FEF0E8;padding:.15rem .4rem;border-radius:2px;display:inline-block;margin-bottom:.3rem}
+  .resto-name{font-weight:500;font-size:.95rem;color:var(--ink)}
+  .resto-desc{font-size:.82rem;color:var(--muted);margin-top:.2rem;line-height:1.5}
+  .run-card{background:#F0F7F5;border:1px solid #C2DDD8;border-left:3px solid var(--teal);padding:.8rem 1rem;border-radius:0 6px 6px 0;display:flex;gap:.75rem;align-items:flex-start}
+  .run-icon{font-size:1.2rem;flex-shrink:0}
+  .run-name{font-weight:500;font-size:.95rem;color:var(--teal)}
+  .run-desc{font-size:.82rem;color:var(--ink-light);margin-top:.2rem;line-height:1.5}
+  .run-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.4rem}
+  .run-tag{font-size:.6rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:.15rem .45rem;border-radius:2px;background:#D4EDE9;color:#2A7A6F}
+  .tip-box{background:var(--sand);border-left:3px solid var(--teal);padding:.8rem 1rem;border-radius:0 6px 6px 0;font-size:.85rem;color:var(--ink-light);margin-top:1rem}
+  .tip-box strong{color:var(--teal)}
+  .page-nav{display:flex;gap:1rem;padding:3rem 0 4rem;border-top:1px solid var(--border);margin-top:3rem}
+  .page-nav a{flex:1;background:white;border:1px solid var(--border);border-radius:6px;padding:1rem;text-decoration:none;transition:border-color .2s}
+  .page-nav a:hover{border-color:var(--accent)}
+  .page-nav-label{font-size:.6rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.3rem}
+  .page-nav-title{font-family:'Playfair Display',serif;font-size:1rem;color:var(--ink)}
+  .page-nav a:last-child{text-align:right}
+  footer{background:#3D2E28;color:rgba(245,240,232,.4);text-align:center;padding:1.5rem;font-size:.8rem}
+  @media(max-width:600px){.stats-row{flex-wrap:wrap}.stat{min-width:50%}.photo-grid{grid-template-columns:1fr}.photo-grid img:first-child{aspect-ratio:4/3}}
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="hero-img" style="background-image:url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1400&auto=format&fit=crop&q=80')"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <a href="index.html" class="back-link">← Retour à l'itinéraire</a>
+    <div class="hero-eyebrow">J9 · 25 juillet · Florida</div>
+    <h1>Saint Augustine</h1>
+    <p class="hero-tagline">La plus ancienne ville des États-Unis — 1565, forteresse espagnole et ambiance coloniale unique</p>
+  </div>
+</div>
+<nav class="nav-pills"><div class="nav-pills-inner">
+  <a href="#histoire" class="nav-pill active">Histoire</a>
+  <a href="#incontournables" class="nav-pill">À voir</a>
+  <a href='#running' class='nav-pill'>Running</a>
+  <a href="#restaurants" class="nav-pill">Restaurants</a>
+  <a href="#pratique" class="nav-pill">Pratique</a>
+</div></nav>
+<div class="container">
+<section id="histoire">
+  <div class="stats-row"><div class="stat"><span class="stat-value">1565</span><span class="stat-label">Fondée</span></div><div class="stat"><span class="stat-value">455 ans</span><span class="stat-label">La plus ancienne ville USA</span></div><div class="stat"><span class="stat-value">3h</span><span class="stat-label">De Savannah</span></div><div class="stat"><span class="stat-value">Espagnol</span><span class="stat-label">Patrimoine colonial</span></div></div>
+  <h2 class="section-title">Histoire</h2>
+  <div class="histoire-text"><p>Saint Augustine est la plus ancienne ville permanente fondée par des Européens aux États-Unis — précédant Jamestown de 42 ans. Le 8 septembre 1565, l'explorateur espagnol Pedro Menéndez de Avilés y débarqua avec 800 colons et en prit possession au nom du roi Philippe II d'Espagne.</p><p>La ville changea plusieurs fois de mains — espagnole, britannique, à nouveau espagnole, puis américaine après 1821 — et chaque occupation laissa des traces architecturales. Le Castillo de San Marcos, forteresse en coquina (pierre de coquillages) construite entre 1672 et 1695, est le plus vieux fort d'Europe et d'Amérique encore debout.</p><p>Au XIXe siècle, le magnat des chemins de fer Henry Flagler 'redécouvrit' la ville et y construisit deux hôtels palatins — le Ponce de León (aujourd'hui Flagler College) et l'Alcazar (aujourd'hui le Lightner Museum). Ces monuments de l'ère dorée ont transformé Saint Augustine en destination touristique et lui ont conservé son caractère unique.</p></div>
+</section>
+<section id="photos">
+  <div class="photo-grid"><img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&auto=format&fit=crop&q=80" alt="Saint Augustine" loading="lazy"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&q=80" alt="Castillo de San Marcos" loading="lazy"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80" alt="Anastasia Beach" loading="lazy"></div>
+</section>
+<section id="incontournables">
+  <h2 class="section-title">Incontournables</h2>
+  <div class="must-list"><div class="must-item"><div class="must-num">1</div><div class="must-body"><span class="must-tag">Forteresse · XVIIe siècle</span><div class="must-name">Castillo de San Marcos</div><div class="must-desc">Fort en coquina construit par les Espagnols entre 1672 et 1695 — le plus vieux fort d'Amérique du Nord encore intact. Les murs en coquillages calcaires absorbent les boulets de canon plutôt que d'éclater. Vue sur la Matanzas Bay.</div></div></div><div class="must-item"><div class="must-num">2</div><div class="must-body"><span class="must-tag">Rue historique · Piétonne</span><div class="must-name">St. George Street</div><div class="must-desc">La rue coloniale piétonne au cœur du quartier historique — boutiques artisanales, cafés, musées dans des bâtiments du XVIIIe siècle. L'ambiance la plus 'vieille Amérique' qu'on puisse trouver.</div></div></div><div class="must-item"><div class="must-num">3</div><div class="must-body"><span class="must-tag">Musée · Café unique</span><div class="must-name">Lightner Museum</div><div class="must-desc">Dans l'ancien hôtel Alcazar de Flagler — l'ancienne piscine chauffée de l'hôtel est devenue un café! Objets d'art de l'ère victorienne, instruments de musique mécaniques, verrerie. L'une des salles les plus originales des USA.</div></div></div><div class="must-item"><div class="must-num">4</div><div class="must-body"><span class="must-tag">Plage · Parc naturel</span><div class="must-name">Anastasia State Park</div><div class="must-desc">À 10 min du centre, l'une des plus belles plages de Floride — plage préservée, dunes naturelles, forêt maritime. Eau chaude en juillet, moins bondée que les plages commerciales.</div></div></div></div>
+</section>
+<section id="running"><h2 class="section-title">Running du matin</h2>
+        <div class="run-card"><div class="run-icon">🌳</div><div>
+        <div class="run-name">Forsyth Park → les Squares · Savannah</div><div class="run-desc">Run à faire le matin avant de quitter Savannah. Départ Forsyth Park, enchaîne les squares sous la mousse espagnole. Ombragé et unique.</div>
+        <div class="run-tags"><span class="run-tag">🟢 Débutant</span><span class="run-tag">5–10 km</span><span class="run-tag">Ombragé</span><span class="run-tag">Avant le départ</span></div></div></div></section>
+<section id="restaurants">
+  <h2 class="section-title">Où manger</h2>
+  <div class="resto-grid"><div class="resto-card"><span class="resto-type">Craft cocktails · Unique · $$</span><div class="resto-name">Ice Plant Bar</div><div class="resto-desc">Dans une ancienne usine de glace — cocktails artisanaux avec bloc de glace taillé à la main, Pasta aux clams, local flounder. L'adresse la plus originale et mémorable de la ville.</div></div><div class="resto-card"><span class="resto-type">Seafood · Old Florida · $$</span><div class="resto-name">Aunt Kate's (Vilano Beach)</div><div class="resto-desc">Vieux fish camp au bord de l'Intracoastal Waterway — fruits de mer ultra-frais, ambiance Florida old school des années 50. Terrasse avec coucher de soleil sur la rivière.</div></div><div class="resto-card"><span class="resto-type">Café · Historique · $</span><div class="resto-name">Café Alcazar (Lightner Museum)</div><div class="resto-desc">Manger dans l'ancienne piscine d'un palace — l'expérience la plus singulière de Saint Augustine. Sandwiches, salades, brunch. Réservation recommandée.</div></div></div>
+</section>
+<section id="pratique">
+  <h2 class="section-title">Pratique &amp; Conseils</h2>
+  <div class="tip-box" style="margin-top:.6rem"><strong>🚗 En route :</strong> Sur la route depuis Savannah, possibilité de s'arrêter à Jekyll Island (1h de détour) — l'une des plus belles îles de la côte est, avec les ruines du club des Rockefeller.</div><div class="tip-box" style="margin-top:.6rem"><strong>🦟 Moustiques :</strong> Saint Augustine est très humide. Spray répulsif indispensable surtout près des marais et en soirée.</div><div class="tip-box" style="margin-top:.6rem"><strong>🏰 Billets Castillo :</strong> ~17$ adulte. Tôt le matin pour éviter les files et la chaleur. Les visites guidées par des rangers du NPS sont excellentes et gratuites avec l'entrée.</div>
+</section>
+
+<div class="page-nav">
+  <a href="savannah.html"><span class="page-nav-label">← Étape précédente</span><span class="page-nav-title">Savannah</span></a>
+  <a href="kennedy.html"><span class="page-nav-label">Étape suivante →</span><span class="page-nav-title">Kennedy Space Center</span></a>
+</div>
+</div>
+<footer>Road Trip · East Coast · Juillet 2025</footer>
+</body>
+</html>

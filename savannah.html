@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Savannah · Road Trip East Coast 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--cream:#FAF7F2;--sand:#EFE8D5;--ink:#2C2420;--ink-light:#5C4F45;--accent:#C4622D;--accent-light:#E8956A;--teal:#2A7A6F;--muted:#9A8D80;--border:#DDD3BF}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--cream);color:var(--ink);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7}
+  .hero{position:relative;height:70vh;min-height:420px;overflow:hidden;display:flex;align-items:flex-end}
+  .hero-img{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform 8s ease}
+  .hero:hover .hero-img{transform:scale(1.03)}
+  .hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(28,18,12,.85) 0%,rgba(28,18,12,.2) 60%,transparent 100%)}
+  .hero-content{position:relative;padding:2.5rem 2rem;width:100%;max-width:860px;margin:0 auto}
+  .back-link{display:inline-flex;align-items:center;gap:.4rem;font-size:.7rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:rgba(245,240,232,.6);text-decoration:none;margin-bottom:1rem;transition:color .2s}
+  .back-link:hover{color:var(--accent-light)}
+  .hero-eyebrow{font-size:.65rem;font-weight:500;letter-spacing:.25em;text-transform:uppercase;color:var(--accent-light);margin-bottom:.5rem}
+  .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,6vw,3.5rem);font-weight:700;color:#FAF7F2;line-height:1.1}
+  .hero-tagline{font-size:.95rem;color:rgba(245,240,232,.65);margin-top:.5rem}
+  .nav-pills{background:var(--sand);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10}
+  .nav-pills-inner{max-width:860px;margin:0 auto;padding:0 1.5rem;display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .nav-pills-inner::-webkit-scrollbar{display:none}
+  .nav-pill{font-size:.7rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:.85rem 1.1rem;border-bottom:2px solid transparent;white-space:nowrap;transition:all .15s;flex-shrink:0}
+  .nav-pill:hover,.nav-pill.active{color:var(--accent);border-bottom-color:var(--accent)}
+  .container{max-width:860px;margin:0 auto;padding:0 1.5rem}
+  section{padding:2.5rem 0 0}
+  .section-title{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--ink);margin-bottom:1.2rem;padding-bottom:.6rem;border-bottom:1px solid var(--border)}
+  .histoire-text{font-size:.95rem;color:var(--ink-light);line-height:1.8}
+  .histoire-text p{margin-bottom:1rem}
+  .stats-row{display:flex;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:2rem}
+  .stat{flex:1;background:white;padding:.9rem 1rem;text-align:center}
+  .stat-value{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--accent);display:block}
+  .stat-label{font-size:.6rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block;margin-top:.1rem}
+  .photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin:1rem 0 1.5rem}
+  .photo-grid img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:4px;display:block}
+  .photo-grid img:first-child{grid-column:1/-1;aspect-ratio:16/7}
+  .must-list{display:flex;flex-direction:column;gap:.8rem}
+  .must-item{display:flex;gap:1rem;background:white;border:1px solid var(--border);border-radius:6px;overflow:hidden}
+  .must-num{background:var(--accent);color:white;font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;width:48px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+  .must-body{padding:.8rem .8rem .8rem 0}
+  .must-name{font-weight:500;font-size:.95rem;color:var(--ink)}
+  .must-desc{font-size:.82rem;color:var(--muted);margin-top:.2rem;line-height:1.5}
+  .must-tag{display:inline-block;font-size:.6rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:.15rem .4rem;border-radius:2px;background:#FEF0E8;color:var(--accent);margin-bottom:.3rem}
+  .resto-grid{display:flex;flex-direction:column;gap:.6rem}
+  .resto-card{background:white;border:1px solid var(--border);border-left:3px solid var(--accent);padding:.8rem 1rem;border-radius:0 6px 6px 0}
+  .resto-type{font-size:.6rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);background:#FEF0E8;padding:.15rem .4rem;border-radius:2px;display:inline-block;margin-bottom:.3rem}
+  .resto-name{font-weight:500;font-size:.95rem;color:var(--ink)}
+  .resto-desc{font-size:.82rem;color:var(--muted);margin-top:.2rem;line-height:1.5}
+  .run-card{background:#F0F7F5;border:1px solid #C2DDD8;border-left:3px solid var(--teal);padding:.8rem 1rem;border-radius:0 6px 6px 0;display:flex;gap:.75rem;align-items:flex-start}
+  .run-icon{font-size:1.2rem;flex-shrink:0}
+  .run-name{font-weight:500;font-size:.95rem;color:var(--teal)}
+  .run-desc{font-size:.82rem;color:var(--ink-light);margin-top:.2rem;line-height:1.5}
+  .run-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.4rem}
+  .run-tag{font-size:.6rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:.15rem .45rem;border-radius:2px;background:#D4EDE9;color:#2A7A6F}
+  .tip-box{background:var(--sand);border-left:3px solid var(--teal);padding:.8rem 1rem;border-radius:0 6px 6px 0;font-size:.85rem;color:var(--ink-light);margin-top:1rem}
+  .tip-box strong{color:var(--teal)}
+  .page-nav{display:flex;gap:1rem;padding:3rem 0 4rem;border-top:1px solid var(--border);margin-top:3rem}
+  .page-nav a{flex:1;background:white;border:1px solid var(--border);border-radius:6px;padding:1rem;text-decoration:none;transition:border-color .2s}
+  .page-nav a:hover{border-color:var(--accent)}
+  .page-nav-label{font-size:.6rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.3rem}
+  .page-nav-title{font-family:'Playfair Display',serif;font-size:1rem;color:var(--ink)}
+  .page-nav a:last-child{text-align:right}
+  footer{background:#3D2E28;color:rgba(245,240,232,.4);text-align:center;padding:1.5rem;font-size:.8rem}
+  @media(max-width:600px){.stats-row{flex-wrap:wrap}.stat{min-width:50%}.photo-grid{grid-template-columns:1fr}.photo-grid img:first-child{aspect-ratio:4/3}}
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="hero-img" style="background-image:url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1400&auto=format&fit=crop&q=80')"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <a href="index.html" class="back-link">← Retour à l'itinéraire</a>
+    <div class="hero-eyebrow">J8-J9 · 24-25 juillet · Georgia</div>
+    <h1>Savannah</h1>
+    <p class="hero-tagline">La plus belle ville du Deep South — 22 squares historiques et mousse espagnole sous les chênes centenaires</p>
+  </div>
+</div>
+<nav class="nav-pills"><div class="nav-pills-inner">
+  <a href="#histoire" class="nav-pill active">Histoire</a>
+  <a href="#incontournables" class="nav-pill">À voir</a>
+  <a href='#running' class='nav-pill'>Running</a>
+  <a href="#restaurants" class="nav-pill">Restaurants</a>
+  <a href="#pratique" class="nav-pill">Pratique</a>
+</div></nav>
+<div class="container">
+<section id="histoire">
+  <div class="stats-row"><div class="stat"><span class="stat-value">1733</span><span class="stat-label">Fondée</span></div><div class="stat"><span class="stat-value">22</span><span class="stat-label">Squares historiques</span></div><div class="stat"><span class="stat-value">2h</span><span class="stat-label">De Charleston</span></div><div class="stat"><span class="stat-value">Forrest</span><span class="stat-label">Gump y fut filmé</span></div></div>
+  <h2 class="section-title">Histoire</h2>
+  <div class="histoire-text"><p>Savannah est la première ville de Géorgie, fondée en 1733 par James Oglethorpe sur un plan en grille unique : la ville fut organisée autour de 24 squares (il en reste 22) — des places ombragées plantées d'arbres qui servent à la fois de parcs, de points de rencontre et de régulateurs thermiques naturels. Ce plan urban est étudié dans les écoles d'urbanisme du monde entier.</p><p>Préservée des destructions de la Guerre de Sécession grâce à la reddition pacifique de la ville au Général Sherman en 1864, Savannah possède l'un des plus grands districts historiques des États-Unis. Ses chênes centenaires couverts de mousse espagnole (Tillandsia usneoides) lui donnent une atmosphère gothique et romantique unique.</p><p>La scène gastronomique de Savannah a explosé ces dix dernières années — The Grey (dans une ancienne gare Greyhound de 1938) est considéré comme l'un des meilleurs restaurants du pays. Mais la ville est aussi connue pour son ambiance festive : la consommation d'alcool en rue y est légale, et River Street est l'une des artères les plus animées du Sud.</p></div>
+</section>
+<section id="photos">
+  <div class="photo-grid"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&auto=format&fit=crop&q=80" alt="Savannah squares" loading="lazy"><img src="https://images.unsplash.com/photo-1568430462989-44163eb1752f?w=600&auto=format&fit=crop&q=80" alt="Forsyth Park" loading="lazy"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&auto=format&fit=crop&q=80" alt="Spanish moss" loading="lazy"></div>
+</section>
+<section id="incontournables">
+  <h2 class="section-title">Incontournables</h2>
+  <div class="must-list"><div class="must-item"><div class="must-num">1</div><div class="must-body"><span class="must-tag">Parc · Iconique</span><div class="must-name">Forsyth Park</div><div class="must-desc">Le Central Park de Savannah — fontaine de 1858, chênes immenses, promeneurs et pique-niqueurs. La fontaine blanche entourée de mousse espagnole est l'image la plus photographiée de la ville.</div></div></div><div class="must-item"><div class="must-num">2</div><div class="must-body"><span class="must-tag">Balade · Unique</span><div class="must-name">Les 22 Squares historiques</div><div class="must-desc">La plus belle façon de voir Savannah est de se perdre de square en square à pied : Monterey, Madison, Chippewa, Lafayette... Chacun a sa propre personnalité et ses propres arbres. Prévoir 2h minimum.</div></div></div><div class="must-item"><div class="must-num">3</div><div class="must-body"><span class="must-tag">Cimetière · Art</span><div class="must-name">Bonaventure Cemetery</div><div class="must-desc">L'un des plus beaux cimetières d'Amérique — sculptures victoriennes, mousse espagnole, chênes centenaires. Rendu célèbre par 'Minuit dans le jardin du bien et du mal'. Vue sur la Wilmington River depuis certaines allées.</div></div></div><div class="must-item"><div class="must-num">4</div><div class="must-body"><span class="must-tag">Bars · Ambiance</span><div class="must-name">River Street</div><div class="must-desc">Front de mer sur la Savannah River — pavés de ballast de navires, bars, restaurants, vue sur les cargos géants qui remontent le fleuve. Alcool en rue légal. Animé jusqu'à tard.</div></div></div><div class="must-item"><div class="must-num">5</div><div class="must-body"><span class="must-tag">Quartier · Galeries</span><div class="must-name">Broughton Street</div><div class="must-desc">La rue principale de Savannah — cafés indépendants, librairies, boutiques locales. L'antithèse des centres commerciaux. The Grey Market (café du matin) est ici.</div></div></div></div>
+</section>
+<section id="running"><h2 class="section-title">Running du matin</h2>
+        <div class="run-card"><div class="run-icon">🌳</div><div>
+        <div class="run-name">Forsyth Park → les Squares · Savannah</div><div class="run-desc">Départ Forsyth Park (périmètre 1,6 km), puis enchaîne les squares en zigzag — Monterey, Madison, Chippewa — sous les live oaks couverts de mousse espagnole. Ombragé même en juillet, absolument unique.</div>
+        <div class="run-tags"><span class="run-tag">🟢 Débutant</span><span class="run-tag">5–10 km</span><span class="run-tag">Plat · Chemins</span><span class="run-tag">Ombragé</span><span class="run-tag">Atmosphère unique</span></div></div></div></section>
+<section id="restaurants">
+  <h2 class="section-title">Où manger</h2>
+  <div class="resto-grid"><div class="resto-card"><span class="resto-type">James Beard · Institution · $$$</span><div class="resto-name">The Grey</div><div class="resto-desc">Dans l'ancienne gare routière Greyhound de 1938, entièrement préservée. Cuisine Southern avec influences africaines de la chef Mashama Bailey — James Beard Award, Top 50 mondial. Réserver 2-3 semaines à l'avance.</div></div><div class="resto-card"><span class="resto-type">Southern · Primé · $$</span><div class="resto-name">Cotton & Rye</div><div class="resto-desc">Meilleur restaurant de l'année USA Today 2024 — shrimp & grits, chicken wings primés, cocktails maison. Plus accessible que The Grey et tout aussi excellent.</div></div><div class="resto-card"><span class="resto-type">Waterfront · Vue · $$</span><div class="resto-name">Coastal 15 (Bohemian Hotel)</div><div class="resto-desc">Portes ouvertes sur la Savannah River, huîtres de Virginie, gumbo georgien. Vue directe sur les bateaux et les cargos qui passent.</div></div></div>
+</section>
+<section id="pratique">
+  <h2 class="section-title">Pratique &amp; Conseils</h2>
+  <div class="tip-box" style="margin-top:.6rem"><strong>🍺 Alcool en rue :</strong> Savannah autorise les 'to-go cups' — tu peux marcher dans la rue avec ton verre. River Street est animée jusqu'à 2h du matin.</div><div class="tip-box" style="margin-top:.6rem"><strong>🏡 Hébergement :</strong> Les B&B dans le Historic District (autour de Forsyth Park) sont exceptionnels — vieilles maisons restaurées, hôtes locaux, petits-déjeuners maison. Réserver tôt.</div><div class="tip-box" style="margin-top:.6rem"><strong>🚗 Vers Saint Augustine :</strong> Demain, 3h de route vers le sud via I-95. Option de passer par Jekyll Island ou St. Simons Island pour une pause.</div>
+</section>
+
+<div class="page-nav">
+  <a href="charleston.html"><span class="page-nav-label">← Étape précédente</span><span class="page-nav-title">Charleston</span></a>
+  <a href="saint-augustine.html"><span class="page-nav-label">Étape suivante →</span><span class="page-nav-title">Saint Augustine</span></a>
+</div>
+</div>
+<footer>Road Trip · East Coast · Juillet 2025</footer>
+</body>
+</html>

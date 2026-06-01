@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wilmington · Road Trip East Coast 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--cream:#FAF7F2;--sand:#EFE8D5;--ink:#2C2420;--ink-light:#5C4F45;--accent:#C4622D;--accent-light:#E8956A;--teal:#2A7A6F;--muted:#9A8D80;--border:#DDD3BF}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--cream);color:var(--ink);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7}
+  .hero{position:relative;height:70vh;min-height:420px;overflow:hidden;display:flex;align-items:flex-end}
+  .hero-img{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform 8s ease}
+  .hero:hover .hero-img{transform:scale(1.03)}
+  .hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(28,18,12,.85) 0%,rgba(28,18,12,.2) 60%,transparent 100%)}
+  .hero-content{position:relative;padding:2.5rem 2rem;width:100%;max-width:860px;margin:0 auto}
+  .back-link{display:inline-flex;align-items:center;gap:.4rem;font-size:.7rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:rgba(245,240,232,.6);text-decoration:none;margin-bottom:1rem;transition:color .2s}
+  .back-link:hover{color:var(--accent-light)}
+  .hero-eyebrow{font-size:.65rem;font-weight:500;letter-spacing:.25em;text-transform:uppercase;color:var(--accent-light);margin-bottom:.5rem}
+  .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,6vw,3.5rem);font-weight:700;color:#FAF7F2;line-height:1.1}
+  .hero-tagline{font-size:.95rem;color:rgba(245,240,232,.65);margin-top:.5rem}
+  .nav-pills{background:var(--sand);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10}
+  .nav-pills-inner{max-width:860px;margin:0 auto;padding:0 1.5rem;display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .nav-pills-inner::-webkit-scrollbar{display:none}
+  .nav-pill{font-size:.7rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:.85rem 1.1rem;border-bottom:2px solid transparent;white-space:nowrap;transition:all .15s;flex-shrink:0}
+  .nav-pill:hover,.nav-pill.active{color:var(--accent);border-bottom-color:var(--accent)}
+  .container{max-width:860px;margin:0 auto;padding:0 1.5rem}
+  section{padding:2.5rem 0 0}
+  .section-title{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--ink);margin-bottom:1.2rem;padding-bottom:.6rem;border-bottom:1px solid var(--border)}
+  .histoire-text{font-size:.95rem;color:var(--ink-light);line-height:1.8}
+  .histoire-text p{margin-bottom:1rem}
+  .stats-row{display:flex;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:2rem}
+  .stat{flex:1;background:white;padding:.9rem 1rem;text-align:center}
+  .stat-value{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--accent);display:block}
+  .stat-label{font-size:.6rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block;margin-top:.1rem}
+  .photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin:1rem 0 1.5rem}
+  .photo-grid img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:4px;display:block}
+  .photo-grid img:first-child{grid-column:1/-1;aspect-ratio:16/7}
+  .must-list{display:flex;flex-direction:column;gap:.8rem}
+  .must-item{display:flex;gap:1rem;background:white;border:1px solid var(--border);border-radius:6px;overflow:hidden}
+  .must-num{background:var(--accent);color:white;font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;width:48px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+  .must-body{padding:.8rem .8rem .8rem 0}
+  .must-name{font-weight:500;font-size:.95rem;color:var(--ink)}
+  .must-desc{font-size:.82rem;color:var(--muted);margin-top:.2rem;line-height:1.5}
+  .must-tag{display:inline-block;font-size:.6rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:.15rem .4rem;border-radius:2px;background:#FEF0E8;color:var(--accent);margin-bottom:.3rem}
+  .resto-grid{display:flex;flex-direction:column;gap:.6rem}
+  .resto-card{background:white;border:1px solid var(--border);border-left:3px solid var(--accent);padding:.8rem 1rem;border-radius:0 6px 6px 0}
+  .resto-type{font-size:.6rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);background:#FEF0E8;padding:.15rem .4rem;border-radius:2px;display:inline-block;margin-bottom:.3rem}
+  .resto-name{font-weight:500;font-size:.95rem;color:var(--ink)}
+  .resto-desc{font-size:.82rem;color:var(--muted);margin-top:.2rem;line-height:1.5}
+  .run-card{background:#F0F7F5;border:1px solid #C2DDD8;border-left:3px solid var(--teal);padding:.8rem 1rem;border-radius:0 6px 6px 0;display:flex;gap:.75rem;align-items:flex-start}
+  .run-icon{font-size:1.2rem;flex-shrink:0}
+  .run-name{font-weight:500;font-size:.95rem;color:var(--teal)}
+  .run-desc{font-size:.82rem;color:var(--ink-light);margin-top:.2rem;line-height:1.5}
+  .run-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.4rem}
+  .run-tag{font-size:.6rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:.15rem .45rem;border-radius:2px;background:#D4EDE9;color:#2A7A6F}
+  .tip-box{background:var(--sand);border-left:3px solid var(--teal);padding:.8rem 1rem;border-radius:0 6px 6px 0;font-size:.85rem;color:var(--ink-light);margin-top:1rem}
+  .tip-box strong{color:var(--teal)}
+  .page-nav{display:flex;gap:1rem;padding:3rem 0 4rem;border-top:1px solid var(--border);margin-top:3rem}
+  .page-nav a{flex:1;background:white;border:1px solid var(--border);border-radius:6px;padding:1rem;text-decoration:none;transition:border-color .2s}
+  .page-nav a:hover{border-color:var(--accent)}
+  .page-nav-label{font-size:.6rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.3rem}
+  .page-nav-title{font-family:'Playfair Display',serif;font-size:1rem;color:var(--ink)}
+  .page-nav a:last-child{text-align:right}
+  footer{background:#3D2E28;color:rgba(245,240,232,.4);text-align:center;padding:1.5rem;font-size:.8rem}
+  @media(max-width:600px){.stats-row{flex-wrap:wrap}.stat{min-width:50%}.photo-grid{grid-template-columns:1fr}.photo-grid img:first-child{aspect-ratio:4/3}}
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="hero-img" style="background-image:url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1400&auto=format&fit=crop&q=80')"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <a href="index.html" class="back-link">← Retour à l'itinéraire</a>
+    <div class="hero-eyebrow">J4 · 20 juillet · North Carolina</div>
+    <h1>Wilmington</h1>
+    <p class="hero-tagline">Cuirassés de guerre, riverwalk historique et plages de Wrightsville — la perle de la Cape Fear</p>
+  </div>
+</div>
+<nav class="nav-pills"><div class="nav-pills-inner">
+  <a href="#histoire" class="nav-pill active">Histoire</a>
+  <a href="#incontournables" class="nav-pill">À voir</a>
+  
+  <a href="#restaurants" class="nav-pill">Restaurants</a>
+  <a href="#pratique" class="nav-pill">Pratique</a>
+</div></nav>
+<div class="container">
+<section id="histoire">
+  <div class="stats-row"><div class="stat"><span class="stat-value">1739</span><span class="stat-label">Fondée</span></div><div class="stat"><span class="stat-value">WWII</span><span class="stat-label">Battleship NC</span></div><div class="stat"><span class="stat-value">15min</span><span class="stat-label">De la plage</span></div><div class="stat"><span class="stat-value">Cinéma</span><span class="stat-label">Hollywood East</span></div></div>
+  <h2 class="section-title">Histoire</h2>
+  <div class="histoire-text"><p>Fondée en 1739 sur les berges du fleuve Cape Fear, Wilmington fut l'un des ports les plus importants de la Colombie britannique avant la Révolution américaine. Son rôle stratégique se confirma pendant la Guerre de Sécession — elle fut le dernier grand port confédéré à tomber, en janvier 1865.</p><p>La ville est aujourd'hui connue dans tout le pays sous le surnom de 'Hollywood East' : une fiscalité avantageuse et des décors variés ont attiré d'innombrables productions. Les studios EUE/Screen Gems y ont tourné des séries comme One Tree Hill et des films comme Iron Man 3. Tu croiseras peut-être des tournages dans le centre.</p><p>Son Historic Downtown, le long du fleuve Cape Fear, est l'un des mieux préservés du Sud — maisons antebellum, galeries d'art, restaurants branchés dans de vieux entrepôts. Et à 15 minutes, Wrightsville Beach est l'une des plages les plus propres et les plus agréables de Caroline du Nord.</p></div>
+</section>
+<section id="photos">
+  <div class="photo-grid"><img src="https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=1200&auto=format&fit=crop&q=80" alt="Cape Fear River" loading="lazy"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&q=80" alt="Battleship" loading="lazy"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80" alt="Wrightsville Beach" loading="lazy"></div>
+</section>
+<section id="incontournables">
+  <h2 class="section-title">Incontournables</h2>
+  <div class="must-list"><div class="must-item"><div class="must-num">1</div><div class="must-body"><span class="must-tag">Militaire · Impressionnant</span><div class="must-name">Battleship North Carolina</div><div class="must-desc">Cuirassé de la Seconde Guerre mondiale amarré en face du downtown — le seul à avoir participé à toutes les grandes batailles navales du Pacifique. Visites auto-guidées, décombres préservés. Frissons garantis.</div></div></div><div class="must-item"><div class="must-num">2</div><div class="must-body"><span class="must-tag">Riverwalk · Historique</span><div class="must-name">Historic Downtown & Cape Fear Riverwalk</div><div class="must-desc">Promenade en bois de 1,7 km le long du fleuve, galeries d'art, cafés, boutiques dans des entrepôts du XIXe siècle. Le quartier Castle Street Arts District nearby vaut aussi le détour.</div></div></div><div class="must-item"><div class="must-num">3</div><div class="must-body"><span class="must-tag">Plage · Calme</span><div class="must-name">Wrightsville Beach</div><div class="must-desc">À 15 minutes du centre — l'une des meilleures plages de Caroline du Nord. Propre, bien organisée, eau chaude en juillet. Les locaux viennent ici plutôt que Myrtle Beach. Parfait pour l'après-midi.</div></div></div><div class="must-item"><div class="must-num">4</div><div class="must-body"><span class="must-tag">Culture · Cinéma</span><div class="must-name">EUE/Screen Gems Studios</div><div class="must-desc">Les studios de cinéma les plus importants de la côte est hors New York. Visites disponibles certains jours. Iron Man 3, One Tree Hill, Dawson's Creek y ont été tournés.</div></div></div></div>
+</section>
+
+<section id="restaurants">
+  <h2 class="section-title">Où manger</h2>
+  <div class="resto-grid"><div class="resto-card"><span class="resto-type">Southern · Populaire · $$</span><div class="resto-name">Rx Restaurant & Bar</div><div class="resto-desc">Cuisine du Sud revisitée dans une ancienne pharmacie du quartier historique. Shrimp & grits au top, ingrédients locaux, atmosphère branchée sans prétention.</div></div><div class="resto-card"><span class="resto-type">Seafood · Vue eau · $$</span><div class="resto-name">Dockside Restaurant (Wrightsville Beach)</div><div class="resto-desc">Sur l'eau, vue sur les bateaux de pêche, fruits de mer très frais. Parfait si tu passes l'après-midi à Wrightsville Beach — mange directement là-bas.</div></div><div class="resto-card"><span class="resto-type">Café · Insolite · $</span><div class="resto-name">Boca Bay</div><div class="resto-desc">Ambiance Key West dans le centre de Wilmington — fish tacos, mojitos, cuisine floribéenne colorée. Terrasse agréable.</div></div></div>
+</section>
+<section id="pratique">
+  <h2 class="section-title">Pratique &amp; Conseils</h2>
+  <div class="tip-box" style="margin-top:.6rem"><strong>🎬 Hollywood East :</strong> Si tu vois des caméras dans le centre, c'est normal — Wilmington est l'une des capitales mondiales de la production TV/cinéma. EUE/Screen Gems Studios est l'un des plus grands studios de la côte est.</div><div class="tip-box" style="margin-top:.6rem"><strong>🌊 Wrightsville Beach :</strong> À 15 min du centre. Mieux organisée et moins touristique que Myrtle Beach. Parking payant en juillet — arriver avant 10h ou après 16h.</div><div class="tip-box" style="margin-top:.6rem"><strong>🚗 Vers Charleston :</strong> Demain matin, tu as 2 options : route directe 4h30 via US-17, ou détour par l'option Clemson/Myrtle Beach selon l'itinéraire choisi.</div>
+</section>
+
+<div class="page-nav">
+  <a href="outer-banks.html"><span class="page-nav-label">← Étape précédente</span><span class="page-nav-title">Outer Banks</span></a>
+  <a href="charleston.html"><span class="page-nav-label">Étape suivante →</span><span class="page-nav-title">Charleston</span></a>
+</div>
+</div>
+<footer>Road Trip · East Coast · Juillet 2025</footer>
+</body>
+</html>

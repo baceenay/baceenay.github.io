@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cape May · Road Trip East Coast 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root { --cream:#FAF7F2;--sand:#EFE8D5;--ink:#2C2420;--ink-light:#5C4F45;--accent:#C4622D;--accent-light:#E8956A;--teal:#2A7A6F;--muted:#9A8D80;--border:#DDD3BF; }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--cream);color:var(--ink);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7}
+  .hero{position:relative;height:70vh;min-height:420px;overflow:hidden;display:flex;align-items:flex-end}
+  .hero-img{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform 8s ease;background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1400&auto=format&fit=crop')}
+  .hero:hover .hero-img{transform:scale(1.03)}
+  .hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(28,18,12,.85) 0%,rgba(28,18,12,.2) 60%,transparent 100%)}
+  .hero-content{position:relative;padding:2.5rem 2rem;width:100%;max-width:860px;margin:0 auto}
+  .back-link{display:inline-flex;align-items:center;gap:.4rem;font-size:.7rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:rgba(245,240,232,.6);text-decoration:none;margin-bottom:1rem;transition:color .2s}
+  .back-link:hover{color:var(--accent-light)}
+  .hero-eyebrow{font-size:.65rem;font-weight:500;letter-spacing:.25em;text-transform:uppercase;color:var(--accent-light);margin-bottom:.5rem}
+  .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,6vw,3.5rem);font-weight:700;color:#FAF7F2;line-height:1.1}
+  .hero-tagline{font-size:.95rem;color:rgba(245,240,232,.65);margin-top:.5rem}
+  .nav-pills{background:var(--sand);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10}
+  .nav-pills-inner{max-width:860px;margin:0 auto;padding:0 1.5rem;display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .nav-pills-inner::-webkit-scrollbar{display:none}
+  .nav-pill{font-size:.7rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:.85rem 1.1rem;border-bottom:2px solid transparent;white-space:nowrap;transition:all .15s;flex-shrink:0}
+  .nav-pill:hover,.nav-pill.active{color:var(--accent);border-bottom-color:var(--accent)}
+  .container{max-width:860px;margin:0 auto;padding:0 1.5rem}
+  section{padding:2.5rem 0 0}
+  .section-title{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--ink);margin-bottom:1.2rem;padding-bottom:.6rem;border-bottom:1px solid var(--border)}
+  .histoire-text{font-size:.95rem;color:var(--ink-light);line-height:1.8}
+  .histoire-text p{margin-bottom:1rem}
+  .stats-row{display:flex;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:2rem}
+  .stat{flex:1;background:white;padding:.9rem 1rem;text-align:center}
+  .stat-value{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--accent);display:block}
+  .stat-label{font-size:.6rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block;margin-top:.1rem}
+  .photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin:1rem 0 1.5rem}
+  .photo-grid img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:4px;display:block}
+  .photo-grid img:first-child{grid-column:1/-1;aspect-ratio:16/7}
+  .must-list{display:flex;flex-direction:column;gap:.8rem}
+  .must-item{display:flex;gap:1rem;background:white;border:1px solid var(--border);border-radius:6px;overflow:hidden}
+  .must-num{background:var(--accent);color:white;font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;width:48px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+  .must-body{padding:.8rem .8rem .8rem 0}
+  .must-name{font-weight:500;font-size:.95rem;color:var(--ink)}
+  .must-desc{font-size:.82rem;color:var(--muted);margin-top:.2rem;line-height:1.5}
+  .must-tag{display:inline-block;font-size:.6rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:.15rem .4rem;border-radius:2px;background:#FEF0E8;color:var(--accent);margin-bottom:.3rem}
+  .resto-grid{display:flex;flex-direction:column;gap:.6rem}
+  .resto-card{background:white;border:1px solid var(--border);border-left:3px solid var(--accent);padding:.8rem 1rem;border-radius:0 6px 6px 0}
+  .resto-type{font-size:.6rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);background:#FEF0E8;padding:.15rem .4rem;border-radius:2px;display:inline-block;margin-bottom:.3rem}
+  .resto-name{font-weight:500;font-size:.95rem;color:var(--ink)}
+  .resto-desc{font-size:.82rem;color:var(--muted);margin-top:.2rem;line-height:1.5}
+  .tip-box{background:var(--sand);border-left:3px solid var(--teal);padding:.8rem 1rem;border-radius:0 6px 6px 0;font-size:.85rem;color:var(--ink-light);margin-top:1rem}
+  .tip-box strong{color:var(--teal)}
+  .page-nav{display:flex;gap:1rem;padding:3rem 0 4rem;border-top:1px solid var(--border);margin-top:3rem}
+  .page-nav a{flex:1;background:white;border:1px solid var(--border);border-radius:6px;padding:1rem;text-decoration:none;transition:border-color .2s}
+  .page-nav a:hover{border-color:var(--accent)}
+  .page-nav-label{font-size:.6rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.3rem}
+  .page-nav-title{font-family:'Playfair Display',serif;font-size:1rem;color:var(--ink)}
+  .page-nav a:last-child{text-align:right}
+  footer{background:#3D2E28;color:rgba(245,240,232,.4);text-align:center;padding:1.5rem;font-size:.8rem}
+  @media(max-width:600px){.stats-row{flex-wrap:wrap}.stat{min-width:50%}.photo-grid{grid-template-columns:1fr}.photo-grid img:first-child{aspect-ratio:4/3}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <a href="index.html" class="back-link">← Retour à l'itinéraire</a>
+    <div class="hero-eyebrow">J1 · 17 juillet · New Jersey</div>
+    <h1>Cape May</h1>
+    <p class="hero-tagline">La plus ancienne station balnéaire des États-Unis — architecture victorienne et Atlantique</p>
+  </div>
+</div>
+
+<nav class="nav-pills">
+  <div class="nav-pills-inner">
+    <a href="#histoire" class="nav-pill active">Histoire</a>
+    <a href="#incontournables" class="nav-pill">À voir</a>
+    <a href="#restaurants" class="nav-pill">Restaurants</a>
+    <a href="#pratique" class="nav-pill">Pratique</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  <section id="histoire">
+    <div class="stats-row">
+      <div class="stat"><span class="stat-value">1626</span><span class="stat-label">Fondée</span></div>
+      <div class="stat"><span class="stat-value">600+</span><span class="stat-label">Bâtiments victoriens</span></div>
+      <div class="stat"><span class="stat-value">2h30</span><span class="stat-label">De New York</span></div>
+      <div class="stat"><span class="stat-value">3 500</span><span class="stat-label">Habitants</span></div>
+    </div>
+    <h2 class="section-title">Histoire</h2>
+    <div class="histoire-text">
+      <p>Cape May est la plus ancienne station balnéaire des États-Unis. Dès le XVIIe siècle, des baleiniers hollandais et suédois fréquentaient cette pointe extrême du New Jersey. Le capitaine Cornelius Jacobsen Mey lui donna son nom en 1621 lors d'une expédition pour la Compagnie néerlandaise des Indes occidentales.</p>
+      <p>Au XIXe siècle, Cape May devint la destination estivale des présidents américains — Lincoln, Grant, Pierce, Buchanan y séjournèrent tous. La ville connut un incendie dévastateur en 1878, qui paradoxalement lui valut sa richesse architecturale actuelle : reconstruite rapidement, elle arbore une concentration exceptionnelle d'architecture victorienne des années 1880–1900.</p>
+      <p>Classée entièrement comme district historique national, Cape May est aujourd'hui l'une des villes les mieux préservées de la côte est. Ses maisons colorées aux ornements de bois sculptés — les fameux "gingerbread" — font le bonheur des photographes et des amoureux d'architecture.</p>
+    </div>
+  </section>
+
+  <section id="photos">
+    <div class="photo-grid">
+      <img src="https://images.unsplash.com/photo-1568430462989-44163eb1752f?w=1200&auto=format&fit=crop&q=80" alt="Cape May beach" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&auto=format&fit=crop&q=80" alt="Victorian houses" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80" alt="Atlantic coast" loading="lazy">
+    </div>
+  </section>
+
+  <section id="incontournables">
+    <h2 class="section-title">Incontournables</h2>
+    <div class="must-list">
+      <div class="must-item">
+        <div class="must-num">1</div>
+        <div class="must-body">
+          <span class="must-tag">Architecture · Promenade</span>
+          <div class="must-name">Washington Street Mall</div>
+          <div class="must-desc">Rue piétonne au cœur du centre historique, bordée de maisons victoriennes colorées. Idéale à l'arrivée pour se dégourdir les jambes. Boutiques locales, cafés, galeries — la quintessence de Cape May.</div>
+        </div>
+      </div>
+      <div class="must-item">
+        <div class="must-num">2</div>
+        <div class="must-body">
+          <span class="must-tag">Phare · Parc naturel</span>
+          <div class="must-name">Cape May Point Lighthouse & State Park</div>
+          <div class="must-desc">Phare de 1859 toujours en activité, 199 marches pour une vue panoramique sur Delaware Bay et l'Atlantique. Le State Park attenant abrite des sentiers côtiers et un spot d'observation des oiseaux migrateurs — l'un des meilleurs de la côte est.</div>
+        </div>
+      </div>
+      <div class="must-item">
+        <div class="must-num">3</div>
+        <div class="must-body">
+          <span class="must-tag">Plage · Coucher de soleil</span>
+          <div class="must-name">Beach Avenue Promenade</div>
+          <div class="must-desc">La promenade face à l'Atlantique, parfaite pour un coucher de soleil en fin de soirée. L'exposition ouest de Cape May (rare sur la côte est) permet d'admirer le soleil descendre sur la mer — un spectacle peu commun sur l'East Coast.</div>
+        </div>
+      </div>
+      <div class="must-item">
+        <div class="must-num">4</div>
+        <div class="must-body">
+          <span class="must-tag">Musée · Visite guidée</span>
+          <div class="must-name">Emlen Physick Estate</div>
+          <div class="must-desc">Manoir victorien de 1879 classé monument historique, conçu par l'architecte Frank Furness. Visites guidées en costume d'époque. La meilleure introduction à l'architecture Stick Style de Cape May — si tu arrives tôt et as le temps.</div>
+        </div>
+      </div>
+      <div class="must-item">
+        <div class="must-num">5</div>
+        <div class="must-body">
+          <span class="must-tag">Détour · Plage sauvage</span>
+          <div class="must-name">Cape May Diamonds Beach</div>
+          <div class="must-desc">À Cape May Point, cette plage unique produit des "diamants de Cape May" — des cristaux de quartz polis par les vagues depuis des siècles. Chercher ces pierres translucides est une tradition locale. Coucher de soleil exceptionnel depuis ici.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="restaurants">
+    <h2 class="section-title">Où manger</h2>
+    <div class="resto-grid">
+      <div class="resto-card">
+        <span class="resto-type">Fruits de mer · Institution · $$$ </span>
+        <div class="resto-name">410 Bank Street</div>
+        <div class="resto-desc">Institution locale depuis 1840 dans une carriage house tropicale couverte de bougainvillées. Fruits de mer grillés au bois de mesquite, ambiance unique. Réservation indispensable — souvent complet plusieurs jours à l'avance en juillet.</div>
+      </div>
+      <div class="resto-card">
+        <span class="resto-type">Gastronomique · BYOB · $$$</span>
+        <div class="resto-name">Maison Bleue Bistro</div>
+        <div class="resto-desc">Cuisine française raffinée dans un cadre élégant. Scallops, crab bisque, crème brûlée. BYOB (apporte ta propre bouteille) — une tradition du New Jersey qui rend les bonnes tables encore plus accessibles. Parfait pour une première soirée.</div>
+      </div>
+      <div class="resto-card">
+        <span class="resto-type">Seafood · Décontracté · $$</span>
+        <div class="resto-name">The Lobster House</div>
+        <div class="resto-desc">Sur les docks de Schellenger Landing — homard vivant, crab cakes, chowder maison. La file d'attente est longue mais le bar sur la terrasse flottante est parfait pour patienter avec un verre en regardant les bateaux.</div>
+      </div>
+      <div class="resto-card">
+        <span class="resto-type">Café · Brunch · $</span>
+        <div class="resto-name">Uncle Bill's Pancake House</div>
+        <div class="resto-desc">L'adresse incontournable du petit-déjeuner à Cape May depuis 1950. Pancakes, benedicts, blueberry muffins. File d'attente garantie le matin — arrive tôt ou après 10h pour éviter le rush.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pratique">
+    <h2 class="section-title">Pratique</h2>
+    <div class="tip-box">
+      <strong>🚢 Ferry Cape May–Lewes :</strong> Le lendemain matin (J2), tu prends le ferry pour le Delaware. Réserve en avance sur capelewes.com — 61$ aller avec voiture. Départs à 7h et 8h30, prendre le 7h pour arriver à Virginia Beach en début d'après-midi.
+    </div>
+    <div class="tip-box" style="margin-top:.6rem">
+      <strong>🅿️ Parking :</strong> Le centre est piéton. Parcs à voiture sur Ocean Street ou Washington Street Mall. Gratuit après 18h dans la plupart des rues.
+    </div>
+    <div class="tip-box" style="margin-top:.6rem">
+      <strong>🌅 Coucher de soleil :</strong> Cape May fait face à l'ouest — rare sur la côte est. Le soleil se couche sur la mer. Cape May Point Beach ou Sunset Beach sont les meilleurs spots.
+    </div>
+  </section>
+
+  <div class="page-nav">
+    <a href="index.html">
+      <span class="page-nav-label">← Retour</span>
+      <span class="page-nav-title">Itinéraire complet</span>
+    </a>
+    <a href="virginia-beach.html">
+      <span class="page-nav-label">Étape suivante →</span>
+      <span class="page-nav-title">Virginia Beach</span>
+    </a>
+  </div>
+
+</div>
+
+<footer>Road Trip · East Coast · Juillet 2025</footer>
+</body>
+</html>

@@ -163,7 +163,7 @@
 (function() {
   var el = document.querySelector('.hero-img');
   if (!el) return;
-  fetch('https://en.wikipedia.org/api/rest_v1/page/summary/Cape_Hatteras_Lighthouse')
+  fetch('https://en.wikipedia.org/api/rest_v1/page/summary/Jockey%27s_Ridge_State_Park')
     .then(function(r) { return r.json(); })
     .then(function(d) {
       var src = d.originalimage ? d.originalimage.source : (d.thumbnail ? d.thumbnail.source : null);

@@ -160,7 +160,7 @@
 (function() {
   var el = document.querySelector('.hero-img');
   if (!el) return;
-  fetch('https://en.wikipedia.org/api/rest_v1/page/summary/Battleship_North_Carolina')
+  fetch('https://en.wikipedia.org/api/rest_v1/page/summary/Wilmington%2C_North_Carolina')
     .then(function(r) { return r.json(); })
     .then(function(d) {
       var src = d.originalimage ? d.originalimage.source : (d.thumbnail ? d.thumbnail.source : null);

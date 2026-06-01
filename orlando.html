@@ -90,9 +90,6 @@
   <h2 class="section-title">Histoire</h2>
   <div class="histoire-text"><p>Orlando est la capitale mondiale des parcs à thème — avec plus de 75 millions de visiteurs par an, la ville concentre la plus grande densité de divertissements thématisés de la planète. Walt Disney World (4 parcs, 2 parcs aquatiques), Universal Studios (3 parcs), SeaWorld et des dizaines d'attractions secondaires se disputent l'attention des visiteurs.</p><p>Pour ce road trip, le focus est sur Universal Orlando — notamment pour le Wizarding World of Harry Potter, qui reste l'une des expériences d'immersion thématique les plus réussies jamais créées. Hogsmeade et Diagon Alley reproduisent les décors des films avec une fidélité stupéfiante.</p><p>En 2025, Universal a ouvert Epic Universe — son quatrième parc et le plus grand investissement de l'histoire du groupe. On y trouve notamment le monde de Nintendo et un parc Harry Potter entièrement nouveau. Si c'est ouvert à ta date de visite, prévois plutôt deux jours complets.</p></div>
 </section>
-<section id="photos">
-  <div class="photo-grid"><img src="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?w=600&auto=format&fit=crop&q=80" alt="Florida nature" loading="lazy"><img src="https://images.unsplash.com/photo-1541185933-ef5d1ce79a35?w=600&auto=format&fit=crop&q=80" alt="Roller coaster" loading="lazy"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&auto=format&fit=crop&q=80" alt="Florida landscape" loading="lazy"></div>
-</section>
 <section id="incontournables">
   <h2 class="section-title">Incontournables</h2>
   <div class="must-list"><div class="must-item"><div class="must-num">1</div><div class="must-body"><span class="must-tag">Universal · Harry Potter</span><div class="must-name">The Wizarding World of Harry Potter</div><div class="must-desc">Hogsmeade (Islands of Adventure) et Diagon Alley (Universal Studios) — les deux zones se connectent par le Poudlard Express. Butterbeer obligatoire. Harry Potter and the Escape from Gringotts est l'attraction la plus aboutie techniquement du parc.</div></div></div><div class="must-item"><div class="must-num">2</div><div class="must-body"><span class="must-tag">Universal · Coaster</span><div class="must-name">VelociCoaster (Jurassic World)</div><div class="must-desc">Le meilleur roller coaster d'Orlando et l'un des meilleurs des USA — 0 à 112 km/h en 2,4 secondes, 4 inversions, 1,3 km de voie. Queue en ligne tôt le matin ou utilise le pass Express.</div></div></div><div class="must-item"><div class="must-num">3</div><div class="must-body"><span class="must-tag">Nouveau · 2025</span><div class="must-name">Epic Universe</div><div class="must-desc">Le nouveau parc Universal ouvert en 2025 — le plus grand parc à thème jamais construit aux USA. Mondes de Nintendo (Mario Kart), Harry Potter (Ministère de la Magie), How to Train Your Dragon. Vérifier l'ouverture à ta date.</div></div></div><div class="must-item"><div class="must-num">4</div><div class="must-body"><span class="must-tag">Classique · Nuit</span><div class="must-name">The Mummy Returns</div><div class="must-desc">Roller coaster dans l'obscurité complète — effets spéciaux, flammes, jets d'air. Un classique intemporel malgré son âge. Queue longue — y aller tôt le matin.</div></div></div></div>
@@ -117,81 +114,20 @@
   </div>
 </section>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script>
-(function() {
-  var map = L.map('orlando_map', {zoomControl:true, scrollWheelZoom:false});
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-    attribution:'© OpenStreetMap © CARTO', subdomains:'abcd', maxZoom:19
-  }).addTo(map);
 
-  var stops = [
-    {name: "Cape May", lat: 38.935, lng: -74.906},
-    {name: "Virginia Beach", lat: 36.853, lng: -75.978},
-    {name: "Outer Banks", lat: 35.994, lng: -75.663},
-    {name: "Wilmington", lat: 34.226, lng: -77.945},
-    {name: "Charleston", lat: 32.776, lng: -79.931},
-    {name: "Savannah", lat: 32.083, lng: -81.1},
-    {name: "Saint Augustine", lat: 29.894, lng: -81.314},
-    {name: "Kennedy SC", lat: 28.524, lng: -80.681},
-    {name: "Orlando", lat: 28.538, lng: -81.379},
-    {name: "Palm Beach", lat: 26.705, lng: -80.064},
-    {name: "Miami", lat: 25.761, lng: -80.192}
-  ];
-  var currentLat = 28.538, currentLng = -81.379;
-
-  // Route line
-  L.polyline(stops.map(function(s){return [s.lat, s.lng]}), {
-    color:'#E8956A', weight:2.5, opacity:0.7, dashArray:'6 5'
-  }).addTo(map);
-
-  // Other stops (grey)
-  stops.forEach(function(s) {
-    var isCurrent = Math.abs(s.lat - currentLat) < 0.1 && Math.abs(s.lng - currentLng) < 0.1;
-    if (!isCurrent) {
-      L.circleMarker([s.lat, s.lng], {
-        radius:5, fillColor:'#9A8D80', fillOpacity:1,
-        color:'#FAF7F2', weight:1.5
-      }).addTo(map).bindPopup('<div style="font-family:DM Sans,sans-serif;font-size:13px;font-weight:500">'+s.name+'</div>');
-    }
-  });
-
-  // Current stop (accent)
-  var icon = L.divIcon({
-    className:'',
-    html:'<div style="background:#C4622D;color:#FAF7F2;font-family:DM Sans,sans-serif;font-size:11px;font-weight:600;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2.5px solid #FAF7F2;box-shadow:0 2px 8px rgba(0,0,0,.35)">📍</div>',
-    iconSize:[28,28], iconAnchor:[14,14]
-  });
-  L.marker([currentLat, currentLng], {icon:icon}).addTo(map)
-    .bindPopup('<div style="font-family:DM Sans,sans-serif;font-size:13px;font-weight:600;color:#C4622D">Orlando, FL</div>')
-    .openPopup();
-
-  map.setView([currentLat, currentLng], 12);
-})();
-</script>
-
-<div class="page-nav">
-  <a href="kennedy.html"><span class="page-nav-label">← Étape précédente</span><span class="page-nav-title">Kennedy Space Center</span></a>
-  <a href="palm-beach.html"><span class="page-nav-label">Étape suivante →</span><span class="page-nav-title">Palm Beach</span></a>
-</div>
-</div>
-<footer>Road Trip · East Coast · Juillet 2025</footer>
 
 <script>
 (function() {
-  var heroImg = document.querySelector('.hero-img');
-  if (!heroImg) return;
-  fetch('https://en.wikipedia.org/api/rest_v1/page/summary/Universal_Studios_Florida')
-    .then(function(r){ return r.json(); })
-    .then(function(d){
-      if (d.thumbnail && d.thumbnail.source) {
-        // Upgrade to larger size
-        var src = d.thumbnail.source.replace(/\/\d+px-/, '/1200px-');
-        heroImg.style.backgroundImage = "url('" + src + "')";
-      }
+  var el = document.querySelector('.hero-img');
+  if (!el) return;
+  fetch('https://en.wikipedia.org/api/rest_v1/page/summary/The_Wizarding_World_of_Harry_Potter')
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      var src = d.originalimage ? d.originalimage.source : (d.thumbnail ? d.thumbnail.source : null);
+      if (src) el.style.backgroundImage = "url('" + src + "')";
     })
     .catch(function(){});
 })();
 </script>
-
 </body>
 </html>

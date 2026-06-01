@@ -90,9 +90,6 @@
   <h2 class="section-title">Histoire</h2>
   <div class="histoire-text"><p>Miami est une ville sans équivalent aux États-Unis — moitié latine, moitié américaine, complètement unique. Fondée en 1896 grâce au chemin de fer de Henry Flagler (encore lui), elle s'est transformée en moins de 130 ans en métropole internationale de 6 millions d'habitants dans le Grand Miami.</p><p>South Beach et son district Art Déco sont mondialement connus — la plus grande concentration d'architecture Art Déco des années 1930 du monde. Wynwood, ancien quartier industriel, est devenu la capitale mondiale du street art depuis 2009 avec les Wynwood Walls. Little Havana conserve l'âme cubaine des premières vagues d'immigration des années 1960.</p><p>Miami est aussi une ville face à des défis existentiels : le changement climatique et la montée des eaux menacent directement une ville bâtie au niveau de la mer. Les discussions sur l'adaptation climatique sont omniprésentes dans le débat public local — Miami est en première ligne de ce combat du XXIe siècle.</p></div>
 </section>
-<section id="photos">
-  <div class="photo-grid"><img src="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?w=600&auto=format&fit=crop&q=80" alt="Miami palms" loading="lazy"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&auto=format&fit=crop&q=80" alt="Wynwood" loading="lazy"><img src="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?w=600&auto=format&fit=crop&q=80" alt="Miami palms" loading="lazy"></div>
-</section>
 <section id="incontournables">
   <h2 class="section-title">Incontournables</h2>
   <div class="must-list"><div class="must-item"><div class="must-num">1</div><div class="must-body"><span class="must-tag">Street Art · Incontournable</span><div class="must-name">Wynwood Walls</div><div class="must-desc">Le musée à ciel ouvert qui a lancé la révolution du street art mondial — 50+ murales d'artistes du monde entier dans un ancien quartier d'entrepôts. Gratuit pour les rues, ~10$ pour le musée intérieur. Meilleur tôt le matin ou en fin d'après-midi.</div></div></div><div class="must-item"><div class="must-num">2</div><div class="must-body"><span class="must-tag">Art Déco · Plage</span><div class="must-name">Ocean Drive & South Beach</div><div class="must-desc">La concentration d'hôtels Art Déco des années 1930 la plus dense du monde. Lummus Park Beach en face — eau turquoise, sable blanc. Courir ici au lever du soleil (J15) est l'expérience ultime de Miami.</div></div></div><div class="must-item"><div class="must-num">3</div><div class="must-body"><span class="must-tag">Culture cubaine</span><div class="must-name">Little Havana & Calle Ocho</div><div class="must-desc">Le cœur de la communauté cubaine de Miami — cafecito au comptoir (café cubain ultra-serré), cigares roulés à la main, dominos dans Maximo Gomez Park, musique live en soirée. Vivre l'histoire cubaine-américaine.</div></div></div><div class="must-item"><div class="must-num">4</div><div class="must-body"><span class="must-tag">Nature · Unique</span><div class="must-name">Everglades National Park</div><div class="must-desc">À 1h de Miami — l'écosystème le plus unique des USA, 'la rivière qui marche'. Airboat tours le matin tôt pour voir les alligators avant la chaleur. Anhinga Trail : alligators à 2m du chemin.</div></div></div><div class="must-item"><div class="must-num">5</div><div class="must-body"><span class="must-tag">Design · Culture</span><div class="must-name">Wynwood & Design District</div><div class="must-desc">Design District pour les galeries et l'architecture (Marquis à façade pixélisée, Institut Louis Vuitton), Brickell pour les rooftop bars et la vie nocturne moderne.</div></div></div></div>
@@ -120,81 +117,20 @@
   </div>
 </section>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script>
-(function() {
-  var map = L.map('miami_map', {zoomControl:true, scrollWheelZoom:false});
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-    attribution:'© OpenStreetMap © CARTO', subdomains:'abcd', maxZoom:19
-  }).addTo(map);
 
-  var stops = [
-    {name: "Cape May", lat: 38.935, lng: -74.906},
-    {name: "Virginia Beach", lat: 36.853, lng: -75.978},
-    {name: "Outer Banks", lat: 35.994, lng: -75.663},
-    {name: "Wilmington", lat: 34.226, lng: -77.945},
-    {name: "Charleston", lat: 32.776, lng: -79.931},
-    {name: "Savannah", lat: 32.083, lng: -81.1},
-    {name: "Saint Augustine", lat: 29.894, lng: -81.314},
-    {name: "Kennedy SC", lat: 28.524, lng: -80.681},
-    {name: "Orlando", lat: 28.538, lng: -81.379},
-    {name: "Palm Beach", lat: 26.705, lng: -80.064},
-    {name: "Miami", lat: 25.761, lng: -80.192}
-  ];
-  var currentLat = 25.79, currentLng = -80.13;
-
-  // Route line
-  L.polyline(stops.map(function(s){return [s.lat, s.lng]}), {
-    color:'#E8956A', weight:2.5, opacity:0.7, dashArray:'6 5'
-  }).addTo(map);
-
-  // Other stops (grey)
-  stops.forEach(function(s) {
-    var isCurrent = Math.abs(s.lat - currentLat) < 0.1 && Math.abs(s.lng - currentLng) < 0.1;
-    if (!isCurrent) {
-      L.circleMarker([s.lat, s.lng], {
-        radius:5, fillColor:'#9A8D80', fillOpacity:1,
-        color:'#FAF7F2', weight:1.5
-      }).addTo(map).bindPopup('<div style="font-family:DM Sans,sans-serif;font-size:13px;font-weight:500">'+s.name+'</div>');
-    }
-  });
-
-  // Current stop (accent)
-  var icon = L.divIcon({
-    className:'',
-    html:'<div style="background:#C4622D;color:#FAF7F2;font-family:DM Sans,sans-serif;font-size:11px;font-weight:600;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2.5px solid #FAF7F2;box-shadow:0 2px 8px rgba(0,0,0,.35)">📍</div>',
-    iconSize:[28,28], iconAnchor:[14,14]
-  });
-  L.marker([currentLat, currentLng], {icon:icon}).addTo(map)
-    .bindPopup('<div style="font-family:DM Sans,sans-serif;font-size:13px;font-weight:600;color:#C4622D">Miami, FL</div>')
-    .openPopup();
-
-  map.setView([currentLat, currentLng], 12);
-})();
-</script>
-
-<div class="page-nav">
-  <a href="palm-beach.html"><span class="page-nav-label">← Étape précédente</span><span class="page-nav-title">Palm Beach</span></a>
-  <a href="index.html"><span class="page-nav-label">Étape suivante →</span><span class="page-nav-title">Retour à l'itinéraire</span></a>
-</div>
-</div>
-<footer>Road Trip · East Coast · Juillet 2025</footer>
 
 <script>
 (function() {
-  var heroImg = document.querySelector('.hero-img');
-  if (!heroImg) return;
-  fetch('https://en.wikipedia.org/api/rest_v1/page/summary/Miami_Beach')
-    .then(function(r){ return r.json(); })
-    .then(function(d){
-      if (d.thumbnail && d.thumbnail.source) {
-        // Upgrade to larger size
-        var src = d.thumbnail.source.replace(/\/\d+px-/, '/1200px-');
-        heroImg.style.backgroundImage = "url('" + src + "')";
-      }
+  var el = document.querySelector('.hero-img');
+  if (!el) return;
+  fetch('https://en.wikipedia.org/api/rest_v1/page/summary/South_Beach')
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      var src = d.originalimage ? d.originalimage.source : (d.thumbnail ? d.thumbnail.source : null);
+      if (src) el.style.backgroundImage = "url('" + src + "')";
     })
     .catch(function(){});
 })();
 </script>
-
 </body>
 </html>

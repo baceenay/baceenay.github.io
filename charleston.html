@@ -90,9 +90,6 @@
   <h2 class="section-title">Histoire</h2>
   <div class="histoire-text"><p>Charleston est souvent désignée comme la plus belle ville des États-Unis, et il est difficile de contester ce titre. Fondée en 1670 par des colons anglais venus de la Barbade, elle fut pendant un siècle le centre économique de l'Amérique coloniale — sa richesse construite sur le coton, le riz indigo et, plus sombrement, sur le commerce d'esclaves transatlantique.</p><p>L'architecture de Charleston est un livre d'histoire ouvert : les 'single houses' colorées de Rainbow Row (construites perpendiculaires à la rue pour capter la brise marine), les plantations palladiennes, les églises du XVIIIe siècle. La ville a miraculeusement survécu à la Guerre de Sécession, aux ouragans et aux tremblements de terre — son centre historique est intact depuis 350 ans.</p><p>La cuisine Lowcountry est l'une des plus distinctives des USA : shrimp & grits, she-crab soup, Hoppin' John (riz et pois), biscuits au babeurre. Cette cuisine mêle influences africaines, caribéennes et britanniques — portée aujourd'hui par une nouvelle génération de chefs qui en font l'une des scènes gastronomiques les plus excitantes du pays.</p></div>
 </section>
-<section id="photos">
-  <div class="photo-grid"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&auto=format&fit=crop&q=80" alt="Charleston harbor" loading="lazy"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&auto=format&fit=crop&q=80" alt="Charleston harbor" loading="lazy"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&auto=format&fit=crop&q=80" alt="Charleston streets" loading="lazy"></div>
-</section>
 <section id="incontournables">
   <h2 class="section-title">Incontournables</h2>
   <div class="must-list"><div class="must-item"><div class="must-num">1</div><div class="must-body"><span class="must-tag">Incontournable · Iconique</span><div class="must-name">Rainbow Row</div><div class="must-desc">Les 13 maisons géorgiennes peintes de couleurs pastel sur East Bay Street — l'image la plus photographiée de Charleston. Construites entre 1740 et 1760, restaurées dans les années 1930. Voir à l'heure dorée du matin.</div></div></div><div class="must-item"><div class="must-num">2</div><div class="must-body"><span class="must-tag">Histoire · Vue port</span><div class="must-name">The Battery & White Point Garden</div><div class="must-desc">Pointe sud de la péninsule avec vue sur le port. Canons de la Guerre de Sécession, magnolias centenaires, maisons antebellum grandioses. C'est d'ici qu'on voit Fort Sumter au loin.</div></div></div><div class="must-item"><div class="must-num">3</div><div class="must-body"><span class="must-tag">Fort · Ferry</span><div class="must-name">Fort Sumter</div><div class="must-desc">L'île où débuta la Guerre de Sécession le 12 avril 1861 quand les troupes confédérées ouvrirent le feu. Ferry depuis le Liberty Square Visitor Center. ~30$ aller-retour. Réserver à l'avance en juillet.</div></div></div><div class="must-item"><div class="must-num">4</div><div class="must-body"><span class="must-tag">Jardins · Histoire</span><div class="must-name">Magnolia Plantation & Gardens</div><div class="must-desc">Les plus vieux jardins de style anglais des USA (1676). Incroyablement beaux, avec une section dédiée à l'histoire de l'esclavage — honnête et poignante. À 20 min du centre.</div></div></div><div class="must-item"><div class="must-num">5</div><div class="must-body"><span class="must-tag">Shopping · Artisanat</span><div class="must-name">Charleston City Market</div><div class="must-desc">Ouvert depuis 1804 — l'un des plus anciens marchés couverts des USA. Les sweetgrass baskets tressées à la main par des artisanes Gullah sont des pièces d'artisanat unique. Ouvert tôt le matin.</div></div></div></div>
@@ -120,81 +117,20 @@
   </div>
 </section>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script>
-(function() {
-  var map = L.map('charleston_map', {zoomControl:true, scrollWheelZoom:false});
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-    attribution:'© OpenStreetMap © CARTO', subdomains:'abcd', maxZoom:19
-  }).addTo(map);
 
-  var stops = [
-    {name: "Cape May", lat: 38.935, lng: -74.906},
-    {name: "Virginia Beach", lat: 36.853, lng: -75.978},
-    {name: "Outer Banks", lat: 35.994, lng: -75.663},
-    {name: "Wilmington", lat: 34.226, lng: -77.945},
-    {name: "Charleston", lat: 32.776, lng: -79.931},
-    {name: "Savannah", lat: 32.083, lng: -81.1},
-    {name: "Saint Augustine", lat: 29.894, lng: -81.314},
-    {name: "Kennedy SC", lat: 28.524, lng: -80.681},
-    {name: "Orlando", lat: 28.538, lng: -81.379},
-    {name: "Palm Beach", lat: 26.705, lng: -80.064},
-    {name: "Miami", lat: 25.761, lng: -80.192}
-  ];
-  var currentLat = 32.776, currentLng = -79.931;
-
-  // Route line
-  L.polyline(stops.map(function(s){return [s.lat, s.lng]}), {
-    color:'#E8956A', weight:2.5, opacity:0.7, dashArray:'6 5'
-  }).addTo(map);
-
-  // Other stops (grey)
-  stops.forEach(function(s) {
-    var isCurrent = Math.abs(s.lat - currentLat) < 0.1 && Math.abs(s.lng - currentLng) < 0.1;
-    if (!isCurrent) {
-      L.circleMarker([s.lat, s.lng], {
-        radius:5, fillColor:'#9A8D80', fillOpacity:1,
-        color:'#FAF7F2', weight:1.5
-      }).addTo(map).bindPopup('<div style="font-family:DM Sans,sans-serif;font-size:13px;font-weight:500">'+s.name+'</div>');
-    }
-  });
-
-  // Current stop (accent)
-  var icon = L.divIcon({
-    className:'',
-    html:'<div style="background:#C4622D;color:#FAF7F2;font-family:DM Sans,sans-serif;font-size:11px;font-weight:600;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2.5px solid #FAF7F2;box-shadow:0 2px 8px rgba(0,0,0,.35)">📍</div>',
-    iconSize:[28,28], iconAnchor:[14,14]
-  });
-  L.marker([currentLat, currentLng], {icon:icon}).addTo(map)
-    .bindPopup('<div style="font-family:DM Sans,sans-serif;font-size:13px;font-weight:600;color:#C4622D">Charleston, SC</div>')
-    .openPopup();
-
-  map.setView([currentLat, currentLng], 13);
-})();
-</script>
-
-<div class="page-nav">
-  <a href="wilmington.html"><span class="page-nav-label">← Étape précédente</span><span class="page-nav-title">Wilmington</span></a>
-  <a href="savannah.html"><span class="page-nav-label">Étape suivante →</span><span class="page-nav-title">Savannah</span></a>
-</div>
-</div>
-<footer>Road Trip · East Coast · Juillet 2025</footer>
 
 <script>
 (function() {
-  var heroImg = document.querySelector('.hero-img');
-  if (!heroImg) return;
+  var el = document.querySelector('.hero-img');
+  if (!el) return;
   fetch('https://en.wikipedia.org/api/rest_v1/page/summary/Rainbow_Row')
-    .then(function(r){ return r.json(); })
-    .then(function(d){
-      if (d.thumbnail && d.thumbnail.source) {
-        // Upgrade to larger size
-        var src = d.thumbnail.source.replace(/\/\d+px-/, '/1200px-');
-        heroImg.style.backgroundImage = "url('" + src + "')";
-      }
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      var src = d.originalimage ? d.originalimage.source : (d.thumbnail ? d.thumbnail.source : null);
+      if (src) el.style.backgroundImage = "url('" + src + "')";
     })
     .catch(function(){});
 })();
 </script>
-
 </body>
 </html>

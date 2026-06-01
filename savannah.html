@@ -90,9 +90,6 @@
   <h2 class="section-title">Histoire</h2>
   <div class="histoire-text"><p>Savannah est la première ville de Géorgie, fondée en 1733 par James Oglethorpe sur un plan en grille unique : la ville fut organisée autour de 24 squares (il en reste 22) — des places ombragées plantées d'arbres qui servent à la fois de parcs, de points de rencontre et de régulateurs thermiques naturels. Ce plan urban est étudié dans les écoles d'urbanisme du monde entier.</p><p>Préservée des destructions de la Guerre de Sécession grâce à la reddition pacifique de la ville au Général Sherman en 1864, Savannah possède l'un des plus grands districts historiques des États-Unis. Ses chênes centenaires couverts de mousse espagnole (Tillandsia usneoides) lui donnent une atmosphère gothique et romantique unique.</p><p>La scène gastronomique de Savannah a explosé ces dix dernières années — The Grey (dans une ancienne gare Greyhound de 1938) est considéré comme l'un des meilleurs restaurants du pays. Mais la ville est aussi connue pour son ambiance festive : la consommation d'alcool en rue y est légale, et River Street est l'une des artères les plus animées du Sud.</p></div>
 </section>
-<section id="photos">
-  <div class="photo-grid"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&q=80" alt="Spanish moss" loading="lazy"><img src="https://images.unsplash.com/photo-1568430462989-44163eb1752f?w=600&auto=format&fit=crop&q=80" alt="Forsyth Park" loading="lazy"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&auto=format&fit=crop&q=80" alt="Spanish moss" loading="lazy"></div>
-</section>
 <section id="incontournables">
   <h2 class="section-title">Incontournables</h2>
   <div class="must-list"><div class="must-item"><div class="must-num">1</div><div class="must-body"><span class="must-tag">Parc · Iconique</span><div class="must-name">Forsyth Park</div><div class="must-desc">Le Central Park de Savannah — fontaine de 1858, chênes immenses, promeneurs et pique-niqueurs. La fontaine blanche entourée de mousse espagnole est l'image la plus photographiée de la ville.</div></div></div><div class="must-item"><div class="must-num">2</div><div class="must-body"><span class="must-tag">Balade · Unique</span><div class="must-name">Les 22 Squares historiques</div><div class="must-desc">La plus belle façon de voir Savannah est de se perdre de square en square à pied : Monterey, Madison, Chippewa, Lafayette... Chacun a sa propre personnalité et ses propres arbres. Prévoir 2h minimum.</div></div></div><div class="must-item"><div class="must-num">3</div><div class="must-body"><span class="must-tag">Cimetière · Art</span><div class="must-name">Bonaventure Cemetery</div><div class="must-desc">L'un des plus beaux cimetières d'Amérique — sculptures victoriennes, mousse espagnole, chênes centenaires. Rendu célèbre par 'Minuit dans le jardin du bien et du mal'. Vue sur la Wilmington River depuis certaines allées.</div></div></div><div class="must-item"><div class="must-num">4</div><div class="must-body"><span class="must-tag">Bars · Ambiance</span><div class="must-name">River Street</div><div class="must-desc">Front de mer sur la Savannah River — pavés de ballast de navires, bars, restaurants, vue sur les cargos géants qui remontent le fleuve. Alcool en rue légal. Animé jusqu'à tard.</div></div></div><div class="must-item"><div class="must-num">5</div><div class="must-body"><span class="must-tag">Quartier · Galeries</span><div class="must-name">Broughton Street</div><div class="must-desc">La rue principale de Savannah — cafés indépendants, librairies, boutiques locales. L'antithèse des centres commerciaux. The Grey Market (café du matin) est ici.</div></div></div></div>
@@ -120,81 +117,20 @@
   </div>
 </section>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script>
-(function() {
-  var map = L.map('savannah_map', {zoomControl:true, scrollWheelZoom:false});
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-    attribution:'© OpenStreetMap © CARTO', subdomains:'abcd', maxZoom:19
-  }).addTo(map);
 
-  var stops = [
-    {name: "Cape May", lat: 38.935, lng: -74.906},
-    {name: "Virginia Beach", lat: 36.853, lng: -75.978},
-    {name: "Outer Banks", lat: 35.994, lng: -75.663},
-    {name: "Wilmington", lat: 34.226, lng: -77.945},
-    {name: "Charleston", lat: 32.776, lng: -79.931},
-    {name: "Savannah", lat: 32.083, lng: -81.1},
-    {name: "Saint Augustine", lat: 29.894, lng: -81.314},
-    {name: "Kennedy SC", lat: 28.524, lng: -80.681},
-    {name: "Orlando", lat: 28.538, lng: -81.379},
-    {name: "Palm Beach", lat: 26.705, lng: -80.064},
-    {name: "Miami", lat: 25.761, lng: -80.192}
-  ];
-  var currentLat = 32.083, currentLng = -81.1;
-
-  // Route line
-  L.polyline(stops.map(function(s){return [s.lat, s.lng]}), {
-    color:'#E8956A', weight:2.5, opacity:0.7, dashArray:'6 5'
-  }).addTo(map);
-
-  // Other stops (grey)
-  stops.forEach(function(s) {
-    var isCurrent = Math.abs(s.lat - currentLat) < 0.1 && Math.abs(s.lng - currentLng) < 0.1;
-    if (!isCurrent) {
-      L.circleMarker([s.lat, s.lng], {
-        radius:5, fillColor:'#9A8D80', fillOpacity:1,
-        color:'#FAF7F2', weight:1.5
-      }).addTo(map).bindPopup('<div style="font-family:DM Sans,sans-serif;font-size:13px;font-weight:500">'+s.name+'</div>');
-    }
-  });
-
-  // Current stop (accent)
-  var icon = L.divIcon({
-    className:'',
-    html:'<div style="background:#C4622D;color:#FAF7F2;font-family:DM Sans,sans-serif;font-size:11px;font-weight:600;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2.5px solid #FAF7F2;box-shadow:0 2px 8px rgba(0,0,0,.35)">📍</div>',
-    iconSize:[28,28], iconAnchor:[14,14]
-  });
-  L.marker([currentLat, currentLng], {icon:icon}).addTo(map)
-    .bindPopup('<div style="font-family:DM Sans,sans-serif;font-size:13px;font-weight:600;color:#C4622D">Savannah, GA</div>')
-    .openPopup();
-
-  map.setView([currentLat, currentLng], 13);
-})();
-</script>
-
-<div class="page-nav">
-  <a href="charleston.html"><span class="page-nav-label">← Étape précédente</span><span class="page-nav-title">Charleston</span></a>
-  <a href="saint-augustine.html"><span class="page-nav-label">Étape suivante →</span><span class="page-nav-title">Saint Augustine</span></a>
-</div>
-</div>
-<footer>Road Trip · East Coast · Juillet 2025</footer>
 
 <script>
 (function() {
-  var heroImg = document.querySelector('.hero-img');
-  if (!heroImg) return;
+  var el = document.querySelector('.hero-img');
+  if (!el) return;
   fetch('https://en.wikipedia.org/api/rest_v1/page/summary/Forsyth_Park')
-    .then(function(r){ return r.json(); })
-    .then(function(d){
-      if (d.thumbnail && d.thumbnail.source) {
-        // Upgrade to larger size
-        var src = d.thumbnail.source.replace(/\/\d+px-/, '/1200px-');
-        heroImg.style.backgroundImage = "url('" + src + "')";
-      }
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      var src = d.originalimage ? d.originalimage.source : (d.thumbnail ? d.thumbnail.source : null);
+      if (src) el.style.backgroundImage = "url('" + src + "')";
     })
     .catch(function(){});
 })();
 </script>
-
 </body>
 </html>

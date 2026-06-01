@@ -90,9 +90,6 @@
   <h2 class="section-title">Histoire</h2>
   <div class="histoire-text"><p>Palm Beach est l'enclave la plus luxueuse des États-Unis — une île de 3 km de large sur 19 km de long, séparée de la ville de West Palm Beach par l'Intracoastal Waterway. Fondée par le magnat des chemins de fer Henry Flagler en 1894, qui y construisit deux hôtels palatins et y attira la haute société new-yorkaise.</p><p>La ville compte parmi les résidents les plus riches des USA — milliardaires, familles royales d'Europe, stars du divertissement. Les villas de style méditerranéen se succèdent le long d'Ocean Boulevard. Les Kennedy y possèdent la 'Winter White House', Mar-a-Lago est à quelques rues.</p><p>Mais Palm Beach n'est pas qu'une vitrine du luxe — c'est aussi une ville de culture exceptionnelle : le Norton Museum of Art est l'un des meilleurs musées de Floride, le Flagler Museum (dans l'ancienne villa Whitehall) est un joyau de l'ère dorée américaine, et Worth Avenue reste l'une des rues commerçantes les plus élégantes du pays.</p></div>
 </section>
-<section id="photos">
-  <div class="photo-grid"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80" alt="Palm Beach shore" loading="lazy"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80" alt="Palm Beach beach" loading="lazy"><img src="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?w=600&auto=format&fit=crop&q=80" alt="Florida palms" loading="lazy"></div>
-</section>
 <section id="incontournables">
   <h2 class="section-title">Incontournables</h2>
   <div class="must-list"><div class="must-item"><div class="must-num">1</div><div class="must-body"><span class="must-tag">Shopping · Élégance</span><div class="must-name">Worth Avenue</div><div class="must-desc">La plus belle rue commerçante de Floride — Hermès, Chanel, Tiffany dans des arcades méditerranéennes des années 1920 conçues par Addison Mizner. Même sans acheter, la promenade est gratuite et magnifique.</div></div></div><div class="must-item"><div class="must-num">2</div><div class="must-body"><span class="must-tag">Musée · Gilded Age</span><div class="must-name">Flagler Museum (Whitehall)</div><div class="must-desc">La villa de 1902 d'Henry Flagler — 75 pièces, marbre de Carrare, chêne de Cuba. L'un des exemples les plus parfaits de l'architecture Gilded Age aux USA. Visite avec audioguide ~18$.</div></div></div><div class="must-item"><div class="must-num">3</div><div class="must-body"><span class="must-tag">Plage · Exclusive</span><div class="must-name">Palm Beach Town Beach</div><div class="must-desc">La plage de Palm Beach — propre, calme, surveillée, bordée de villas. Moins bondée que les plages publiques. Accès via les rues perpendiculaires à Ocean Blvd.</div></div></div><div class="must-item"><div class="must-num">4</div><div class="must-body"><span class="must-tag">Musée · Contemporain</span><div class="must-name">Norton Museum of Art</div><div class="must-desc">L'un des meilleurs musées d'art de Floride — collection impressionniste, art contemporain américain, photographie. Entrée ~18$. Climatisé — parfait pour les heures les plus chaudes.</div></div></div></div>
@@ -117,81 +114,20 @@
   </div>
 </section>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script>
-(function() {
-  var map = L.map('palm_beach_map', {zoomControl:true, scrollWheelZoom:false});
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-    attribution:'© OpenStreetMap © CARTO', subdomains:'abcd', maxZoom:19
-  }).addTo(map);
 
-  var stops = [
-    {name: "Cape May", lat: 38.935, lng: -74.906},
-    {name: "Virginia Beach", lat: 36.853, lng: -75.978},
-    {name: "Outer Banks", lat: 35.994, lng: -75.663},
-    {name: "Wilmington", lat: 34.226, lng: -77.945},
-    {name: "Charleston", lat: 32.776, lng: -79.931},
-    {name: "Savannah", lat: 32.083, lng: -81.1},
-    {name: "Saint Augustine", lat: 29.894, lng: -81.314},
-    {name: "Kennedy SC", lat: 28.524, lng: -80.681},
-    {name: "Orlando", lat: 28.538, lng: -81.379},
-    {name: "Palm Beach", lat: 26.705, lng: -80.064},
-    {name: "Miami", lat: 25.761, lng: -80.192}
-  ];
-  var currentLat = 26.705, currentLng = -80.064;
-
-  // Route line
-  L.polyline(stops.map(function(s){return [s.lat, s.lng]}), {
-    color:'#E8956A', weight:2.5, opacity:0.7, dashArray:'6 5'
-  }).addTo(map);
-
-  // Other stops (grey)
-  stops.forEach(function(s) {
-    var isCurrent = Math.abs(s.lat - currentLat) < 0.1 && Math.abs(s.lng - currentLng) < 0.1;
-    if (!isCurrent) {
-      L.circleMarker([s.lat, s.lng], {
-        radius:5, fillColor:'#9A8D80', fillOpacity:1,
-        color:'#FAF7F2', weight:1.5
-      }).addTo(map).bindPopup('<div style="font-family:DM Sans,sans-serif;font-size:13px;font-weight:500">'+s.name+'</div>');
-    }
-  });
-
-  // Current stop (accent)
-  var icon = L.divIcon({
-    className:'',
-    html:'<div style="background:#C4622D;color:#FAF7F2;font-family:DM Sans,sans-serif;font-size:11px;font-weight:600;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2.5px solid #FAF7F2;box-shadow:0 2px 8px rgba(0,0,0,.35)">📍</div>',
-    iconSize:[28,28], iconAnchor:[14,14]
-  });
-  L.marker([currentLat, currentLng], {icon:icon}).addTo(map)
-    .bindPopup('<div style="font-family:DM Sans,sans-serif;font-size:13px;font-weight:600;color:#C4622D">Palm Beach, FL</div>')
-    .openPopup();
-
-  map.setView([currentLat, currentLng], 13);
-})();
-</script>
-
-<div class="page-nav">
-  <a href="orlando.html"><span class="page-nav-label">← Étape précédente</span><span class="page-nav-title">Orlando</span></a>
-  <a href="miami.html"><span class="page-nav-label">Étape suivante →</span><span class="page-nav-title">Miami</span></a>
-</div>
-</div>
-<footer>Road Trip · East Coast · Juillet 2025</footer>
 
 <script>
 (function() {
-  var heroImg = document.querySelector('.hero-img');
-  if (!heroImg) return;
-  fetch('https://en.wikipedia.org/api/rest_v1/page/summary/Palm_Beach%2C_Florida')
-    .then(function(r){ return r.json(); })
-    .then(function(d){
-      if (d.thumbnail && d.thumbnail.source) {
-        // Upgrade to larger size
-        var src = d.thumbnail.source.replace(/\/\d+px-/, '/1200px-');
-        heroImg.style.backgroundImage = "url('" + src + "')";
-      }
+  var el = document.querySelector('.hero-img');
+  if (!el) return;
+  fetch('https://en.wikipedia.org/api/rest_v1/page/summary/Worth_Avenue')
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      var src = d.originalimage ? d.originalimage.source : (d.thumbnail ? d.thumbnail.source : null);
+      if (src) el.style.backgroundImage = "url('" + src + "')";
     })
     .catch(function(){});
 })();
 </script>
-
 </body>
 </html>

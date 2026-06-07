@@ -419,10 +419,8 @@ function initMap() {
     { day: "J2",     date: "18 juil.",      name: "Virginia Beach, VA",                  lat: 36.853, lng: -75.978 },
     { day: "J3",     date: "19 juil.",      name: "Outer Banks, NC",                     lat: 35.994, lng: -75.663 },
     { day: "J4",     date: "20 juil.",      name: "Wilmington, NC",                      lat: 34.226, lng: -77.945 },
-    { day: "J5",     date: "21 juil.",      name: "Columbia / Greenville / Clemson, SC", lat: 34.683, lng: -82.837 },
-    { day: "J6",     date: "22 juil.",      name: "Clemson, SC",                         lat: 34.683, lng: -82.837 },
-    { day: "J7",     date: "22-23 juil.",   name: "Charleston, SC",                      lat: 32.776, lng: -79.931 },
-    { day: "J8",     date: "24 juil.",      name: "Savannah, GA",                        lat: 32.083, lng: -81.100 },
+    { day: "J5-6",   date: "21-22 juil.",   name: "Charleston, SC",                      lat: 32.776, lng: -79.931 },
+    { day: "J7-8",   date: "23-24 juil.",   name: "Savannah, GA",                        lat: 32.083, lng: -81.100 },
     { day: "J9",     date: "25 juil.",      name: "Saint Augustine, FL",                 lat: 29.894, lng: -81.314 },
     { day: "J10",    date: "26 juil.",      name: "Kennedy Space Center",                lat: 28.524, lng: -80.681 },
     { day: "J11",    date: "27 juil.",      name: "Orlando, FL",                         lat: 28.538, lng: -81.379 },
@@ -781,295 +779,93 @@ function initMap() {
   </div>
 
   <!-- SWITCHER J5-J6 -->
-  <style>
-    .switcher-bar {
-      display: flex;
-      gap: 0.5rem;
-      margin: 1.5rem 0 0.5rem;
-      flex-wrap: wrap;
-    }
-    .switcher-btn {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.05em;
-      padding: 0.45rem 1rem;
-      border-radius: 3px;
-      border: 1.5px solid var(--border);
-      background: white;
-      color: var(--muted);
-      cursor: pointer;
-      transition: all 0.15s;
-    }
-    .switcher-btn.active {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: white;
-    }
-    .route-panel { display: none; }
-    .route-panel.active { display: block; }
-  </style>
-
-  <div style="border-top: 2px solid var(--accent); margin-top: 2rem; padding-top: 1.5rem;">
-    <div style="font-size:0.65rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.4rem;">J5–J6 · Choisir un itinéraire</div>
-    <div style="font-size:0.85rem;color:var(--muted);margin-bottom:1rem;">Trois options pour les jours 5 et 6 selon ta préférence.</div>
-    <div class="switcher-bar">
-      <button class="switcher-btn active" onclick="switchRoute('clemson')">🎓 Option A — Clemson</button>
-      <button class="switcher-btn" onclick="switchRoute('myrtlebeach')">🏖️ Option B — Myrtle Beach</button>
-      <button class="switcher-btn" onclick="switchRoute('savannah2')">🌿 Option C — Savannah +1 nuit</button>
+  <!-- J5 -->
+  <div class="day-card">
+    <div class="day-left">
+      <span class="day-number">J5</span>
+      <span class="day-date">Mardi<br>21 juillet</span>
+      <span class="day-badge badge-ok">Confirmé</span>
     </div>
-  </div>
+    <div class="day-right">
+      <h3>Wilmington → Charleston, SC</h3>
+      <span class="drive-info">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
+        4h30 avec arrêts · route directe vers le sud
+      </span>
 
-  <!-- OPTION A : CLEMSON -->
-  <div id="panel-clemson" class="route-panel active">
-    <div class="day-card">
-      <div class="day-left">
-        <span class="day-number">J5</span>
-        <span class="day-date">Mardi<br>21 juillet</span>
-        <span class="day-badge badge-mod">Option A</span>
-      </div>
-      <div class="day-right">
-        <h3>Columbia → Greenville → Clemson, SC</h3>
-        <span class="drive-info">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
-          ~5h avec arrêts · Wilmington → Columbia 2h30 · Columbia → Greenville 1h30 · Greenville → Clemson 45min
-        </span>
-        <div class="section-block">
-          <div class="section-label">Hébergement (nuits J5 & J6)</div>
-          <div class="hotel-card">
-            <div class="hotel-icon">🏠</div>
-            <div class="hotel-info">
-              <div class="hotel-name">Le Refuge d'Harlow — Airbnb Charleston, SC</div>
-              <div class="hotel-meta">21 → 23 juillet · 2 nuits</div>
-            </div>
-            <div class="hotel-price">274 $</div>
+      <div class="section-block">
+        <div class="section-label">Hébergement (nuits J5 & J6)</div>
+        <div class="hotel-card">
+          <div class="hotel-icon">🏠</div>
+          <div class="hotel-info">
+            <div class="hotel-name">Le Refuge d'Harlow — Airbnb Charleston, SC</div>
+            <div class="hotel-meta">21 → 23 juillet · 2 nuits</div>
           </div>
+          <div class="hotel-price">274 $</div>
         </div>
-        <div class="section-block">
-          <div class="section-label">Arrêt Columbia — déjeuner</div>
-          <div class="road-stop"><div class="stop-dot"></div><div class="stop-text"><strong>SC State House</strong> — architecture Greek Revival, monument aux Africains-Américains. 30 min suffit.</div></div>
-          <div class="road-stop"><div class="stop-dot"></div><div class="stop-text"><strong>Vista District</strong> — déjeuner chez <strong>Motor Supply Co.</strong> (farm-to-table) ou <strong>Publico Kitchen & Bar</strong> (cuisine latine).</div></div>
-          <div class="road-stop"><div class="stop-dot"></div><div class="stop-text"><strong>Congaree National Park</strong> (optionnel, 30 min au sud) — boardwalk dans les cyprès géants, forêt primaire.</div></div>
-        </div>
-        <div class="section-block">
-          <div class="section-label">Arrêt Greenville — dîner</div>
-          <div class="road-stop"><div class="stop-dot"></div><div class="stop-text"><strong>Falls Park on the Reedy</strong> — cascades, Liberty Bridge suspendu, très photogénique à l'heure dorée.</div></div>
-          <div class="resto-grid" style="margin-top:0.6rem;">
-            <div class="resto-card"><span class="resto-type">Français · Vue Falls Park</span><div class="resto-name">Passerelle Bistro</div><div class="resto-desc">Terrasse en bord de rivière. Moules au safran, bouillabaisse. Vue magnifique.</div></div>
-            <div class="resto-card"><span class="resto-type">Méditerranéen · Partage</span><div class="resto-name">The Lazy Goat</div><div class="resto-desc">Tapas d'inspiration méditerranéenne au bord de la rivière Reedy.</div></div>
-          </div>
-        </div>
-        <div class="tip-box"><strong>🎓 Clemson :</strong> Visite du campus le soir — Death Valley stadium, Tillman Hall, lac Hartwell. La ville est petite mais le campus a beaucoup de caractère.</div>
       </div>
-    </div>
-    <div class="day-card">
-      <div class="day-left">
-        <span class="day-number">J6</span>
-        <span class="day-date">Mercredi<br>22 juillet</span>
-        <span class="day-badge badge-mod">Option A</span>
+
+      <div class="section-block">
+        <div class="section-label">Sur la route</div>
+        <div class="road-stop"><div class="stop-dot"></div><div class="stop-text"><strong>Pawleys Island</strong> — plage sauvage préservée, arrêt d'1h pour une pause mer. Maisons en bois sur pilotis, atmosphère hors du temps.</div></div>
+        <div class="road-stop"><div class="stop-dot"></div><div class="stop-text"><strong>Georgetown, SC</strong> — déjeuner dans la 2e plus ancienne ville de Caroline du Sud, front de mer colonial charmant.</div></div>
       </div>
-      <div class="day-right">
-        <h3>Clemson → Charleston, SC</h3>
-        <span class="drive-info">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
-          Matinée campus · départ après-midi · 3h30 jusqu'à Charleston
-        </span>
-        <div class="section-block">
-          <div class="section-label">Matinée à Clemson</div>
-          <ul class="items-list">
-            <li><strong>Campus Clemson University</strong> — Tillman Hall, Death Valley (stade 80 000 places), jardins botaniques</li>
-            <li><strong>Lake Hartwell</strong> — lac à 5 min du campus, balade au bord de l'eau</li>
-          </ul>
-        </div>
-        <div class="section-block">
-          <div class="section-label">Arrivée Charleston — soirée</div>
-          <ul class="items-list">
-            <li><strong>Rainbow Row</strong> — les maisons géorgiennes colorées</li>
-            <li><strong>King Street</strong> — bars et restaurants le soir</li>
-          </ul>
-        </div>
-        <div class="section-block">
-          <div class="section-label">Dîner</div>
-          <div class="resto-grid">
-            <div class="resto-card"><span class="resto-type">Southern · Institution</span><div class="resto-name">Husk</div><div class="resto-desc">Référence absolue de la cuisine du Sud, menu quotidien. Résa obligatoire.</div></div>
-            <div class="resto-card"><span class="resto-type">Lowcountry · Classique</span><div class="resto-name">Magnolias</div><div class="resto-desc">30 ans d'excellence à Charleston — scallops, shrimp & sausage.</div></div>
-          </div>
+
+      <div class="section-block">
+        <div class="section-label">Arrivée Charleston — après-midi</div>
+        <ul class="items-list">
+          <li><strong>Rainbow Row & French Quarter</strong> — première découverte du centre historique</li>
+          <li><strong>The Battery & White Point Garden</strong> — jardins et vue sur le port</li>
+          <li><strong>King Street</strong> — bars et vie nocturne</li>
+        </ul>
+      </div>
+
+      <div class="section-block">
+        <div class="section-label">Dîner</div>
+        <div class="resto-grid">
+          <div class="resto-card"><span class="resto-type">Southern · Institution</span><div class="resto-name">Husk</div><div class="resto-desc">Référence absolue de la cuisine du Sud, menu quotidien. Résa obligatoire.</div></div>
+          <div class="resto-card"><span class="resto-type">Nouveau · Parisian vibe</span><div class="resto-name">Merci (28 Pitt St)</div><div class="resto-desc">26 couverts, bâtisse de 1820, ambiance bistro parisien avec touche Southern. Le spot du moment.</div></div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- OPTION B : MYRTLE BEACH -->
-  <div id="panel-myrtlebeach" class="route-panel">
-    <div class="day-card">
-      <div class="day-left">
-        <span class="day-number">J5</span>
-        <span class="day-date">Mardi<br>21 juillet</span>
-        <span class="day-badge badge-new">Option B</span>
-      </div>
-      <div class="day-right">
-        <h3>Wilmington → Myrtle Beach, SC</h3>
-        <span class="drive-info">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
-          1h30 depuis Wilmington · journée complète sur place
-        </span>
-        <div class="section-block">
-          <div class="section-label">Hébergement (nuits J5 & J6)</div>
-          <div class="hotel-card">
-            <div class="hotel-icon">🏠</div>
-            <div class="hotel-info">
-              <div class="hotel-name">Le Refuge d'Harlow — Airbnb Charleston, SC</div>
-              <div class="hotel-meta">21 → 23 juillet · 2 nuits</div>
-            </div>
-            <div class="hotel-price">274 $</div>
-          </div>
-        </div>
-        <div class="section-block">
-          <div class="section-label">Sur la route</div>
-          <div class="road-stop"><div class="stop-dot"></div><div class="stop-text"><strong>Murrells Inlet</strong> — petit village de pêcheurs à 20 min au sud de Myrtle Beach, bien plus charmant. "Seafood Capital of SC" — arrêt déjeuner idéal.</div></div>
-        </div>
-        <div class="section-block">
-          <div class="section-label">À Myrtle Beach</div>
-          <ul class="items-list">
-            <li><strong>The Boardwalk & Promenade</strong> — 1,8 km le long de la plage, ambiance animée</li>
-            <li><strong>Myrtle Beach State Park</strong> (au sud) — plage préservée loin des touristes, forêt maritime</li>
-            <li><strong>Broadway at the Beach</strong> — si tu veux l'aspect entertainment kitsch assumé</li>
-          </ul>
-        </div>
-        <div class="section-block">
-          <div class="section-label">Dîner</div>
-          <div class="resto-grid">
-            <div class="resto-card"><span class="resto-type">Seafood · Murrells Inlet</span><div class="resto-name">Dead Dog Saloon</div><div class="resto-desc">Vue sur le marsh, ambiance décontractée, fish tacos, steamer pots de fruits de mer. Classique de Murrells Inlet.</div></div>
-            <div class="resto-card"><span class="resto-type">BBQ · Local</span><div class="resto-name">Croissants Bistro & Bakery</div><div class="resto-desc">Dans le Market Common, cuisine du marché, Southern comfort food, bonne adresse du soir.</div></div>
-          </div>
-        </div>
-      </div>
+  <!-- J6 -->
+  <div class="day-card">
+    <div class="day-left">
+      <span class="day-number">J6</span>
+      <span class="day-date">Mercredi<br>22 juillet</span>
+      <span class="day-badge badge-ok">Confirmé</span>
     </div>
-    <div class="day-card">
-      <div class="day-left">
-        <span class="day-number">J6</span>
-        <span class="day-date">Mercredi<br>22 juillet</span>
-        <span class="day-badge badge-new">Option B</span>
+    <div class="day-right">
+      <h3>Charleston — journée complète</h3>
+
+      <div class="section-block">
+        <div class="section-label">Matin</div>
+        <ul class="items-list">
+          <li><strong>Charleston City Market</strong> — ouvert tôt, artisanat local, sweetgrass baskets</li>
+          <li><strong>Magnolia Plantation & Gardens</strong> (20 min) — jardins extraordinaires et histoire profonde sur l'esclavage</li>
+          <li>Alternative : <strong>Middleton Place</strong> — les jardins paysagers les plus anciens des USA</li>
+        </ul>
       </div>
-      <div class="day-right">
-        <h3>Myrtle Beach → Charleston, SC</h3>
-        <span class="drive-info">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
-          2h depuis Myrtle Beach · arrivée en début d'après-midi
-        </span>
-        <div class="section-block">
-          <div class="section-label">Sur la route — Pawleys Island</div>
-          <div class="road-stop"><div class="stop-dot"></div><div class="stop-text"><strong>Pawleys Island</strong> — l'une des plus belles et plus anciennes stations balnéaires de la côte est, très préservée. Plage sauvage, maisons en bois sur pilotis. Arrêt de 1h idéal.</div></div>
-          <div class="road-stop"><div class="stop-dot"></div><div class="stop-text"><strong>Georgetown, SC</strong> — 2e plus ancienne ville de Caroline du Sud, front de mer historique, petite ville coloniale attachante.</div></div>
-        </div>
-        <div class="section-block">
-          <div class="section-label">Arrivée Charleston — après-midi</div>
-          <ul class="items-list">
-            <li><strong>Rainbow Row & French Quarter</strong> — découverte du centre historique</li>
-            <li><strong>The Battery</strong> — jardins et vue sur le port</li>
-            <li><strong>King Street</strong> — shopping et apéro en terrasse</li>
-          </ul>
-        </div>
-        <div class="section-block">
-          <div class="section-label">Dîner</div>
-          <div class="resto-grid">
-            <div class="resto-card"><span class="resto-type">Southern · Institution</span><div class="resto-name">Husk</div><div class="resto-desc">Référence absolue de la cuisine du Sud, menu quotidien. Résa obligatoire.</div></div>
-            <div class="resto-card"><span class="resto-type">Lowcountry · Classique</span><div class="resto-name">Magnolias</div><div class="resto-desc">30 ans d'excellence à Charleston — scallops, shrimp & sausage.</div></div>
-          </div>
+
+      <div class="section-block">
+        <div class="section-label">Après-midi</div>
+        <ul class="items-list">
+          <li><strong>Sullivan's Island Beach</strong> (20 min) — plage locale et calme, fort historique</li>
+          <li><strong>Fort Sumter</strong> (ferry) — là où a commencé la guerre de Sécession</li>
+        </ul>
+      </div>
+
+      <div class="section-block">
+        <div class="section-label">Dîner</div>
+        <div class="resto-grid">
+          <div class="resto-card"><span class="resto-type">Italian · Family-style</span><div class="resto-name">Volpe</div><div class="resto-desc">4 plats en partage ~60$/pers. Tuna crudo, pasta au canard, flounder pané. Très couru en ce moment.</div></div>
+          <div class="resto-card"><span class="resto-type">Lowcountry · Classique</span><div class="resto-name">Magnolias</div><div class="resto-desc">30 ans d'excellence à Charleston — scallops, shrimp & sausage.</div></div>
         </div>
       </div>
     </div>
   </div>
-
-  <!-- OPTION C : SAVANNAH +1 NUIT -->
-  <div id="panel-savannah2" class="route-panel">
-    <div class="day-card">
-      <div class="day-left">
-        <span class="day-number">J5</span>
-        <span class="day-date">Mardi<br>21 juillet</span>
-        <span class="day-badge badge-new">Option C</span>
-      </div>
-      <div class="day-right">
-        <h3>Wilmington → Charleston, SC</h3>
-        <span class="drive-info">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
-          4h30 avec arrêts · route directe vers le sud
-        </span>
-        <div class="section-block">
-          <div class="section-label">Hébergement (nuits J5 & J6)</div>
-          <div class="hotel-card">
-            <div class="hotel-icon">🏠</div>
-            <div class="hotel-info">
-              <div class="hotel-name">Le Refuge d'Harlow — Airbnb Charleston, SC</div>
-              <div class="hotel-meta">21 → 23 juillet · 2 nuits</div>
-            </div>
-            <div class="hotel-price">274 $</div>
-          </div>
-        </div>
-        <div class="section-block">
-          <div class="section-label">Sur la route</div>
-          <div class="road-stop"><div class="stop-dot"></div><div class="stop-text"><strong>Pawleys Island</strong> — plage sauvage préservée, arrêt d'1h pour une pause mer.</div></div>
-          <div class="road-stop"><div class="stop-dot"></div><div class="stop-text"><strong>Georgetown, SC</strong> — déjeuner dans la 2e plus ancienne ville de Caroline du Sud, front de mer colonial charmant.</div></div>
-        </div>
-        <div class="section-block">
-          <div class="section-label">Arrivée Charleston — après-midi</div>
-          <ul class="items-list">
-            <li><strong>Rainbow Row & French Quarter</strong> — première découverte du centre</li>
-            <li><strong>The Battery & White Point Garden</strong> — jardins et vue sur le port</li>
-            <li><strong>King Street</strong> — bars et vie nocturne</li>
-          </ul>
-        </div>
-        <div class="section-block">
-          <div class="section-label">Dîner</div>
-          <div class="resto-grid">
-            <div class="resto-card"><span class="resto-type">Southern · Institution</span><div class="resto-name">Husk</div><div class="resto-desc">Référence absolue de la cuisine du Sud, menu quotidien. Résa obligatoire.</div></div>
-            <div class="resto-card"><span class="resto-type">Nouveau · Parisian vibe</span><div class="resto-name">Merci (28 Pitt St)</div><div class="resto-desc">26 couverts, bâtisse de 1820, ambiance bistro parisien avec touche Southern.</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="day-card">
-      <div class="day-left">
-        <span class="day-number">J6</span>
-        <span class="day-date">Mercredi<br>22 juillet</span>
-        <span class="day-badge badge-new">Option C</span>
-      </div>
-      <div class="day-right">
-        <h3>Charleston — journée complète</h3>
-        <div class="tip-box" style="margin-bottom:0.8rem;"><strong>✨ Bonus :</strong> En choisissant cette option, tu as une journée complète à Charleston dès J6, et tu ajouteras une 2e nuit à Savannah (J9) pour explorer les Golden Isles plus tranquillement.</div>
-        <div class="section-block">
-          <div class="section-label">Matin</div>
-          <ul class="items-list">
-            <li><strong>Charleston City Market</strong> — ouvert tôt, artisanat local, sweetgrass baskets</li>
-            <li><strong>Magnolia Plantation & Gardens</strong> (20 min) — jardins extraordinaires, histoire de l'esclavage</li>
-          </ul>
-        </div>
-        <div class="section-block">
-          <div class="section-label">Après-midi</div>
-          <ul class="items-list">
-            <li><strong>Sullivan's Island Beach</strong> (20 min) — plage locale et calme, fort historique</li>
-            <li><strong>Fort Sumter</strong> (ferry) — là où a commencé la guerre de Sécession</li>
-          </ul>
-        </div>
-        <div class="section-block">
-          <div class="section-label">Dîner</div>
-          <div class="resto-grid">
-            <div class="resto-card"><span class="resto-type">Italian · Family-style</span><div class="resto-name">Volpe</div><div class="resto-desc">4 plats en partage ~60$/pers. Tuna crudo, pasta au canard, flounder pané.</div></div>
-            <div class="resto-card"><span class="resto-type">Lowcountry · Classique</span><div class="resto-name">Magnolias</div><div class="resto-desc">30 ans d'excellence à Charleston — scallops, shrimp & sausage.</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    function switchRoute(id) {
-      document.querySelectorAll('.route-panel').forEach(p => p.classList.remove('active'));
-      document.querySelectorAll('.switcher-btn').forEach(b => b.classList.remove('active'));
-      document.getElementById('panel-' + id).classList.add('active');
-      event.currentTarget.classList.add('active');
-    }
-  </script>
 
   <!-- REGION 2 -->
   <div class="region-header">
@@ -1080,74 +876,20 @@ function initMap() {
     </div>
   </div>
 
-  <!-- J7 — adapté selon l'option choisie -->
-
-  <!-- J7 options A & B : journée complète Charleston -->
-  <div id="j7-ab" class="day-card">
+  <!-- J7 -->
+  <div class="day-card">
     <div class="day-left">
       <span class="day-number">J7</span>
       <span class="day-date">Jeudi<br>23 juillet</span>
-      <span class="day-badge badge-new">Nuit supp.</span>
+      <span class="day-badge badge-ok">Confirmé</span>
     </div>
     <div class="day-right">
-      <h3>Charleston, SC — journée complète</h3>
-      <div class="section-block">
-        <div class="section-label">Hébergement ce soir (J7)</div>
-        <div class="hotel-card">
-          <div class="hotel-icon">🏨</div>
-          <div class="hotel-info">
-            <div class="hotel-name">Aloft Savannah Downtown Historic District</div>
-            <div class="hotel-meta">23 → 25 juillet · 2 nuits</div>
-          </div>
-          <div class="hotel-price">258 $</div>
-        </div>
-      </div>
-      <div class="section-block">
-        <div class="section-label">Matin</div>
-        <ul class="items-list">
-          <li><strong>Charleston City Market</strong> — ouvert tôt, artisanat local, sweetgrass baskets</li>
-          <li><strong>Magnolia Plantation & Gardens</strong> (20 min) — jardins extraordinaires et histoire profonde sur l'esclavage</li>
-          <li>Alternative : <strong>Middleton Place</strong> — les jardins paysagers les plus anciens des USA</li>
-        </ul>
-      </div>
-      <div class="section-block">
-        <div class="section-label">Après-midi</div>
-        <ul class="items-list">
-          <li><strong>Sullivan's Island Beach</strong> (20 min) — plage locale et calme, fort historique</li>
-          <li><strong>Fort Sumter</strong> (ferry) ou <strong>South Carolina Aquarium</strong> si temps restant</li>
-        </ul>
-      </div>
-      <div class="section-block">
-        <div class="section-label">Dîner</div>
-        <div class="resto-grid">
-          <div class="resto-card">
-            <span class="resto-type">Nouveau · Parisian vibe</span>
-            <div class="resto-name">Merci (28 Pitt St)</div>
-            <div class="resto-desc">Ouvert en mars 2025 — 26 couverts, bâtisse de 1820, ambiance bistro parisien avec touche Southern. Le spot du moment à Charleston.</div>
-          </div>
-          <div class="resto-card">
-            <span class="resto-type">Italian · Family-style</span>
-            <div class="resto-name">Volpe</div>
-            <div class="resto-desc">4 plats en partage ~60$/pers. Tuna crudo, pasta au canard, flounder pané. Très couru en ce moment.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- J7 option C : Charleston → Savannah 1ère nuit -->
-  <div id="j7-c" class="day-card" style="display:none;">
-    <div class="day-left">
-      <span class="day-number">J7</span>
-      <span class="day-date">Jeudi<br>23 juillet</span>
-      <span class="day-badge badge-new">Option C</span>
-    </div>
-    <div class="day-right">
-      <h3>Charleston → Savannah, GA — 1ère nuit</h3>
+      <h3>Charleston → Savannah, GA</h3>
       <span class="drive-info">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
         2h depuis Charleston · arrêt Beaufort en route
       </span>
+
       <div class="section-block">
         <div class="section-label">Hébergement (nuits J7 & J8)</div>
         <div class="hotel-card">
@@ -1159,10 +901,12 @@ function initMap() {
           <div class="hotel-price">258 $</div>
         </div>
       </div>
+
       <div class="section-block">
         <div class="section-label">Sur la route</div>
         <div class="road-stop"><div class="stop-dot"></div><div class="stop-text"><strong>Beaufort, SC</strong> — petite ville coloniale magnifique entre Charleston et Savannah. Waterfront Park, maisons antebellum, déjeuner tranquille.</div></div>
       </div>
+
       <div class="section-block">
         <div class="section-label">Arrivée Savannah — après-midi</div>
         <ul class="items-list">
@@ -1171,135 +915,51 @@ function initMap() {
           <li><strong>River Street</strong> — premier apéro face aux cargos géants sur la Savannah River</li>
         </ul>
       </div>
+
       <div class="section-block">
         <div class="section-label">Dîner</div>
         <div class="resto-grid">
-          <div class="resto-card">
-            <span class="resto-type">Southern · Comfort food</span>
-            <div class="resto-name">Cotton & Rye</div>
-            <div class="resto-desc">Meilleur restaurant de l'année USA Today 2024 — shrimp & grits, chicken wings primés, cocktails maison.</div>
-          </div>
-          <div class="resto-card">
-            <span class="resto-type">Waterfront · Casual</span>
-            <div class="resto-name">Coastal 15 (Bohemian Hotel)</div>
-            <div class="resto-desc">Portes ouvertes sur la Savannah River, huîtres de Virginie, gumbo georgien. Vue sur les bateaux.</div>
-          </div>
-        </div>
-      </div>
-      <div class="tip-box"><strong>✨ Bonus option C :</strong> Le J8 sera une 2e journée à Savannah — tu pourras explorer Bonaventure Cemetery, les Golden Isles (Jekyll Island) et prendre le temps de vraiment t'imprégner de la ville.</div>
-    </div>
-  </div>
-
-  <script>
-    const _switchRouteOrig = window.switchRoute;
-    window.switchRoute = function(id) {
-      _switchRouteOrig && _switchRouteOrig(id);
-      if (id === 'savannah2') {
-        document.getElementById('j7-ab').style.display = 'none';
-        document.getElementById('j7-c').style.display = '';
-      } else {
-        document.getElementById('j7-ab').style.display = '';
-        document.getElementById('j7-c').style.display = 'none';
-      }
-    };
-  </script>
-
-  <!-- J8 — adapté selon l'option -->
-
-  <!-- J8 options A & B : arrivée Savannah -->
-  <div id="j8-ab" class="day-card">
-    <div class="day-left">
-      <span class="day-number">J8</span>
-      <span class="day-date">Vendredi<br>24 juillet</span>
-      <span class="day-badge badge-ok">Inchangé</span>
-    </div>
-    <div class="day-right">
-      <h3>Savannah, GA</h3>
-      <span class="drive-info">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
-        2h depuis Charleston
-      </span>
-      <div class="section-block">
-        <div class="section-label">Hébergement (nuits J8 & J9)</div>
-        <div class="hotel-card">
-          <div class="hotel-icon">🏨</div>
-          <div class="hotel-info">
-            <div class="hotel-name">Aloft Savannah Downtown Historic District</div>
-            <div class="hotel-meta">23 → 25 juillet · 2 nuits</div>
-          </div>
-          <div class="hotel-price">258 $</div>
-        </div>
-      </div>
-      <div class="section-block">
-        <div class="section-label">Sur la route</div>
-        <div class="road-stop"><div class="stop-dot"></div><div class="stop-text"><strong>Beaufort, SC</strong> (30 min de détour) — petite ville coloniale magnifique. Waterfront Park, maisons antebellum. Vaut le coup si tu pars tôt.</div></div>
-      </div>
-      <div class="section-block">
-        <div class="section-label">À voir à Savannah</div>
-        <ul class="items-list">
-          <li><strong>Forsyth Park</strong> — la fontaine iconique, les chênes espagnols</li>
-          <li><strong>Les Squares</strong> — 22 squares historiques à traverser à pied</li>
-          <li><strong>Bonaventure Cemetery</strong> — l'un des plus beaux cimetières d'Amérique</li>
-          <li><strong>River Street</strong> — bars, restaurants, vue sur les cargos géants</li>
-          <li><strong>Broughton Street</strong> — shopping et cafés locaux</li>
-        </ul>
-      </div>
-      <div class="section-block">
-        <div class="section-label">À manger</div>
-        <div class="resto-grid">
-          <div class="resto-card"><span class="resto-type">James Beard · Institution</span><div class="resto-name">The Grey</div><div class="resto-desc">Dans l'ancienne gare routière Greyhound de 1938 — cuisine Southern avec influences africaines. Résa loin à l'avance.</div></div>
-          <div class="resto-card"><span class="resto-type">Southern · Comfort food</span><div class="resto-name">Cotton & Rye</div><div class="resto-desc">Meilleur restaurant de l'année USA Today 2024 — shrimp & grits, chicken wings primés.</div></div>
-          <div class="resto-card"><span class="resto-type">Waterfront · Casual</span><div class="resto-name">Coastal 15 (Bohemian Hotel)</div><div class="resto-desc">Portes ouvertes sur la Savannah River, huîtres de Virginie, gumbo georgien.</div></div>
+          <div class="resto-card"><span class="resto-type">Southern · Comfort food</span><div class="resto-name">Cotton & Rye</div><div class="resto-desc">Meilleur restaurant de l'année USA Today 2024 — shrimp & grits, chicken wings primés, cocktails maison.</div></div>
+          <div class="resto-card"><span class="resto-type">Waterfront · Casual</span><div class="resto-name">Coastal 15 (Bohemian Hotel)</div><div class="resto-desc">Portes ouvertes sur la Savannah River, huîtres de Virginie, gumbo georgien. Vue sur les bateaux.</div></div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- J8 option C : 2e journée Savannah + Golden Isles -->
-  <div id="j8-c" class="day-card" style="display:none;">
+  <!-- J8 -->
+  <div class="day-card">
     <div class="day-left">
       <span class="day-number">J8</span>
       <span class="day-date">Vendredi<br>24 juillet</span>
-      <span class="day-badge badge-new">Option C</span>
+      <span class="day-badge badge-ok">Confirmé</span>
     </div>
     <div class="day-right">
-      <h3>Savannah — 2e journée & Golden Isles</h3>
+      <h3>Savannah — journée complète & Golden Isles</h3>
+
       <div class="section-block">
         <div class="section-label">Matin à Savannah</div>
         <ul class="items-list">
           <li><strong>Bonaventure Cemetery</strong> — l'un des plus beaux cimetières d'Amérique, mousse espagnole et sculptures victoriennes</li>
           <li><strong>Broughton Street</strong> — shopping, cafés, librairies locales</li>
-          <li><strong>The Grey Market</strong> — le café du matin de The Grey, plus accessible et tout aussi bon</li>
+          <li><strong>The Grey Market</strong> — le café du matin, plus accessible que The Grey et tout aussi bon</li>
         </ul>
       </div>
+
       <div class="section-block">
         <div class="section-label">Après-midi — Golden Isles (1h depuis Savannah)</div>
         <div class="road-stop"><div class="stop-dot"></div><div class="stop-text"><strong>Jekyll Island</strong> — île protégée, plages désertes, ruines du club des Rockefeller & Carnegie. L'une des plus belles îles de la côte est.</div></div>
         <div class="road-stop"><div class="stop-dot"></div><div class="stop-text"><strong>St. Simons Island</strong> — phare, village charmant, plage plus animée. Alternative si Jekyll trop loin.</div></div>
       </div>
+
       <div class="section-block">
         <div class="section-label">Dîner — retour Savannah</div>
         <div class="resto-grid">
-          <div class="resto-card"><span class="resto-type">James Beard · Institution</span><div class="resto-name">The Grey</div><div class="resto-desc">L'occasion de réserver pour ce 2e soir — cuisine Southern avec influences africaines, le meilleur de Savannah.</div></div>
-          <div class="resto-card"><span class="resto-type">Southern · Comfort food</span><div class="resto-name">Cotton & Rye</div><div class="resto-desc">Si The Grey complet — shrimp & grits, chicken wings primés, meilleur resto 2024 USA Today.</div></div>
+          <div class="resto-card"><span class="resto-type">James Beard · Institution</span><div class="resto-name">The Grey</div><div class="resto-desc">Dans l'ancienne gare routière Greyhound de 1938 — cuisine Southern avec influences africaines. Résa loin à l'avance.</div></div>
+          <div class="resto-card"><span class="resto-type">Southern · Comfort food</span><div class="resto-name">Cotton & Rye</div><div class="resto-desc">Si The Grey complet — shrimp & grits, chicken wings primés, meilleur resto USA Today 2024.</div></div>
         </div>
       </div>
     </div>
   </div>
-
-  <script>
-    const _origSwitch2 = window.switchRoute;
-    window.switchRoute = function(id) {
-      _origSwitch2(id);
-      if (id === 'savannah2') {
-        document.getElementById('j8-ab').style.display = 'none';
-        document.getElementById('j8-c').style.display = '';
-      } else {
-        document.getElementById('j8-ab').style.display = '';
-        document.getElementById('j8-c').style.display = 'none';
-      }
-    };
-  </script>
 
   <!-- J9 -->
   <div class="day-card">

@@ -7,17 +7,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --cream: #FAF7F2;
-    --sand: #EFE8D5;
-    --ink: #2C2420;
-    --ink-light: #5C4F45;
+    --cream: #F5F0E8;
+    --sand: #E8DFC8;
+    --ink: #1A1612;
+    --ink-light: #4A3F35;
     --accent: #C4622D;
     --accent-light: #E8956A;
     --teal: #2A7A6F;
     --teal-light: #4DA89A;
     --gold: #B8860B;
-    --muted: #9A8D80;
-    --border: #DDD3BF;
+    --muted: #8A7D70;
+    --border: #D4C9B5;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -32,7 +32,7 @@
 
   /* HEADER */
   .hero {
-    background: #3D2E28;
+    background: var(--ink);
     color: var(--cream);
     padding: 5rem 2rem 4rem;
     text-align: center;
@@ -319,7 +319,7 @@
 
   /* FOOTER */
   footer {
-    background: #3D2E28;
+    background: var(--ink);
     color: rgba(245,240,232,0.4);
     text-align: center;
     padding: 2rem;
@@ -327,77 +327,43 @@
     margin-top: 4rem;
   }
 
-  .day-right h3 a {
-    color: var(--ink);
-    text-decoration: none;
-    border-bottom: 1.5px solid var(--accent-light);
-    transition: color 0.15s, border-color 0.15s;
-  }
-  .day-right h3 a:hover {
-    color: var(--accent);
-    border-bottom-color: var(--accent);
-  }
-  .dest-link-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.3rem;
-    font-size: 0.65rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--teal);
-    text-decoration: none;
-    margin-left: 0.6rem;
-    vertical-align: middle;
-    opacity: 0.8;
-  }
-  .dest-link-tag:hover { opacity: 1; }
-
-  /* RUNNING SPOTS */
-  .run-block {
-    margin-top: 1rem;
-  }
-  .run-card {
-    background: #F0F7F5;
-    border: 1px solid #C2DDD8;
-    border-left: 3px solid var(--teal);
-    padding: 0.65rem 0.9rem;
-    border-radius: 0 4px 4px 0;
+  /* HOTEL CARD */
+  .hotel-card {
     display: flex;
-    gap: 0.75rem;
     align-items: flex-start;
+    gap: 0.7rem;
+    background: white;
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--teal);
+    padding: 0.6rem 0.8rem;
+    border-radius: 0 4px 4px 0;
+    margin-top: 0.2rem;
   }
-  .run-icon {
+  .hotel-icon {
     font-size: 1rem;
-    flex-shrink: 0;
     margin-top: 0.1rem;
+    flex-shrink: 0;
   }
-  .run-content {}
-  .run-name {
+  .hotel-info { flex: 1; }
+  .hotel-name {
     font-weight: 500;
     font-size: 0.9rem;
-    color: var(--teal);
+    color: var(--ink);
+    line-height: 1.3;
   }
-  .run-desc {
-    font-size: 0.8rem;
-    color: var(--ink-light);
-    margin-top: 0.1rem;
+  .hotel-meta {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 0.15rem;
   }
-  .run-meta {
-    display: flex;
-    gap: 0.6rem;
-    margin-top: 0.35rem;
-    flex-wrap: wrap;
-  }
-  .run-tag {
-    font-size: 0.6rem;
+  .hotel-price {
+    font-size: 0.78rem;
     font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 0.15rem 0.45rem;
-    border-radius: 2px;
-    background: #D4EDE9;
-    color: #2A7A6F;
+    color: var(--teal);
+    white-space: nowrap;
+    margin-left: auto;
+    padding-left: 0.5rem;
+    flex-shrink: 0;
   }
 
   @media (max-width: 600px) {
@@ -419,7 +385,7 @@
   <div class="hero-meta">
     <div class="meta-item">
       <span class="meta-label">Départ</span>
-      <span class="meta-value">New York, NY</span>
+      <span class="meta-value">Cape May, NJ</span>
     </div>
     <div class="meta-item">
       <span class="meta-label">Arrivée</span>
@@ -449,18 +415,18 @@
 <script>
 function initMap() {
   const stops = [
-    { day: "J1",     date: "17 juil.",      name: "Cape May, NJ",           lat: 38.935, lng: -74.906 },
-    { day: "J2",     date: "18 juil.",      name: "Virginia Beach, VA",     lat: 36.853, lng: -75.978 },
-    { day: "J3",     date: "19 juil.",      name: "Outer Banks, NC",        lat: 35.994, lng: -75.663 },
-    { day: "J4",     date: "20 juil.",      name: "Wilmington, NC",         lat: 34.226, lng: -77.945 },
-    { day: "J5–6",   date: "21-22 juil.",   name: "Clemson / Charleston",   lat: 33.700, lng: -81.200 },
-    { day: "J7",     date: "23 juil.",      name: "Charleston, SC",         lat: 32.776, lng: -79.931 },
-    { day: "J8",     date: "24 juil.",      name: "Savannah, GA",           lat: 32.083, lng: -81.100 },
-    { day: "J9",     date: "25 juil.",      name: "Saint Augustine, FL",    lat: 29.894, lng: -81.314 },
-    { day: "J10",    date: "26 juil.",      name: "Kennedy Space Center",   lat: 28.524, lng: -80.681 },
-    { day: "J11–12", date: "27-28 juil.",   name: "Orlando, FL",            lat: 28.538, lng: -81.379 },
-    { day: "J13",    date: "29 juil.",      name: "Palm Beach, FL",         lat: 26.705, lng: -80.064 },
-    { day: "J14–15", date: "30-31 juil.",   name: "Miami, FL",              lat: 25.761, lng: -80.192 },
+    { day: "J1",     date: "17 juil.",      name: "Cape May, NJ",                        lat: 38.935, lng: -74.906 },
+    { day: "J2",     date: "18 juil.",      name: "Virginia Beach, VA",                  lat: 36.853, lng: -75.978 },
+    { day: "J3",     date: "19 juil.",      name: "Outer Banks, NC",                     lat: 35.994, lng: -75.663 },
+    { day: "J4",     date: "20 juil.",      name: "Wilmington, NC",                      lat: 34.226, lng: -77.945 },
+    { day: "J5",     date: "21 juil.",      name: "Columbia / Greenville / Clemson, SC", lat: 34.683, lng: -82.837 },
+    { day: "J6",     date: "22 juil.",      name: "Clemson, SC",                         lat: 34.683, lng: -82.837 },
+    { day: "J7",     date: "22-23 juil.",   name: "Charleston, SC",                      lat: 32.776, lng: -79.931 },
+    { day: "J8",     date: "24 juil.",      name: "Savannah, GA",                        lat: 32.083, lng: -81.100 },
+    { day: "J9",     date: "25 juil.",      name: "Saint Augustine, FL",                 lat: 29.894, lng: -81.314 },
+    { day: "J10",    date: "26 juil.",      name: "Kennedy Space Center",                lat: 28.524, lng: -80.681 },
+    { day: "J11",    date: "27 juil.",      name: "Orlando, FL",                         lat: 28.538, lng: -81.379 },
+    { day: "J12-15", date: "28 juil.–1 août", name: "Miami, FL",                           lat: 25.761, lng: -80.192 },
   ];
 
   const map = L.map('map', { zoomControl: true, scrollWheelZoom: false });
@@ -518,6 +484,64 @@ function initMap() {
 </script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" onload="initMap()"></script>
 
+<!-- BUDGET HÉBERGEMENT -->
+<div style="background: white; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 0 0 2rem;">
+  <div style="max-width:860px;margin:0 auto;padding:0 1.5rem;">
+    <div style="font-family:'DM Sans',sans-serif;font-size:0.65rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:#8A7D70;padding:2rem 0 1rem;">Budget hébergement — récapitulatif</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:0.6rem;">
+      <div style="border:1px solid var(--border);border-left:3px solid var(--teal);padding:0.6rem 0.8rem;border-radius:0 4px 4px 0;background:var(--cream);">
+        <div style="font-size:0.65rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:0.2rem;">J1 · Cape May / Wildwood</div>
+        <div style="font-size:0.85rem;font-weight:500;color:var(--ink);">Rusmar Hotel</div>
+        <div style="font-size:0.75rem;color:var(--muted);">17–18 juillet · <strong style="color:var(--teal)">254 $</strong></div>
+      </div>
+      <div style="border:1px solid var(--border);border-left:3px solid var(--teal);padding:0.6rem 0.8rem;border-radius:0 4px 4px 0;background:var(--cream);">
+        <div style="font-size:0.65rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:0.2rem;">J2 · Virginia Beach</div>
+        <div style="font-size:0.85rem;font-weight:500;color:var(--ink);">Sundial Inn</div>
+        <div style="font-size:0.75rem;color:var(--muted);">18–19 juillet · <strong style="color:var(--teal)">200 $</strong></div>
+      </div>
+      <div style="border:1px solid var(--border);border-left:3px solid var(--teal);padding:0.6rem 0.8rem;border-radius:0 4px 4px 0;background:var(--cream);">
+        <div style="font-size:0.65rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:0.2rem;">J3 · Outer Banks</div>
+        <div style="font-size:0.85rem;font-weight:500;color:var(--ink);">Avon Motel</div>
+        <div style="font-size:0.75rem;color:var(--muted);">19–20 juillet · <strong style="color:var(--teal)">168 $</strong> <span style="color:var(--muted)">(paiement sur place)</span></div>
+      </div>
+      <div style="border:1px solid var(--border);border-left:3px solid var(--teal);padding:0.6rem 0.8rem;border-radius:0 4px 4px 0;background:var(--cream);">
+        <div style="font-size:0.65rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:0.2rem;">J4 · Wilmington</div>
+        <div style="font-size:0.85rem;font-weight:500;color:var(--ink);">Spark by Hilton</div>
+        <div style="font-size:0.75rem;color:var(--muted);">20–21 juillet · <strong style="color:var(--teal)">108 $</strong></div>
+      </div>
+      <div style="border:1px solid var(--border);border-left:3px solid var(--teal);padding:0.6rem 0.8rem;border-radius:0 4px 4px 0;background:var(--cream);">
+        <div style="font-size:0.65rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:0.2rem;">J5–J6 · Charleston</div>
+        <div style="font-size:0.85rem;font-weight:500;color:var(--ink);">Le Refuge d'Harlow — Airbnb</div>
+        <div style="font-size:0.75rem;color:var(--muted);">21–23 juillet · <strong style="color:var(--teal)">274 $</strong></div>
+      </div>
+      <div style="border:1px solid var(--border);border-left:3px solid var(--teal);padding:0.6rem 0.8rem;border-radius:0 4px 4px 0;background:var(--cream);">
+        <div style="font-size:0.65rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:0.2rem;">J7–J8 · Savannah</div>
+        <div style="font-size:0.85rem;font-weight:500;color:var(--ink);">Aloft Downtown Historic District</div>
+        <div style="font-size:0.75rem;color:var(--muted);">23–25 juillet · <strong style="color:var(--teal)">258 $</strong></div>
+      </div>
+      <div style="border:1px solid var(--border);border-left:3px solid var(--teal);padding:0.6rem 0.8rem;border-radius:0 4px 4px 0;background:var(--cream);">
+        <div style="font-size:0.65rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:0.2rem;">J9 · Saint Augustine</div>
+        <div style="font-size:0.85rem;font-weight:500;color:var(--ink);">The Ponce Hotel</div>
+        <div style="font-size:0.75rem;color:var(--muted);">25–26 juillet · <strong style="color:var(--teal)">139 $</strong> <span style="color:var(--muted)">(dont 15 $ sur place)</span></div>
+      </div>
+      <div style="border:1px solid var(--border);border-left:3px solid var(--teal);padding:0.6rem 0.8rem;border-radius:0 4px 4px 0;background:var(--cream);">
+        <div style="font-size:0.65rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:0.2rem;">J10–J11 · Titusville / KSC</div>
+        <div style="font-size:0.85rem;font-weight:500;color:var(--ink);">Days Inn by Wyndham Titusville</div>
+        <div style="font-size:0.75rem;color:var(--muted);">26–28 juillet · <strong style="color:var(--teal)">162 $</strong></div>
+      </div>
+      <div style="border:1px solid var(--border);border-left:3px solid var(--accent);padding:0.6rem 0.8rem;border-radius:0 4px 4px 0;background:#FEF0E8;">
+        <div style="font-size:0.65rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.2rem;">J12–J15 · Miami · 4 nuits</div>
+        <div style="font-size:0.85rem;font-weight:500;color:var(--ink);">Hyatt Regency Miami — Bayfront Park</div>
+        <div style="font-size:0.75rem;color:var(--muted);">28 juil. – 1er août · <strong style="color:var(--accent)">756 $</strong></div>
+      </div>
+    </div>
+    <div style="margin-top:1rem;padding:0.7rem 1rem;background:var(--ink);border-radius:4px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;">
+      <span style="font-size:0.75rem;color:rgba(245,240,232,0.6);letter-spacing:0.1em;text-transform:uppercase;">Total hébergement</span>
+      <span style="font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--cream);">2 319 $</span>
+    </div>
+  </div>
+</div>
+
 <div class="container">
 
   <!-- REGION 1 -->
@@ -525,7 +549,7 @@ function initMap() {
     <div class="region-number">01</div>
     <div class="region-info">
       <p>Mid-Atlantic Coast</p>
-      <h2>New York → Cape May → Outer Banks</h2>
+      <h2>Cape May → Outer Banks</h2>
     </div>
   </div>
 
@@ -537,11 +561,23 @@ function initMap() {
       <span class="day-badge badge-ok">Inchangé</span>
     </div>
     <div class="day-right">
-      <h3><a href="cape-may.html">New York → Cape May, NJ</a><a href="cape-may.html" class="dest-link-tag">→ Fiche détail</a></h3>
+      <h3>Cape May, NJ</h3>
       <span class="drive-info">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
-        ~2h30 depuis New York · départ ~14h · arrivée 17–19h
+        Départ ~14h · arrivée 17–19h (2h30)
       </span>
+
+      <div class="section-block">
+        <div class="section-label">Hébergement</div>
+        <div class="hotel-card">
+          <div class="hotel-icon">🏨</div>
+          <div class="hotel-info">
+            <div class="hotel-name">Rusmar Hotel — Wildwood, NJ</div>
+            <div class="hotel-meta">17 → 18 juillet · 1 nuit</div>
+          </div>
+          <div class="hotel-price">254 $</div>
+        </div>
+      </div>
 
       <div class="section-block">
         <div class="section-label">À voir</div>
@@ -579,11 +615,23 @@ function initMap() {
       <span class="day-badge badge-ok">Inchangé</span>
     </div>
     <div class="day-right">
-      <h3><a href="virginia-beach.html">Virginia Beach, VA</a><a href="virginia-beach.html" class="dest-link-tag">→ Fiche détail</a></h3>
+      <h3>Virginia Beach, VA</h3>
       <span class="drive-info">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
         Ferry Cape May–Lewes 7h ou 8h30 (61$, avec voiture) · puis 3h route
       </span>
+
+      <div class="section-block">
+        <div class="section-label">Hébergement</div>
+        <div class="hotel-card">
+          <div class="hotel-icon">🏨</div>
+          <div class="hotel-info">
+            <div class="hotel-name">Sundial Inn — Virginia Beach</div>
+            <div class="hotel-meta">18 → 19 juillet · 1 nuit</div>
+          </div>
+          <div class="hotel-price">200 $</div>
+        </div>
+      </div>
 
       <div class="section-block">
         <div class="section-label">Sur la route — Delaware</div>
@@ -632,26 +680,21 @@ function initMap() {
       <span class="day-badge badge-ok">Inchangé</span>
     </div>
     <div class="day-right">
-      <h3><a href="outer-banks.html">Outer Banks, NC</a><a href="outer-banks.html" class="dest-link-tag">→ Fiche détail</a></h3>
+      <h3>Outer Banks, NC</h3>
       <span class="drive-info">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
         3h max · Logement près de Manteo / Roanoke Island
       </span>
 
-      <div class="run-block">
-        <div class="section-label">🏃 Running du matin</div>
-        <div class="run-card">
-          <div class="run-icon">🌊</div>
-          <div class="run-content">
-            <div class="run-name">The Boardwalk · Virginia Beach</div>
-            <div class="run-desc">5 km de promenade face à l'Atlantique, entièrement plat, large et peu fréquenté le matin. L'une des plus belles pistes de running de la côte est. Courir vers Neptune Park et retour pour un 8–10 km sans effort.</div>
-            <div class="run-meta">
-              <span class="run-tag">🟢 Débutant</span>
-              <span class="run-tag">5–10 km</span>
-              <span class="run-tag">Plat · Asphalte</span>
-              <span class="run-tag">Vue océan</span>
-            </div>
+      <div class="section-block">
+        <div class="section-label">Hébergement</div>
+        <div class="hotel-card">
+          <div class="hotel-icon">🏨</div>
+          <div class="hotel-info">
+            <div class="hotel-name">Avon Motel — Outer Banks, NC</div>
+            <div class="hotel-meta">19 → 20 juillet · 1 nuit · paiement sur place</div>
           </div>
+          <div class="hotel-price">168 $</div>
         </div>
       </div>
 
@@ -691,31 +734,28 @@ function initMap() {
       <span class="day-badge badge-new">Nouveau</span>
     </div>
     <div class="day-right">
-      <h3><a href="wilmington.html">Wilmington, NC</a><a href="wilmington.html" class="dest-link-tag">→ Fiche détail</a></h3>
+      <h3>Wilmington, NC</h3>
       <span class="drive-info">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
         ~3h depuis Outer Banks
       </span>
 
-      <div class="run-block">
-        <div class="section-label">🏃 Running du matin</div>
-        <div class="run-card">
-          <div class="run-icon">🏜️</div>
-          <div class="run-content">
-            <div class="run-name">Route NC-12 & plage de Kill Devil Hills</div>
-            <div class="run-desc">La NC-12 longe l'Atlantique sur des kilomètres — courir tôt le matin avant la chaleur avec l'océan d'un côté et les dunes de l'autre. Ou descends directement sur la plage depuis ton hébergement : le sable est ferme à marée basse. Finir par Jockey's Ridge pour les plus motivés.</div>
-            <div class="run-meta">
-              <span class="run-tag">🟡 Modéré</span>
-              <span class="run-tag">5–12 km</span>
-              <span class="run-tag">Plage · Route côtière</span>
-              <span class="run-tag">Lever de soleil</span>
-            </div>
+      <div class="section-block">
+        <div class="section-label">Hébergement</div>
+        <div class="hotel-card">
+          <div class="hotel-icon">🏨</div>
+          <div class="hotel-info">
+            <div class="hotel-name">Spark by Hilton — Wilmington, Carolina Beach Rd</div>
+            <div class="hotel-meta">20 → 21 juillet · 1 nuit</div>
           </div>
+          <div class="hotel-price">108 $</div>
         </div>
       </div>
 
       <div class="section-block">
-        <div class="section-label">À voir</div> — cuirassé WWII amarré en face du downtown, très impressionnant</li>
+        <div class="section-label">À voir</div>
+        <ul class="items-list">
+          <li><strong>Battleship North Carolina</strong> — cuirassé WWII amarré en face du downtown, très impressionnant</li>
           <li><strong>Historic Downtown Riverwalk</strong> — bord du fleuve Cape Fear, galeries et cafés</li>
           <li><strong>Wrightsville Beach</strong> — 15 min du centre, plage calme et propre, idéale pour l'après-midi</li>
           <li>Castle Street Arts District — quartier art & galeries</li>
@@ -774,9 +814,9 @@ function initMap() {
     <div style="font-size:0.65rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.4rem;">J5–J6 · Choisir un itinéraire</div>
     <div style="font-size:0.85rem;color:var(--muted);margin-bottom:1rem;">Trois options pour les jours 5 et 6 selon ta préférence.</div>
     <div class="switcher-bar">
-      <button class="switcher-btn active" onclick="switchRoute('clemson', this)">🎓 Option A — Clemson</button>
-      <button class="switcher-btn" onclick="switchRoute('myrtlebeach', this)">🏖️ Option B — Myrtle Beach</button>
-      <button class="switcher-btn" onclick="switchRoute('savannah2', this)">🌿 Option C — Savannah +1 nuit</button>
+      <button class="switcher-btn active" onclick="switchRoute('clemson')">🎓 Option A — Clemson</button>
+      <button class="switcher-btn" onclick="switchRoute('myrtlebeach')">🏖️ Option B — Myrtle Beach</button>
+      <button class="switcher-btn" onclick="switchRoute('savannah2')">🌿 Option C — Savannah +1 nuit</button>
     </div>
   </div>
 
@@ -794,6 +834,17 @@ function initMap() {
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
           ~5h avec arrêts · Wilmington → Columbia 2h30 · Columbia → Greenville 1h30 · Greenville → Clemson 45min
         </span>
+        <div class="section-block">
+          <div class="section-label">Hébergement (nuits J5 & J6)</div>
+          <div class="hotel-card">
+            <div class="hotel-icon">🏠</div>
+            <div class="hotel-info">
+              <div class="hotel-name">Le Refuge d'Harlow — Airbnb Charleston, SC</div>
+              <div class="hotel-meta">21 → 23 juillet · 2 nuits</div>
+            </div>
+            <div class="hotel-price">274 $</div>
+          </div>
+        </div>
         <div class="section-block">
           <div class="section-label">Arrêt Columbia — déjeuner</div>
           <div class="road-stop"><div class="stop-dot"></div><div class="stop-text"><strong>SC State House</strong> — architecture Greek Revival, monument aux Africains-Américains. 30 min suffit.</div></div>
@@ -862,6 +913,17 @@ function initMap() {
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
           1h30 depuis Wilmington · journée complète sur place
         </span>
+        <div class="section-block">
+          <div class="section-label">Hébergement (nuits J5 & J6)</div>
+          <div class="hotel-card">
+            <div class="hotel-icon">🏠</div>
+            <div class="hotel-info">
+              <div class="hotel-name">Le Refuge d'Harlow — Airbnb Charleston, SC</div>
+              <div class="hotel-meta">21 → 23 juillet · 2 nuits</div>
+            </div>
+            <div class="hotel-price">274 $</div>
+          </div>
+        </div>
         <div class="section-block">
           <div class="section-label">Sur la route</div>
           <div class="road-stop"><div class="stop-dot"></div><div class="stop-text"><strong>Murrells Inlet</strong> — petit village de pêcheurs à 20 min au sud de Myrtle Beach, bien plus charmant. "Seafood Capital of SC" — arrêt déjeuner idéal.</div></div>
@@ -934,6 +996,17 @@ function initMap() {
           4h30 avec arrêts · route directe vers le sud
         </span>
         <div class="section-block">
+          <div class="section-label">Hébergement (nuits J5 & J6)</div>
+          <div class="hotel-card">
+            <div class="hotel-icon">🏠</div>
+            <div class="hotel-info">
+              <div class="hotel-name">Le Refuge d'Harlow — Airbnb Charleston, SC</div>
+              <div class="hotel-meta">21 → 23 juillet · 2 nuits</div>
+            </div>
+            <div class="hotel-price">274 $</div>
+          </div>
+        </div>
+        <div class="section-block">
           <div class="section-label">Sur la route</div>
           <div class="road-stop"><div class="stop-dot"></div><div class="stop-text"><strong>Pawleys Island</strong> — plage sauvage préservée, arrêt d'1h pour une pause mer.</div></div>
           <div class="road-stop"><div class="stop-dot"></div><div class="stop-text"><strong>Georgetown, SC</strong> — déjeuner dans la 2e plus ancienne ville de Caroline du Sud, front de mer colonial charmant.</div></div>
@@ -962,7 +1035,7 @@ function initMap() {
         <span class="day-badge badge-new">Option C</span>
       </div>
       <div class="day-right">
-        <h3><a href="charleston.html">Charleston — journée complète</a><a href="charleston.html" class="dest-link-tag">→ Fiche détail</a></h3>
+        <h3>Charleston — journée complète</h3>
         <div class="tip-box" style="margin-bottom:0.8rem;"><strong>✨ Bonus :</strong> En choisissant cette option, tu as une journée complète à Charleston dès J6, et tu ajouteras une 2e nuit à Savannah (J9) pour explorer les Golden Isles plus tranquillement.</div>
         <div class="section-block">
           <div class="section-label">Matin</div>
@@ -990,19 +1063,11 @@ function initMap() {
   </div>
 
   <script>
-    function switchRoute(id, btn) {
-      // Panels J5-J6
+    function switchRoute(id) {
       document.querySelectorAll('.route-panel').forEach(p => p.classList.remove('active'));
       document.querySelectorAll('.switcher-btn').forEach(b => b.classList.remove('active'));
       document.getElementById('panel-' + id).classList.add('active');
-      if (btn) btn.classList.add('active');
-      // J7 conditionnel
-      var isSav = id === 'savannah2';
-      document.getElementById('j7-ab').style.display = isSav ? 'none' : '';
-      document.getElementById('j7-c').style.display  = isSav ? ''     : 'none';
-      // J8 conditionnel
-      document.getElementById('j8-ab').style.display = isSav ? 'none' : '';
-      document.getElementById('j8-c').style.display  = isSav ? ''     : 'none';
+      event.currentTarget.classList.add('active');
     }
   </script>
 
@@ -1025,21 +1090,16 @@ function initMap() {
       <span class="day-badge badge-new">Nuit supp.</span>
     </div>
     <div class="day-right">
-      <h3><a href="charleston.html">Charleston, SC — journée complète</a><a href="charleston.html" class="dest-link-tag">→ Fiche détail</a></h3>
-      <div class="run-block">
-        <div class="section-label">🏃 Running du matin</div>
-        <div class="run-card">
-          <div class="run-icon">⚓</div>
-          <div class="run-content">
-            <div class="run-name">The Battery & White Point Garden · Charleston</div>
-            <div class="run-desc">Partir tôt depuis le centre historique, longer East Bay Street jusqu'à The Battery, longer le bord de mer face au port. Remonter par Rainbow Row et le French Quarter. L'un des plus beaux runs historiques des USA — maisons antebellum, palmiers, odeur d'océan.</div>
-            <div class="run-meta">
-              <span class="run-tag">🟢 Débutant</span>
-              <span class="run-tag">5–8 km</span>
-              <span class="run-tag">Plat · Pavés</span>
-              <span class="run-tag">Vue port</span>
-            </div>
+      <h3>Charleston, SC — journée complète</h3>
+      <div class="section-block">
+        <div class="section-label">Hébergement ce soir (J7)</div>
+        <div class="hotel-card">
+          <div class="hotel-icon">🏨</div>
+          <div class="hotel-info">
+            <div class="hotel-name">Aloft Savannah Downtown Historic District</div>
+            <div class="hotel-meta">23 → 25 juillet · 2 nuits</div>
           </div>
+          <div class="hotel-price">258 $</div>
         </div>
       </div>
       <div class="section-block">
@@ -1089,6 +1149,17 @@ function initMap() {
         2h depuis Charleston · arrêt Beaufort en route
       </span>
       <div class="section-block">
+        <div class="section-label">Hébergement (nuits J7 & J8)</div>
+        <div class="hotel-card">
+          <div class="hotel-icon">🏨</div>
+          <div class="hotel-info">
+            <div class="hotel-name">Aloft Savannah Downtown Historic District</div>
+            <div class="hotel-meta">23 → 25 juillet · 2 nuits</div>
+          </div>
+          <div class="hotel-price">258 $</div>
+        </div>
+      </div>
+      <div class="section-block">
         <div class="section-label">Sur la route</div>
         <div class="road-stop"><div class="stop-dot"></div><div class="stop-text"><strong>Beaufort, SC</strong> — petite ville coloniale magnifique entre Charleston et Savannah. Waterfront Park, maisons antebellum, déjeuner tranquille.</div></div>
       </div>
@@ -1119,7 +1190,19 @@ function initMap() {
     </div>
   </div>
 
-
+  <script>
+    const _switchRouteOrig = window.switchRoute;
+    window.switchRoute = function(id) {
+      _switchRouteOrig && _switchRouteOrig(id);
+      if (id === 'savannah2') {
+        document.getElementById('j7-ab').style.display = 'none';
+        document.getElementById('j7-c').style.display = '';
+      } else {
+        document.getElementById('j7-ab').style.display = '';
+        document.getElementById('j7-c').style.display = 'none';
+      }
+    };
+  </script>
 
   <!-- J8 — adapté selon l'option -->
 
@@ -1131,11 +1214,22 @@ function initMap() {
       <span class="day-badge badge-ok">Inchangé</span>
     </div>
     <div class="day-right">
-      <h3><a href="savannah.html">Savannah, GA</a><a href="savannah.html" class="dest-link-tag">→ Fiche détail</a></h3>
+      <h3>Savannah, GA</h3>
       <span class="drive-info">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
         2h depuis Charleston
       </span>
+      <div class="section-block">
+        <div class="section-label">Hébergement (nuits J8 & J9)</div>
+        <div class="hotel-card">
+          <div class="hotel-icon">🏨</div>
+          <div class="hotel-info">
+            <div class="hotel-name">Aloft Savannah Downtown Historic District</div>
+            <div class="hotel-meta">23 → 25 juillet · 2 nuits</div>
+          </div>
+          <div class="hotel-price">258 $</div>
+        </div>
+      </div>
       <div class="section-block">
         <div class="section-label">Sur la route</div>
         <div class="road-stop"><div class="stop-dot"></div><div class="stop-text"><strong>Beaufort, SC</strong> (30 min de détour) — petite ville coloniale magnifique. Waterfront Park, maisons antebellum. Vaut le coup si tu pars tôt.</div></div>
@@ -1193,7 +1287,19 @@ function initMap() {
     </div>
   </div>
 
-
+  <script>
+    const _origSwitch2 = window.switchRoute;
+    window.switchRoute = function(id) {
+      _origSwitch2(id);
+      if (id === 'savannah2') {
+        document.getElementById('j8-ab').style.display = 'none';
+        document.getElementById('j8-c').style.display = '';
+      } else {
+        document.getElementById('j8-ab').style.display = '';
+        document.getElementById('j8-c').style.display = 'none';
+      }
+    };
+  </script>
 
   <!-- J9 -->
   <div class="day-card">
@@ -1203,26 +1309,21 @@ function initMap() {
       <span class="day-badge badge-ok">Inchangé</span>
     </div>
     <div class="day-right">
-      <h3><a href="saint-augustine.html">Saint Augustine, FL</a><a href="saint-augustine.html" class="dest-link-tag">→ Fiche détail</a></h3>
+      <h3>Saint Augustine, FL</h3>
       <span class="drive-info">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
         3h depuis Savannah
       </span>
 
-      <div class="run-block">
-        <div class="section-label">🏃 Running du matin</div>
-        <div class="run-card">
-          <div class="run-icon">🌳</div>
-          <div class="run-content">
-            <div class="run-name">Forsyth Park → les Squares · Savannah</div>
-            <div class="run-desc">Le run le plus pittoresque du Deep South. Départ Forsyth Park (périmètre du parc = 1,6 km), puis enchaîne les squares historiques en zigzag — Monterey Square, Madison Square, Chippewa Square — sous les live oaks couverts de mousse espagnole. Ombragé même en juillet, absolument unique.</div>
-            <div class="run-meta">
-              <span class="run-tag">🟢 Débutant</span>
-              <span class="run-tag">5–10 km</span>
-              <span class="run-tag">Plat · Chemins</span>
-              <span class="run-tag">Ombragé</span>
-            </div>
+      <div class="section-block">
+        <div class="section-label">Hébergement</div>
+        <div class="hotel-card">
+          <div class="hotel-icon">🏨</div>
+          <div class="hotel-info">
+            <div class="hotel-name">The Ponce St. Augustine Hotel</div>
+            <div class="hotel-meta">25 → 26 juillet · 1 nuit · 15 $ à payer sur place</div>
           </div>
+          <div class="hotel-price">139 $</div>
         </div>
       </div>
 
@@ -1284,26 +1385,21 @@ function initMap() {
       <span class="day-badge badge-mod">Réorganisé</span>
     </div>
     <div class="day-right">
-      <h3><a href="kennedy.html">Kennedy Space Center</a><a href="kennedy.html" class="dest-link-tag">→ Fiche détail</a></h3>
+      <h3>Kennedy Space Center</h3>
       <span class="drive-info">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
         2h depuis Saint Augustine · Nuit à Titusville ou Cocoa Beach
       </span>
 
-      <div class="run-block">
-        <div class="section-label">🏃 Running du matin</div>
-        <div class="run-card">
-          <div class="run-icon">🏰</div>
-          <div class="run-content">
-            <div class="run-name">Anastasia State Park & plage · Saint Augustine</div>
-            <div class="run-desc">Traverser le Bridge of Lions tôt le matin, longer la Matanzas River face à la ville coloniale, puis courir sur la plage d'Anastasia Island. Le sable est ferme et la mer est souvent calme. Revenir par le parc naturel pour les amateurs de sentiers — le contraste jungle-plage est exceptionnel.</div>
-            <div class="run-meta">
-              <span class="run-tag">🟢 Débutant</span>
-              <span class="run-tag">6–10 km</span>
-              <span class="run-tag">Plage · Pont</span>
-              <span class="run-tag">Vue coloniale</span>
-            </div>
+      <div class="section-block">
+        <div class="section-label">Hébergement (nuits J10 & J11)</div>
+        <div class="hotel-card">
+          <div class="hotel-icon">🏨</div>
+          <div class="hotel-info">
+            <div class="hotel-name">Days Inn by Wyndham Titusville — Kennedy Space Center</div>
+            <div class="hotel-meta">26 → 28 juillet · 2 nuits</div>
           </div>
+          <div class="hotel-price">162 $</div>
         </div>
       </div>
 
@@ -1342,10 +1438,10 @@ function initMap() {
       <span class="day-badge badge-ok">Inchangé</span>
     </div>
     <div class="day-right">
-      <h3><a href="orlando.html">Universal Studios, Orlando</a><a href="orlando.html" class="dest-link-tag">→ Fiche détail</a></h3>
+      <h3>Universal Studios, Orlando</h3>
       <span class="drive-info">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
-        45 min depuis Cocoa Beach
+        45 min depuis Titusville
       </span>
 
       <div class="section-block">
@@ -1363,105 +1459,51 @@ function initMap() {
     </div>
   </div>
 
+  <!-- REGION 4 -->
+  <div class="region-header">
+    <div class="region-number">04</div>
+    <div class="region-info">
+      <p>Magic City · 4 nuits</p>
+      <h2>Miami</h2>
+    </div>
+  </div>
+
   <!-- J12 -->
   <div class="day-card">
     <div class="day-left">
       <span class="day-number">J12</span>
       <span class="day-date">Mardi<br>28 juillet</span>
-      <span class="day-badge badge-ok">Inchangé</span>
+      <span class="day-badge badge-mod">Arrivée Miami</span>
     </div>
     <div class="day-right">
-      <h3>Universal J2 ou route vers le sud</h3>
-
-      <div class="section-block">
-        <div class="section-label">Deux options</div>
-        <div class="road-stop">
-          <div class="stop-dot"></div>
-          <div class="stop-text"><strong>Option A :</strong> 2e journée Universal (Epic Universe, Islands of Adventure). Idéal si tu veux tout voir sans courir.</div>
-        </div>
-        <div class="road-stop">
-          <div class="stop-dot"></div>
-          <div class="stop-text"><strong>Option B :</strong> Départ en fin de matinée vers Palm Beach (2h30). Arrêt déjeuner à <strong>Lake Worth Beach</strong> — petite ville bohème, galeries, cafés.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- REGION 4 -->
-  <div class="region-header">
-    <div class="region-number">04</div>
-    <div class="region-info">
-      <p>Gold Coast & Magic City</p>
-      <h2>Palm Beach → Miami</h2>
-    </div>
-  </div>
-
-  <!-- J13 -->
-  <div class="day-card">
-    <div class="day-left">
-      <span class="day-number">J13</span>
-      <span class="day-date">Mercredi<br>29 juillet</span>
-      <span class="day-badge badge-mod">Nuit ajoutée</span>
-    </div>
-    <div class="day-right">
-      <h3><a href="palm-beach.html">Palm Beach, FL</a><a href="palm-beach.html" class="dest-link-tag">→ Fiche détail</a></h3>
+      <h3>Miami — arrivée</h3>
       <span class="drive-info">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
-        2h30 depuis Orlando
+        3h15 depuis Titusville — route directe vers Miami
       </span>
 
       <div class="section-block">
-        <div class="section-label">À voir</div>
-        <ul class="items-list">
-          <li><strong>Worth Avenue</strong> — la 5th Avenue de Floride, boutiques de luxe, galeries, ambiance glamour</li>
-          <li><strong>Flagler Museum (Whitehall)</strong> — villa Gilded Age d'Henry Flagler, musée de l'âge d'or de la Floride</li>
-          <li><strong>Palm Beach Town Beach</strong> — plage calme et chic</li>
-          <li><strong>Clematis Street (West Palm Beach)</strong> — bars et vie nocturne juste de l'autre côté du pont</li>
-        </ul>
-      </div>
-
-      <div class="section-block">
-        <div class="section-label">Dîner</div>
-        <div class="resto-grid">
-          <div class="resto-card">
-            <span class="resto-type">Mediterranean · Terrasse</span>
-            <div class="resto-name">Café Boulud Palm Beach</div>
-            <div class="resto-desc">Daniel Boulud dans le Brazil Hotel, palm trees et cuisine méditerranéenne raffinée. La belle table de Palm Beach.</div>
+        <div class="section-label">Hébergement (nuits J12 → J15)</div>
+        <div class="hotel-card">
+          <div class="hotel-icon">🏨</div>
+          <div class="hotel-info">
+            <div class="hotel-name">Hyatt Regency Miami — Bayfront Park, Downtown</div>
+            <div class="hotel-meta">28 juillet → 1er août · 4 nuits</div>
           </div>
-          <div class="resto-card">
-            <span class="resto-type">Casual · Waterfront</span>
-            <div class="resto-name">Rhythm Café (West Palm Beach)</div>
-            <div class="resto-desc">Bistro excentrique, BYOB, menu qui change chaque soir selon le marché. Institution locale abordable.</div>
-          </div>
+          <div class="hotel-price">756 $</div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <!-- J14 -->
-  <div class="day-card">
-    <div class="day-left">
-      <span class="day-number">J14</span>
-      <span class="day-date">Jeudi<br>30 juillet</span>
-      <span class="day-badge badge-mod">Arrivée décalée</span>
-    </div>
-    <div class="day-right">
-      <h3><a href="miami.html">Miami — arrivée</a><a href="miami.html" class="dest-link-tag">→ Fiche détail</a></h3>
-      <span class="drive-info">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
-        1h15 depuis Palm Beach
-      </span>
 
       <div class="section-block">
         <div class="section-label">Sur la route — Fort Lauderdale</div>
         <div class="road-stop">
           <div class="stop-dot"></div>
-          <div class="stop-text"><strong>Las Olas Boulevard</strong> — café, shopping, canaux pittoresques. Parfait pour un déjeuner à mi-chemin (30 min de Miami).</div>
+          <div class="stop-text"><strong>Las Olas Boulevard</strong> — café, shopping, canaux pittoresques. Parfait pour un déjeuner à mi-chemin.</div>
         </div>
       </div>
 
       <div class="section-block">
-        <div class="section-label">Afternoon à Miami</div>
+        <div class="section-label">Arrivée à Miami</div>
         <ul class="items-list">
           <li><strong>Wynwood Walls</strong> — le musée à ciel ouvert de street art, incontournable</li>
           <li><strong>Design District</strong> — galeries, architecture, cafés</li>
@@ -1487,48 +1529,30 @@ function initMap() {
     </div>
   </div>
 
-  <!-- J15 -->
+  <!-- J13 -->
   <div class="day-card">
     <div class="day-left">
-      <span class="day-number">J15</span>
-      <span class="day-date">Vendredi<br>31 juillet</span>
-      <span class="day-badge badge-new">Everglades</span>
+      <span class="day-number">J13</span>
+      <span class="day-date">Mercredi<br>29 juillet</span>
+      <span class="day-badge badge-new">South Beach</span>
     </div>
     <div class="day-right">
-      <h3><a href="miami.html">Miami — Everglades + South Beach</a><a href="miami.html" class="dest-link-tag">→ Fiche détail</a></h3>
-
-      <div class="run-block">
-        <div class="section-label">🏃 Running du matin</div>
-        <div class="run-card">
-          <div class="run-icon">🌴</div>
-          <div class="run-content">
-            <div class="run-name">Ocean Drive & Lummus Park · South Beach</div>
-            <div class="run-desc">Le run le plus iconique du voyage. Partir avant 7h — Ocean Drive est encore vide, les hôtels Art Déco sont roses et or dans la lumière du matin. Longer la plage par Lummus Park jusqu'à South Pointe Park, revenir par le bord de mer. La meilleure heure pour voir South Beach dans toute sa splendeur.</div>
-            <div class="run-meta">
-              <span class="run-tag">🟢 Débutant</span>
-              <span class="run-tag">6–10 km</span>
-              <span class="run-tag">Plage · Promenade</span>
-              <span class="run-tag">Art Déco · Lever de soleil</span>
-            </div>
-          </div>
-        </div>
-      </div>
+      <h3>Miami — South Beach & Art Déco</h3>
 
       <div class="section-block">
-        <div class="section-label">Matin — Everglades (départ 8h)</div>
+        <div class="section-label">Journée</div>
         <ul class="items-list">
-          <li><strong>Airboat tour</strong> (Shark Valley ou Everglades City) — 1h30–2h sur l'eau, alligators garantis. Prendre le plus tôt possible avant la chaleur</li>
-          <li><strong>Anhinga Trail</strong> (Royal Palm) — 30 min à pied, oiseaux et alligators à 2 mètres</li>
-          <li>Retour Miami vers 13h–14h</li>
+          <li><strong>Ocean Drive</strong> — Art Déco district, le plus concentré au monde</li>
+          <li><strong>Lummus Park Beach</strong> — la plage de South Beach, eau turquoise</li>
+          <li><strong>Lincoln Road Mall</strong> — shopping en plein air, terrasses, galeries</li>
+          <li><strong>Bass Museum of Art</strong> — musée d'art contemporain de SoBe</li>
         </ul>
       </div>
 
       <div class="section-block">
-        <div class="section-label">Après-midi — South Beach</div>
+        <div class="section-label">Soirée — Little Havana · Calle Ocho</div>
         <ul class="items-list">
-          <li><strong>Ocean Drive</strong> — Art Déco district, le plus concentré au monde</li>
-          <li><strong>Lummus Park Beach</strong> — la plage de South Beach, eau turquoise</li>
-          <li><strong>Little Havana · Calle Ocho</strong> — en soirée, musique en live, cafecito cubain, ropa vieja</li>
+          <li>Musique en live, cafecito cubain, ropa vieja, ambiance unique</li>
         </ul>
       </div>
 
@@ -1544,6 +1568,90 @@ function initMap() {
             <span class="resto-type">Tasting menu · Gastronomique</span>
             <div class="resto-name">Palma (East Little Havana)</div>
             <div class="resto-desc">9 courses, chef formé chez Momofuku Ko. Michelin Guide. Résa très loin à l'avance, mais l'expérience de Miami si tu veux quelque chose d'exceptionnel.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- J14 -->
+  <div class="day-card">
+    <div class="day-left">
+      <span class="day-number">J14</span>
+      <span class="day-date">Jeudi<br>30 juillet</span>
+      <span class="day-badge badge-new">Everglades</span>
+    </div>
+    <div class="day-right">
+      <h3>Miami — Everglades + Coral Gables</h3>
+
+      <div class="section-block">
+        <div class="section-label">Matin — Everglades (départ 8h)</div>
+        <ul class="items-list">
+          <li><strong>Airboat tour</strong> (Shark Valley ou Everglades City) — 1h30–2h sur l'eau, alligators garantis. Prendre le plus tôt possible avant la chaleur</li>
+          <li><strong>Anhinga Trail</strong> (Royal Palm) — 30 min à pied, oiseaux et alligators à 2 mètres</li>
+          <li>Retour Miami vers 13h–14h</li>
+        </ul>
+      </div>
+
+      <div class="section-block">
+        <div class="section-label">Après-midi</div>
+        <ul class="items-list">
+          <li><strong>Coral Gables</strong> — Miracle Mile, Venetian Pool (piscine dans une ancienne carrière de corail), Biltmore Hotel</li>
+          <li><strong>Coconut Grove</strong> — ambiance bohème, marinas, terrasses au bord de l'eau</li>
+        </ul>
+      </div>
+
+      <div class="section-block">
+        <div class="section-label">Dîner</div>
+        <div class="resto-grid">
+          <div class="resto-card">
+            <span class="resto-type">Seafood · Brickell</span>
+            <div class="resto-name">Stubborn Seed</div>
+            <div class="resto-desc">Chef Top Chef Jeremy Ford — cuisine américaine créative, ambiance chic mais décontractée à South Beach.</div>
+          </div>
+          <div class="resto-card">
+            <span class="resto-type">Rooftop · Vue panoramique</span>
+            <div class="resto-name">Area 31 (Epic Hotel)</div>
+            <div class="resto-desc">Vue sur Biscayne Bay et le Downtown — fruits de mer, cocktails, coucher de soleil mémorable.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- J15 -->
+  <div class="day-card">
+    <div class="day-left">
+      <span class="day-number">J15</span>
+      <span class="day-date">Vendredi<br>31 juillet</span>
+      <span class="day-badge badge-new">Jour libre</span>
+    </div>
+    <div class="day-right">
+      <h3>Miami — Journée libre</h3>
+
+      <div class="section-block">
+        <div class="section-label">Idées selon l'humeur</div>
+        <ul class="items-list">
+          <li><strong>Vizcaya Museum & Gardens</strong> — villa italienne du début XXe siècle au bord de la baie, jardins extraordinaires</li>
+          <li><strong>Key Biscayne</strong> (30 min) — plage calme et sauvage, Bill Baggs State Park, phare</li>
+          <li><strong>Pérez Art Museum Miami (PAMM)</strong> — art moderne et contemporain, vue sur Biscayne Bay</li>
+          <li><strong>Balade en bateau</strong> — water taxi ou location kayak dans la baie</li>
+          <li>Journée farniente & piscine à l'hôtel — tu l'as bien mérité</li>
+        </ul>
+      </div>
+
+      <div class="section-block">
+        <div class="section-label">Dîner — dernière nuit à Miami</div>
+        <div class="resto-grid">
+          <div class="resto-card">
+            <span class="resto-type">Rooftop · Vue skyline</span>
+            <div class="resto-name">Sugar (EAST Hotel, Brickell)</div>
+            <div class="resto-desc">Bar-restaurant au 40e étage, vue à 360° sur Miami et Biscayne Bay. Pan-asiatique, cocktails de folie, coucher de soleil inoubliable.</div>
+          </div>
+          <div class="resto-card">
+            <span class="resto-type">Steakhouse · Grande occasion</span>
+            <div class="resto-name">Swan (Design District)</div>
+            <div class="resto-desc">Le restaurant de Pharrell Williams — steaks, ambiance ultra-chic, Design District. Pour marquer dignement la fin du trip.</div>
           </div>
         </div>
       </div>
@@ -1570,7 +1678,7 @@ function initMap() {
       </div>
 
       <div class="tip-box">
-        <strong>📋 Checklist départ :</strong> Restituer la voiture au moins 2h avant le vol · 50$ bagage en soute à ajouter au billet · Prévoir une dernière nuit à South Beach ou Brickell pour être proche de l'aéroport.
+        <strong>📋 Checklist départ :</strong> Restituer la voiture au moins 2h avant le vol · 50$ bagage en soute à ajouter au billet · L'Hyatt Regency est à 15 min de MIA — trajet facile en Uber.
       </div>
     </div>
   </div>
